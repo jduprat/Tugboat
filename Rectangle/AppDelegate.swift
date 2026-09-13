@@ -8,7 +8,7 @@ import os.log
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    static let launcherAppId = "com.knollsoft.RectangleLauncher"
+    static let launcherAppId = "io.github.jduprat.TugboatLauncher"
 
     private let accessibilityAuthorization = AccessibilityAuthorization()
     private let statusItem = RectangleStatusItem.instance
@@ -78,8 +78,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(rebuildMenu), name: .showAdditionalSizesInMenuChanged, object: nil)
 
-        updaterController = SPUStandardUpdaterController(updaterDelegate: nil, userDriverDelegate: self)
-        
+        // Sparkle only runs when an appcast is configured in Info.plist (SUFeedURL + SUPublicEDKey).
+        updaterController = SPUStandardUpdaterController(startingUpdater: AppDelegate.updatesConfigured, updaterDelegate: nil, userDriverDelegate: self)
+        updatesMenuItem.isHidden = !AppDelegate.updatesConfigured
+
         checkAutoCheckForUpdates()
         
         Notification.Name.configImported.onPost(using: { _ in
@@ -144,7 +146,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /// True when Info.plist carries a Sparkle feed URL. Without one the updater is never started and its UI is hidden.
+    static let updatesConfigured: Bool = Bundle.main.object(forInfoDictionaryKey: "SUFeedURL") != nil
+
     func checkAutoCheckForUpdates() {
+        guard AppDelegate.updatesConfigured else { return }
         updaterController.updater.automaticallyChecksForUpdates = Defaults.SUEnableAutomaticChecks.enabled
     }
     
@@ -174,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for app in runningApps {
             guard let bundleId = app.bundleIdentifier else { continue }
             if let conflictingAppName = conflictingAppsIds[bundleId] {
-                AlertUtil.oneButtonAlert(question: "Potential window manager conflict: \(conflictingAppName)", text: "Since \(conflictingAppName) might have some overlapping behavior with Rectangle, it's recommended that you either disable or quit \(conflictingAppName).")
+                AlertUtil.oneButtonAlert(question: "Potential window manager conflict: \(conflictingAppName)", text: "Since \(conflictingAppName) might have some overlapping behavior with Tugboat, it's recommended that you either disable or quit \(conflictingAppName).")
                 break
             }
         }
@@ -226,7 +232,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let displayNameString = displayNames.joined(separator: "\n")
         
         if !problemBundles.isEmpty {
-            AlertUtil.oneButtonAlert(question: "Known issues with installed applications", text: "\(displayNameString)\n\nThese applications have issues with the drag to screen edge to snap functionality in Rectangle.\n\nYou can either ignore the applications using the menu item in Rectangle, or disable drag to screen edge snapping in Rectangle preferences.")
+            AlertUtil.oneButtonAlert(question: "Known issues with installed applications", text: "\(displayNameString)\n\nThese applications have issues with the drag to screen edge to snap functionality in Tugboat.\n\nYou can either ignore the applications using the menu item in Tugboat, or disable drag to screen edge snapping in Tugboat preferences.")
             Defaults.notifiedOfProblemApps.enabled = true
         }
     }
@@ -285,6 +291,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func checkForUpdates(_ sender: Any) {
+        guard AppDelegate.updatesConfigured else { return }
         updaterController.checkForUpdates(sender)
     }
     
@@ -654,8 +661,8 @@ extension AppDelegate {
                 }
                 let alert = NSAlert()
                 alert.alertStyle = .warning
-                alert.messageText = "Allow Rectangle URL action?".localized
-                alert.informativeText = String(format: "An external source asked Rectangle to perform \"%@\" on app bundle id \"%@\". Allow?".localized, action, bundleId)
+                alert.messageText = "Allow Tugboat URL action?".localized
+                alert.informativeText = String(format: "An external source asked Tugboat to perform \"%@\" on app bundle id \"%@\". Allow?".localized, action, bundleId)
                 alert.addButton(withTitle: "Allow".localized)
                 alert.addButton(withTitle: "Cancel".localized)
                 NSApp.activate(ignoringOtherApps: true)

@@ -1,22 +1,19 @@
 # Contributing
 
-## Feature Requests
-
-Rectangle is not accepting any new feature requests at this time, sorry. You can file a feature request for a feature that you plan to implement and submit a pull request for, so that the feature can be reviewed and you will know ahead of time if the feature will be rejected.  
+Tugboat is a fork of [Rectangle](https://github.com/rxhanson/Rectangle). Changes to the window placement engine that are not specific to Tugboat are best contributed upstream to Rectangle, where they benefit both projects; Tugboat merges from upstream regularly.
 
 ## Bugs
 
-Please search through the existing issues, open and closed, before filing a new bug.
-Add the version of Rectangle, the version of the OS, and screenshots or videos as necessary.
+Search the existing issues, open and closed, before filing a new one. Include the Tugboat version, the macOS version, your display setup (which displays, connected how), and screenshots or a screen recording when relevant.
+
+## Feature Requests
+
+Open an issue describing the problem you are trying to solve before writing code for a large feature, so the approach can be discussed first.
 
 ## Coding Style
 
-Please match the existing coding style as much as possible.
+Match the existing style. Keep Tugboat-specific code in its own directories (for example `Rectangle/Arrangements/`) and keep edits to files shared with Rectangle small, so merges from upstream stay cheap.
 
 ## License
 
-By contributing to Rectangle you agree that your contributions will be licensed under its MIT license.
-
-## Incentives
-
-Logic from Rectangle is used in the [Multitouch](https://multitouch.app) app. The [Rectangle Pro](https://rectangleapp.com/pro) app is entirely built on top of Rectangle. If you contribute significant code or localizations that get merged into Rectangle, you get a free license of Multitouch or Rectangle Pro. Contributors to Sparkle, MASShortcut, or Spectacle can also receive free Multitouch or Rectangle Pro licenses (just send me an email).
+By contributing to Tugboat you agree that your contributions are licensed under its MIT license.

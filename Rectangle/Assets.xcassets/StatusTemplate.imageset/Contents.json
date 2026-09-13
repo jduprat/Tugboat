@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "RectangleStatusTemplate22.png",
+      "filename" : "TugboatStatusTemplate22.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "RectangleStatusTemplate44.png",
+      "filename" : "TugboatStatusTemplate44.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "RectangleStatusTemplate.png",
+      "filename" : "TugboatStatusTemplate66.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

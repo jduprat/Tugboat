@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#000000">
+    <!-- funnel -->
+    <polygon points="14.2,5 16.8,5 17.4,10 14.8,10"/>
+    <!-- cabin with two window holes -->
+    <path fill-rule="evenodd" d="M6,7 H13 V12 H6 Z M7.4,8.4 H9.2 V10.4 H7.4 Z M10.2,8.4 H12 V10.4 H10.2 Z"/>
+    <!-- hull -->
+    <path d="M3,12 H17.2 Q19.5,12 19.5,14.3 V16.5 H2.5 V13 Q2.5,12 3,12 Z"/>
+  </g>
+  <!-- wave -->
+  <path d="M1.5,19.2 q2,-1.8 4,0 t4,0 t4,0 t4,0 t3,0" fill="none" stroke="#000000" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

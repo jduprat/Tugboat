@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>Boat</title>
+  <g id="Boat">
+    <g transform="translate(-32.4,-55.2) scale(1.06)">
+    <!-- mast + pennant -->
+    <line x1="350" y1="290" x2="350" y2="450" stroke="#1E2836" stroke-width="12" stroke-linecap="round"/>
+    <polygon points="356,288 420,304 356,320" fill="#E4452F"/>
+    <!-- smoke drifting aft -->
+    <g fill="#FFFFFF" fill-opacity="0.92">
+      <circle cx="588" cy="268" r="28"/>
+      <circle cx="540" cy="238" r="44"/>
+      <circle cx="484" cy="250" r="30"/>
+    </g>
+    <!-- funnel, raked aft -->
+    <polygon points="604,300 678,300 700,446 626,446" fill="#1E2836"/>
+    <polygon points="604,300 678,300 684,340 610,340" fill="#E4452F"/>
+    <polygon points="610,340 684,340 687,358 613,358" fill="#F7F2E8"/>
+    <!-- deckhouse with a row of windows -->
+    <rect x="318" y="444" width="330" height="122" rx="12" fill="#F7F2E8"/>
+    <g fill="#1E2836">
+      <rect x="344" y="478" width="44" height="44" rx="7"/>
+      <rect x="414" y="478" width="44" height="44" rx="7"/>
+      <rect x="484" y="478" width="44" height="44" rx="7"/>
+      <rect x="554" y="478" width="44" height="44" rx="7"/>
+    </g>
+    <!-- wheelhouse with two side-by-side windows -->
+    <rect x="392" y="346" width="196" height="104" rx="12" fill="#F7F2E8"/>
+    <rect x="380" y="334" width="220" height="16" rx="8" fill="#1E2836"/>
+    <rect x="412" y="368" width="74" height="52" rx="7" fill="#1E2836"/>
+    <rect x="498" y="368" width="74" height="52" rx="7" fill="#1E2836"/>
+    <!-- hull -->
+    <path d="M300,560 H790 Q848,560 848,618 V720 H232 V620 Q232,560 300,560 Z" fill="#E4452F"/>
+    <path d="M232,624 Q232,560 300,560 H790 Q848,560 848,622" fill="none" stroke="#1E2836" stroke-width="26" stroke-linecap="round"/>
+    <!-- tyre fenders -->
+    <g>
+      <circle cx="336" cy="618" r="25" fill="#1E2836"/><circle cx="336" cy="618" r="10" fill="#E4452F"/>
+      <circle cx="506" cy="618" r="25" fill="#1E2836"/><circle cx="506" cy="618" r="10" fill="#E4452F"/>
+      <circle cx="676" cy="618" r="25" fill="#1E2836"/><circle cx="676" cy="618" r="10" fill="#E4452F"/>
+    </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1500" height="480" viewBox="0 0 1500 480" xmlns="http://www.w3.org/2000/svg">
+<svg x="30" y="20" width="440" height="440" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7BCBFA"/><stop offset="1" stop-color="#2C8EE0"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F6FC2"/><stop offset="1" stop-color="#0F3B7A"/>
+    </linearGradient>
+    <clipPath id="squircle"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#sky)" filter="url(#shadow)"/>
+  <g clip-path="url(#squircle)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#sky)"/>
+    <g transform="translate(-32.4,-55.2) scale(1.06)">
+    <!-- mast + pennant -->
+    <line x1="350" y1="290" x2="350" y2="450" stroke="#1E2836" stroke-width="12" stroke-linecap="round"/>
+    <polygon points="356,288 420,304 356,320" fill="#E4452F"/>
+    <!-- smoke drifting aft -->
+    <g fill="#FFFFFF" fill-opacity="0.92">
+      <circle cx="588" cy="268" r="28"/>
+      <circle cx="540" cy="238" r="44"/>
+      <circle cx="484" cy="250" r="30"/>
+    </g>
+    <!-- funnel, raked aft -->
+    <polygon points="604,300 678,300 700,446 626,446" fill="#1E2836"/>
+    <polygon points="604,300 678,300 684,340 610,340" fill="#E4452F"/>
+    <polygon points="610,340 684,340 687,358 613,358" fill="#F7F2E8"/>
+    <!-- deckhouse with a row of windows -->
+    <rect x="318" y="444" width="330" height="122" rx="12" fill="#F7F2E8"/>
+    <g fill="#1E2836">
+      <rect x="344" y="478" width="44" height="44" rx="7"/>
+      <rect x="414" y="478" width="44" height="44" rx="7"/>
+      <rect x="484" y="478" width="44" height="44" rx="7"/>
+      <rect x="554" y="478" width="44" height="44" rx="7"/>
+    </g>
+    <!-- wheelhouse with two side-by-side windows -->
+    <rect x="392" y="346" width="196" height="104" rx="12" fill="#F7F2E8"/>
+    <rect x="380" y="334" width="220" height="16" rx="8" fill="#1E2836"/>
+    <rect x="412" y="368" width="74" height="52" rx="7" fill="#1E2836"/>
+    <rect x="498" y="368" width="74" height="52" rx="7" fill="#1E2836"/>
+    <!-- hull -->
+    <path d="M300,560 H790 Q848,560 848,618 V720 H232 V620 Q232,560 300,560 Z" fill="#E4452F"/>
+    <path d="M232,624 Q232,560 300,560 H790 Q848,560 848,622" fill="none" stroke="#1E2836" stroke-width="26" stroke-linecap="round"/>
+    <!-- tyre fenders -->
+    <g>
+      <circle cx="336" cy="618" r="25" fill="#1E2836"/><circle cx="336" cy="618" r="10" fill="#E4452F"/>
+      <circle cx="506" cy="618" r="25" fill="#1E2836"/><circle cx="506" cy="618" r="10" fill="#E4452F"/>
+      <circle cx="676" cy="618" r="25" fill="#1E2836"/><circle cx="676" cy="618" r="10" fill="#E4452F"/>
+    </g>
+    </g>
+    <path d="M60,662 Q110,638 160,662 T260,662 T360,662 T460,662 T560,662 T660,662 T760,662 T860,662 T960,662 T1060,662 V1024 H60 Z" fill="url(#sea)"/>
+    <path d="M60,648 Q110,624 160,648 T260,648 T360,648 T460,648 T560,648 T660,648 T760,648 T860,648 T960,648 T1060,648" fill="none" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="12"/>
+    <path d="M60,770 Q110,746 160,770 T260,770 T360,770 T460,770 T560,770 T660,770 T760,770 T860,770 T960,770 T1060,770" fill="none" stroke="#0B2E60" stroke-opacity="0.35" stroke-width="12"/>
+  </g>
+</svg>
+  <text x="480" y="262" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="230" fill="#2C8EE0">Tugboat</text>
+  <text x="486" y="352" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="500" font-size="46" fill="#6B7785">Keyboard window placement with a memory</text>
+</svg>

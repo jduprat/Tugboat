@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9824700822AF9B7D0037B409"
-               BuildableName = "Rectangle.app"
+               BuildableName = "Tugboat.app"
                BlueprintName = "Rectangle"
-               ReferencedContainer = "container:Rectangle.xcodeproj">
+               ReferencedContainer = "container:Tugboat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
-            BuildableName = "Rectangle.app"
+            BuildableName = "Tugboat.app"
             BlueprintName = "Rectangle"
-            ReferencedContainer = "container:Rectangle.xcodeproj">
+            ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,7 +44,7 @@
                BlueprintIdentifier = "9824701A22AF9B7E0037B409"
                BuildableName = "RectangleTests.xctest"
                BlueprintName = "RectangleTests"
-               ReferencedContainer = "container:Rectangle.xcodeproj">
+               ReferencedContainer = "container:Tugboat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
-            BuildableName = "Rectangle.app"
+            BuildableName = "Tugboat.app"
             BlueprintName = "Rectangle"
-            ReferencedContainer = "container:Rectangle.xcodeproj">
+            ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
-            BuildableName = "Rectangle.app"
+            BuildableName = "Tugboat.app"
             BlueprintName = "Rectangle"
-            ReferencedContainer = "container:Rectangle.xcodeproj">
+            ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
