@@ -23,33 +23,53 @@ settings export:
 
 ```
 ~/Library/Application Support/Tugboat/Arrangements/
-    BuiltIn-37D8832A.json
-    StudioDisplay-2072A734.json
-    BuiltIn-37D8832A+StudioDisplay-2072A734.json
-    Dell-U2723QE-9A4E1C2B+Dell-U2723QE-C41B77D0.json
+    Built-in Retina Display.json
+    Studio Display.json
+    Built-in Retina Display + Studio Display.json
+    Dell U2723QE + Dell U2723QE.json
 ```
 
 One file is one arrangement. Forgetting a display set is deleting its file,
 inspecting or hand-editing one is opening it, and a file can be copied to
 another Mac that sees the same display UUIDs. Writes are atomic (write to a
 temp file, rename over the old one) and debounced, so a burst of window moves
-produces one write. Files are read on demand and cached in memory.
+produces one write.
 
-### File names
+### File names are for people only
 
-Each connected display contributes one token, `<Name>-<Short>`:
+Tugboat never derives anything from a file name. Every file lists the UUIDs
+of the displays it belongs to, and that list is the identity. So:
 
-- `Name` is the display's product name from the IORegistry (`StudioDisplay`,
-  `U2723QE`), reduced to letters and digits, with the vendor prefixed when the
-  product name is generic. The built-in panel is always `BuiltIn`. If no name
-  is available the token is `Display`.
-- `Short` is the first eight hex digits of the display UUID that macOS derives
-  from the panel's EDID (vendor, model, serial number and manufacture date).
-  It is what System Settings itself uses to remember display arrangements.
+- The default name is generated once, when the file is first created, from
+  the display names in the order System Settings shows them, joined with
+  ` + `, with characters that are not allowed in file names removed. If a
+  file with that name already exists for a different set of displays (two
+  pairs of identical monitors, say), a counter is appended: `… (2).json`.
+- Rename a file to anything you like; the arrangement keeps working. Tugboat
+  writes back to the path it read from.
+- The directory is scanned at launch and watched for changes afterwards, so a
+  file added, renamed or edited by hand is picked up without a relaunch.
+- If two files claim the same set of displays, the one with the most recent
+  `lastSeen` wins and the other is left untouched and noted in the log.
 
-Tokens are sorted and joined with `+`, so laptop plus monitor and monitor plus
-laptop name the same file. Names are for people and for the direct lookup;
-the identities that matter are inside the file.
+### Lookup
+
+1. Read the display UUIDs of the connected displays.
+2. Find the file whose `displays` list has exactly those UUIDs, in any order.
+3. If there is none, look for a file with the same number of displays and the
+   same multiset of pixel sizes. This is Stay's rule and it covers docks and
+   KVMs that hand out a fresh UUID on every reconnect. A fallback match is
+   adopted: the file's identities are rewritten to the new UUIDs, its name is
+   left alone.
+4. If nothing matches, a new file is created as soon as the first window is
+   captured.
+
+Origins and scale factor never take part in matching. Rearranging displays in
+System Settings or changing "More Space" must not create a new arrangement;
+origins are stored only so frames can be restored, and pixel sizes survive a
+scale change.
+
+Mirrored displays count as one, identified by the primary of the mirror set.
 
 ### Identity, and why not the serial number alone
 
@@ -66,28 +86,12 @@ from being the key on its own:
   such thing.
 
 So the key is the display UUID, which already folds vendor, model and serial
-together and falls back sensibly when the serial is missing, and the full
-identity is stored alongside it. `CGDisplayCreateUUIDFromDisplayID` is not in
+together and falls back sensibly when the serial is missing. The full identity
+(vendor, model, serial, name, sizes) is stored alongside it in every file, both
+for the fallback match and so a person reading the file knows which monitor is
+which. `CGDisplayCreateUUIDFromDisplayID` is not in
 the Swift SDK headers; it is declared in the bridging header the same way
 Rectangle declares `_AXUIElementGetWindow`.
-
-### Lookup
-
-1. Compute the file name for the connected displays and open it.
-2. If there is no such file, scan the directory for a set with the same
-   number of displays and the same multiset of pixel sizes. This is Stay's
-   rule and it covers docks and KVMs that hand out a fresh UUID on every
-   reconnect. A fallback match is adopted: the file is rewritten with the new
-   identities and renamed, so the next connection matches directly.
-3. If nothing matches, a new file is created as soon as the first window is
-   captured.
-
-Origins and scale factor never take part in matching. Rearranging displays in
-System Settings or changing "More Space" must not create a new arrangement;
-origins are stored only so frames can be restored, and pixel sizes survive a
-scale change.
-
-Mirrored displays count as one, identified by the primary of the mirror set.
 
 ## Shape of a file
 
@@ -122,7 +126,8 @@ Mirrored displays count as one, identified by the primary of the mirror set.
 }
 ```
 
-`name` is generated from the display names and can be renamed from the menu.
+`name` mirrors the file name Tugboat chose when it created the file; the menu
+shows the current file name, so renaming the file is the way to rename the set.
 `version` exists so files can be migrated later. Unknown keys are preserved on
 rewrite so a newer Tugboat can read a file written by an older one and back.
 
