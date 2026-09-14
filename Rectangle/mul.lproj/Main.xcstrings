@@ -41066,6 +41066,28 @@
         }
       }
     },
+    "tileActiveAppColumns.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tile App Windows in Columns"
+          }
+        }
+      }
+    },
+    "tileActiveAppRows.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tile App Windows in Rows"
+          }
+        }
+      }
+    },
     "tileColumns.title" : {
       "extractionState" : "manual",
       "localizations" : {

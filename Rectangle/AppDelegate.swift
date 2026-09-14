@@ -48,6 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Check for updates automatically unless the user turns it off. Registered before any Default is read.
+        UserDefaults.standard.register(defaults: ["SUEnableAutomaticChecks": true])
         Defaults.loadFromSupportDir()
         migrateShowEighthsInMenu()
 

@@ -137,7 +137,9 @@ enum WindowAction: Int, Codable {
          displayEight = 127,
          displayNine = 128,
          tileRows = 129,
-         tileColumns = 130
+         tileColumns = 130,
+         tileActiveAppRows = 131,
+         tileActiveAppColumns = 132
 
     // Order matters here - it's used in the menu
     static let active = [leftHalf, rightHalf, centerHalf, topHalf, bottomHalf,
@@ -166,7 +168,7 @@ enum WindowAction: Int, Codable {
                          bottomLeftSixteenth, bottomCenterLeftSixteenth, bottomCenterRightSixteenth, bottomRightSixteenth,
                          doubleHeightUp, doubleHeightDown, doubleWidthLeft, doubleWidthRight,
                          halveHeightUp, halveHeightDown, halveWidthLeft, halveWidthRight,
-                         tileAll, tileRows, tileColumns, cascadeAll,
+                         tileAll, tileRows, tileColumns, tileActiveAppRows, tileActiveAppColumns, cascadeAll,
                          leftTodo, rightTodo,
                          cascadeActiveApp, tileActiveApp,
                          displayOne, displayTwo, displayThree, displayFour, displayFive,
@@ -280,6 +282,8 @@ enum WindowAction: Int, Codable {
         case .tileAll: return "tileAll"
         case .tileRows: return "tileRows"
         case .tileColumns: return "tileColumns"
+        case .tileActiveAppRows: return "tileActiveAppRows"
+        case .tileActiveAppColumns: return "tileActiveAppColumns"
         case .cascadeAll: return "cascadeAll"
         case .leftTodo: return "leftTodo"
         case .rightTodo: return "rightTodo"
@@ -550,6 +554,12 @@ enum WindowAction: Int, Codable {
         case .tileColumns:
             key = "tileColumns.title"
             value = "Tile Windows in Columns"
+        case .tileActiveAppRows:
+            key = "tileActiveAppRows.title"
+            value = "Tile App Windows in Rows"
+        case .tileActiveAppColumns:
+            key = "tileActiveAppColumns.title"
+            value = "Tile App Windows in Columns"
         case .specified, .reverseAll, .tileAll, .cascadeAll, .leftTodo, .rightTodo, .cascadeActiveApp, .tileActiveApp:
             return nil
         case .centerProminently, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight:
@@ -673,7 +683,7 @@ enum WindowAction: Int, Codable {
     
     var isDragSnappable: Bool {
         switch self {
-        case .restore, .previousDisplay, .nextDisplay, .moveUp, .moveDown, .moveLeft, .moveRight, .specified, .reverseAll, .tileAll, .tileRows, .tileColumns, .cascadeAll, .larger, .smaller, .largerWidth, .smallerWidth, .cascadeActiveApp, .tileActiveApp,
+        case .restore, .previousDisplay, .nextDisplay, .moveUp, .moveDown, .moveLeft, .moveRight, .specified, .reverseAll, .tileAll, .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns, .cascadeAll, .larger, .smaller, .largerWidth, .smallerWidth, .cascadeActiveApp, .tileActiveApp,
             // Ninths
             .topLeftNinth, .topCenterNinth, .topRightNinth, .middleLeftNinth, .middleCenterNinth, .middleRightNinth, .bottomLeftNinth, .bottomCenterNinth, .bottomRightNinth,
             // Corner thirds
@@ -819,6 +829,8 @@ enum WindowAction: Int, Codable {
         case .tileAll: return NSImage()
         case .tileRows: return NSImage(imageLiteralResourceName: "tileRowsTemplate")
         case .tileColumns: return NSImage(imageLiteralResourceName: "tileColumnsTemplate")
+        case .tileActiveAppRows: return NSImage(imageLiteralResourceName: "tileRowsTemplate")
+        case .tileActiveAppColumns: return NSImage(imageLiteralResourceName: "tileColumnsTemplate")
         case .cascadeAll: return NSImage()
         case .leftTodo: return NSImage()
         case .rightTodo: return NSImage()
@@ -915,7 +927,7 @@ enum WindowAction: Int, Codable {
             return Defaults.applyGapsToMaximize.userDisabled ? .none : .both;
         case .maximizeHeight:
             return Defaults.applyGapsToMaximizeHeight.userDisabled ? .none : .vertical;
-        case .almostMaximize, .previousDisplay, .nextDisplay, .larger, .smaller, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight, .center, .centerProminently, .restore, .specified, .reverseAll, .tileAll, .tileRows, .tileColumns, .cascadeAll, .cascadeActiveApp, .tileActiveApp,
+        case .almostMaximize, .previousDisplay, .nextDisplay, .larger, .smaller, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight, .center, .centerProminently, .restore, .specified, .reverseAll, .tileAll, .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns, .cascadeAll, .cascadeActiveApp, .tileActiveApp,
              .displayOne, .displayTwo, .displayThree, .displayFour, .displayFive,
              .displaySix, .displaySeven, .displayEight, .displayNine:
             return .none
@@ -934,7 +946,7 @@ enum WindowAction: Int, Codable {
              .moveLeft, .moveRight, .moveUp, .moveDown,
              .doubleHeightUp, .doubleHeightDown, .doubleWidthLeft, .doubleWidthRight,
              .halveHeightUp, .halveHeightDown, .halveWidthLeft, .halveWidthRight,
-             .reverseAll, .tileAll, .tileRows, .tileColumns, .cascadeAll, .cascadeActiveApp, .tileActiveApp,
+             .reverseAll, .tileAll, .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns, .cascadeAll, .cascadeActiveApp, .tileActiveApp,
              .leftTodo, .rightTodo,
              .specified:
             return false
@@ -960,7 +972,7 @@ enum WindowAction: Int, Codable {
         case .topLeftNinth, .topCenterNinth, .topRightNinth, .middleLeftNinth, .middleCenterNinth, .middleRightNinth, .bottomLeftNinth, .bottomCenterNinth, .bottomRightNinth: return .ninths
         case .topLeftTwelfth, .topCenterLeftTwelfth, .topCenterRightTwelfth, .topRightTwelfth, .middleLeftTwelfth, .middleCenterLeftTwelfth, .middleCenterRightTwelfth, .middleRightTwelfth, .bottomLeftTwelfth, .bottomCenterLeftTwelfth, .bottomCenterRightTwelfth, .bottomRightTwelfth: return .twelfths
         case .topLeftSixteenth, .topCenterLeftSixteenth, .topCenterRightSixteenth, .topRightSixteenth, .upperMiddleLeftSixteenth, .upperMiddleCenterLeftSixteenth, .upperMiddleCenterRightSixteenth, .upperMiddleRightSixteenth, .lowerMiddleLeftSixteenth, .lowerMiddleCenterLeftSixteenth, .lowerMiddleCenterRightSixteenth, .lowerMiddleRightSixteenth, .bottomLeftSixteenth, .bottomCenterLeftSixteenth, .bottomCenterRightSixteenth, .bottomRightSixteenth: return .sixteenths
-        case .tileRows, .tileColumns: return .tiling
+        case .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns: return .tiling
         case .moveUp, .moveDown, .moveLeft, .moveRight: return .move
         case .almostMaximize, .maximizeHeight, .larger, .smaller, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight: return .size
         default: return nil

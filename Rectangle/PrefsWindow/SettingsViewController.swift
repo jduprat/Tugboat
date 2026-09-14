@@ -331,10 +331,18 @@ class SettingsViewController: NSViewController {
             let tileColumnsLabel = NSTextField(labelWithString: NSLocalizedString("tileColumns.title", tableName: "Main", value: "Tile Windows in Columns", comment: ""))
             tileColumnsLabel.alignment = .right
             tileColumnsLabel.translatesAutoresizingMaskIntoConstraints = false
+            let tileActiveAppRowsLabel = NSTextField(labelWithString: NSLocalizedString("tileActiveAppRows.title", tableName: "Main", value: "Tile App Windows in Rows", comment: ""))
+            tileActiveAppRowsLabel.alignment = .right
+            tileActiveAppRowsLabel.translatesAutoresizingMaskIntoConstraints = false
+            let tileActiveAppColumnsLabel = NSTextField(labelWithString: NSLocalizedString("tileActiveAppColumns.title", tableName: "Main", value: "Tile App Windows in Columns", comment: ""))
+            tileActiveAppColumnsLabel.alignment = .right
+            tileActiveAppColumnsLabel.translatesAutoresizingMaskIntoConstraints = false
 
             let tileRowsShortcutView = MASShortcutView(frame: NSRect(x: 0, y: 0, width: 160, height: 19))
             let tileColumnsShortcutView = MASShortcutView(frame: NSRect(x: 0, y: 0, width: 160, height: 19))
-            tilingShortcutViews = [tileRowsShortcutView, tileColumnsShortcutView]
+            let tileActiveAppRowsShortcutView = MASShortcutView(frame: NSRect(x: 0, y: 0, width: 160, height: 19))
+            let tileActiveAppColumnsShortcutView = MASShortcutView(frame: NSRect(x: 0, y: 0, width: 160, height: 19))
+            tilingShortcutViews = [tileRowsShortcutView, tileColumnsShortcutView, tileActiveAppRowsShortcutView, tileActiveAppColumnsShortcutView]
 
             let largerWidthLabel = NSTextField(labelWithString: NSLocalizedString("Larger Width", tableName: "Main", value: "", comment: ""))
             largerWidthLabel.alignment = .right
@@ -482,6 +490,8 @@ class SettingsViewController: NSViewController {
 
             tileRowsShortcutView.setAssociatedUserDefaultsKey(WindowAction.tileRows.name, withTransformerName: MASDictionaryTransformerName)
             tileColumnsShortcutView.setAssociatedUserDefaultsKey(WindowAction.tileColumns.name, withTransformerName: MASDictionaryTransformerName)
+            tileActiveAppRowsShortcutView.setAssociatedUserDefaultsKey(WindowAction.tileActiveAppRows.name, withTransformerName: MASDictionaryTransformerName)
+            tileActiveAppColumnsShortcutView.setAssociatedUserDefaultsKey(WindowAction.tileActiveAppColumns.name, withTransformerName: MASDictionaryTransformerName)
 
             largerWidthShortcutView.setAssociatedUserDefaultsKey(WindowAction.largerWidth.name, withTransformerName: MASDictionaryTransformerName)
             smallerWidthShortcutView.setAssociatedUserDefaultsKey(WindowAction.smallerWidth.name, withTransformerName: MASDictionaryTransformerName)
@@ -505,6 +515,8 @@ class SettingsViewController: NSViewController {
                 let passThroughValidator = PassthroughShortcutValidator()
                 tileRowsShortcutView.shortcutValidator = passThroughValidator
                 tileColumnsShortcutView.shortcutValidator = passThroughValidator
+                tileActiveAppRowsShortcutView.shortcutValidator = passThroughValidator
+                tileActiveAppColumnsShortcutView.shortcutValidator = passThroughValidator
                 largerWidthShortcutView.shortcutValidator = passThroughValidator
                 smallerWidthShortcutView.shortcutValidator = passThroughValidator
                 topVerticalThirdShortcutView.shortcutValidator = passThroughValidator
@@ -529,6 +541,14 @@ class SettingsViewController: NSViewController {
             let tileColumnsIcon = NSImageView(frame: NSRect(x: 0, y: 0, width: 21, height: 14))
             tileColumnsIcon.image = WindowAction.tileColumns.image
             tileColumnsIcon.image?.size = NSSize(width: 21, height: 14)
+
+            let tileActiveAppRowsIcon = NSImageView(frame: NSRect(x: 0, y: 0, width: 21, height: 14))
+            tileActiveAppRowsIcon.image = WindowAction.tileActiveAppRows.image
+            tileActiveAppRowsIcon.image?.size = NSSize(width: 21, height: 14)
+
+            let tileActiveAppColumnsIcon = NSImageView(frame: NSRect(x: 0, y: 0, width: 21, height: 14))
+            tileActiveAppColumnsIcon.image = WindowAction.tileActiveAppColumns.image
+            tileActiveAppColumnsIcon.image?.size = NSSize(width: 21, height: 14)
 
             let largerWidthIcon = NSImageView(frame: NSRect(x: 0, y: 0, width: 21, height: 14))
             largerWidthIcon.image = WindowAction.largerWidth.image
@@ -603,6 +623,20 @@ class SettingsViewController: NSViewController {
             tileColumnsLabelStack.spacing = 8
             tileColumnsLabelStack.addArrangedSubview(tileColumnsLabel)
             tileColumnsLabelStack.addArrangedSubview(tileColumnsIcon)
+
+            let tileActiveAppRowsLabelStack = NSStackView()
+            tileActiveAppRowsLabelStack.orientation = .horizontal
+            tileActiveAppRowsLabelStack.alignment = .centerY
+            tileActiveAppRowsLabelStack.spacing = 8
+            tileActiveAppRowsLabelStack.addArrangedSubview(tileActiveAppRowsLabel)
+            tileActiveAppRowsLabelStack.addArrangedSubview(tileActiveAppRowsIcon)
+
+            let tileActiveAppColumnsLabelStack = NSStackView()
+            tileActiveAppColumnsLabelStack.orientation = .horizontal
+            tileActiveAppColumnsLabelStack.alignment = .centerY
+            tileActiveAppColumnsLabelStack.spacing = 8
+            tileActiveAppColumnsLabelStack.addArrangedSubview(tileActiveAppColumnsLabel)
+            tileActiveAppColumnsLabelStack.addArrangedSubview(tileActiveAppColumnsIcon)
 
             let largerWidthLabelStack = NSStackView()
             largerWidthLabelStack.orientation = .horizontal
@@ -722,6 +756,20 @@ class SettingsViewController: NSViewController {
             tileColumnsRow.spacing = 18
             tileColumnsRow.addArrangedSubview(tileColumnsLabelStack)
             tileColumnsRow.addArrangedSubview(tileColumnsShortcutView)
+
+            let tileActiveAppRowsRow = NSStackView()
+            tileActiveAppRowsRow.orientation = .horizontal
+            tileActiveAppRowsRow.alignment = .centerY
+            tileActiveAppRowsRow.spacing = 18
+            tileActiveAppRowsRow.addArrangedSubview(tileActiveAppRowsLabelStack)
+            tileActiveAppRowsRow.addArrangedSubview(tileActiveAppRowsShortcutView)
+
+            let tileActiveAppColumnsRow = NSStackView()
+            tileActiveAppColumnsRow.orientation = .horizontal
+            tileActiveAppColumnsRow.alignment = .centerY
+            tileActiveAppColumnsRow.spacing = 18
+            tileActiveAppColumnsRow.addArrangedSubview(tileActiveAppColumnsLabelStack)
+            tileActiveAppColumnsRow.addArrangedSubview(tileActiveAppColumnsShortcutView)
 
             let largerWidthRow = NSStackView()
             largerWidthRow.orientation = .horizontal
@@ -865,7 +913,9 @@ class SettingsViewController: NSViewController {
             mainStackView.setCustomSpacing(10, after: headerLabel)
             mainStackView.addArrangedSubview(tileRowsRow)
             mainStackView.addArrangedSubview(tileColumnsRow)
-            mainStackView.setCustomSpacing(10, after: tileColumnsRow)
+            mainStackView.addArrangedSubview(tileActiveAppRowsRow)
+            mainStackView.addArrangedSubview(tileActiveAppColumnsRow)
+            mainStackView.setCustomSpacing(10, after: tileActiveAppColumnsRow)
             mainStackView.addArrangedSubview(largerWidthRow)
             mainStackView.addArrangedSubview(smallerWidthRow)
             mainStackView.addArrangedSubview(widthStepRow)

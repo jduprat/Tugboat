@@ -1,0 +1,95 @@
+name: Release
+
+# Cut a release by pushing a tag such as v0.2.0. The job builds an ad-hoc signed
+# Release archive, wraps it in a DMG, publishes it as a GitHub Release, signs it
+# with the Sparkle EdDSA key, regenerates appcast.xml and commits the appcast to
+# main. Running apps then pick the update up from
+# https://raw.githubusercontent.com/jduprat/Tugboat/main/appcast.xml
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  XCODE_PROJECT: Tugboat.xcodeproj
+  XCODE_SCHEME: Tugboat
+  DERIVED_DATA: build/DerivedData
+  REPO_URL: https://github.com/jduprat/Tugboat
+
+jobs:
+  release:
+    runs-on: macos-26
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Derive version from tag
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "BUILD=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+          echo "Building Tugboat $VERSION (build $GITHUB_RUN_NUMBER)"
+
+      - name: Archive
+        run: |
+          xcodebuild -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" -configuration Release \
+            -derivedDataPath "$DERIVED_DATA" -archivePath build/Tugboat.xcarchive archive \
+            CODE_SIGN_IDENTITY="-" MARKETING_VERSION="$VERSION" CURRENT_PROJECT_VERSION="$BUILD"
+
+      - name: Export
+        run: |
+          plutil -convert xml1 - -o build/exportOptions.plist << PLIST
+            { "destination": "export", "method": "mac-application" }
+          PLIST
+          xcodebuild -exportArchive -archivePath build/Tugboat.xcarchive -exportPath build/export \
+            -exportOptionsPlist build/exportOptions.plist
+          codesign --force --deep -s - build/export/Tugboat.app
+
+      - name: Make DMG
+        run: |
+          mkdir -p build/dmg-root build/archives
+          cp -R build/export/Tugboat.app build/dmg-root/
+          ln -s /Applications build/dmg-root/Applications
+          hdiutil create -srcfolder build/dmg-root -volname "Tugboat $VERSION" -fs HFS+ -format UDZO \
+            "build/archives/Tugboat-$VERSION.dmg"
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" "build/archives/Tugboat-$VERSION.dmg" \
+            --title "Tugboat $VERSION" --generate-notes
+
+      - name: Sign update and regenerate appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          BIN="$(find "$DERIVED_DATA/SourcePackages/artifacts" -type d -path '*sparkle/Sparkle/bin' | head -1)"
+          test -x "$BIN/generate_appcast"
+          KEYFILE="$(mktemp)"
+          printf '%s' "$SPARKLE_PRIVATE_KEY" > "$KEYFILE"
+          # Keep earlier items: generate_appcast merges into an existing appcast in the archives folder.
+          cp appcast.xml build/archives/appcast.xml 2>/dev/null || true
+          "$BIN/generate_appcast" build/archives \
+            --ed-key-file "$KEYFILE" \
+            --download-url-prefix "$REPO_URL/releases/download/$TAG/" \
+            --link "$REPO_URL" \
+            --full-release-notes-url "$REPO_URL/releases" \
+            -o appcast.xml
+          rm -f "$KEYFILE"
+          cat appcast.xml
+
+      - name: Commit appcast to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          git add appcast.xml
+          git commit -m "Publish appcast for $TAG" || echo "appcast unchanged"
+          git push origin main

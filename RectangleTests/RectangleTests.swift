@@ -25,13 +25,24 @@ class WindowActionMenuTests: XCTestCase {
             XCTAssertEqual(tilingItems.count, 1)
             let tilingItem = try XCTUnwrap(tilingItems.first)
             XCTAssertEqual(tilingItem.submenu?.items.compactMap { $0.representedObject as? WindowAction },
-                           [.tileRows, .tileColumns])
+                           [.tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns])
             XCTAssertEqual(tilingItem.isHidden, !showAdditional)
             let topLevelActions = menu.items.compactMap { $0.representedObject as? WindowAction }
             XCTAssertFalse(topLevelActions.contains(.tileRows))
             XCTAssertFalse(topLevelActions.contains(.tileColumns))
             XCTAssertTrue(topLevelActions.contains(.maximize))
         }
+    }
+
+    func testActiveAppBandTilingActionsAreStableAndGrouped() {
+        XCTAssertEqual(WindowAction.tileActiveAppRows.rawValue, 131)
+        XCTAssertEqual(WindowAction.tileActiveAppColumns.rawValue, 132)
+        XCTAssertEqual(WindowAction.tileActiveAppRows.name, "tileActiveAppRows")
+        XCTAssertEqual(WindowAction.tileActiveAppColumns.name, "tileActiveAppColumns")
+        XCTAssertEqual(WindowAction.tileActiveAppRows.category, .tiling)
+        XCTAssertEqual(WindowAction.tileActiveAppColumns.category, .tiling)
+        XCTAssertFalse(WindowAction.tileActiveAppRows.positionCycles)
+        XCTAssertFalse(WindowAction.tileActiveAppColumns.isDragSnappable)
     }
 
     func testShowAllActionsKeepsRowsAndColumnsFlat() {

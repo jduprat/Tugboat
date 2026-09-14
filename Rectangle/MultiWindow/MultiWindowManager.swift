@@ -83,6 +83,12 @@ class MultiWindowManager {
         case .tileColumns:
             tileWindowsInBands(.columns)
             return true
+        case .tileActiveAppRows:
+            tileWindowsInBands(.rows, onlyActiveApp: true)
+            return true
+        case .tileActiveAppColumns:
+            tileWindowsInBands(.columns, onlyActiveApp: true)
+            return true
         case .cascadeAll:
             cascadeAllWindowsOnScreen(windowElement: parameters.windowElement)
             return true
@@ -176,10 +182,15 @@ class MultiWindowManager {
         return screens.map { (eligibleFocus, $0) }
     }
 
-    private static func tileWindowsInBands(_ direction: BandDirection) {
+    /// Tile the windows on the focused display into rows or columns. With `onlyActiveApp`, only the
+    /// windows of the focused window's application take part: seven Terminal windows and `.columns`
+    /// become seven tall strips across the display.
+    private static func tileWindowsInBands(_ direction: BandDirection, onlyActiveApp: Bool = false) {
         let screenDetection = ScreenDetection()
         guard let context = tilingContext(focusedWindow: AccessibilityElement.getFocusedWindowElement(),
                                           screenDetection: screenDetection) else { return }
+        let activeAppPid = onlyActiveApp ? (context.focusedWindow?.pid ?? AccessibilityElement.getFrontWindowElement()?.pid) : nil
+        if onlyActiveApp && activeAppPid == nil { return }
 
         // Reuse this new on-screen snapshot for AX app discovery and for Space
         // membership, even when another tiling action just moved windows.
@@ -189,6 +200,7 @@ class MultiWindowManager {
                                       focusedWindow: context.focusedWindow,
                                       combineScreens: !NSScreen.screensHaveSeparateSpaces && Defaults.combinedDisplayMode.userEnabled,
                                       screenFor: { screenDetection.detectScreens(using: $0)?.currentScreen }).windows
+            .filter { activeAppPid == nil || $0.pid == activeAppPid }
 
         tileWindowsInBands(direction, focusedWindow: context.focusedWindow, windows: windows,
                            visibleWindowInfo: visibleInfo, screen: context.screens.currentScreen,

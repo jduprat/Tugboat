@@ -41,5 +41,11 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/jduprat/Tugboat/main/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>hCI9Bc4uJP8mCuO3wUdHzFh47JRr+BaDZBX0/u7I3G0=</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 </dict>
 </plist>
