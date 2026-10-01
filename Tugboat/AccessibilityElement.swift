@@ -324,7 +324,7 @@ class AccessibilityElement {
             isMainWindow = true
         }
         if let pid = pid, let app = NSRunningApplication(processIdentifier: pid), !app.isActive || force {
-            app.activate(options: .activateIgnoringOtherApps)
+            app.activate()
         }
     }
 }
