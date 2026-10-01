@@ -46,6 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Hosted unit tests must not register live shortcuts or change the user's settings.
+        if NSClassFromString("XCTestCase") != nil { return }
         // Check for updates automatically unless the user turns it off, and start with the recommended
         // shortcuts and repeat behavior instead of asking on first launch. Registered before any Default
         // is read; the keys are literals because touching Defaults here would cache the unregistered values.
@@ -260,6 +262,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func openPreferences(_ sender: Any) {
         if prefsWindowController == nil {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
+            prefsWindowController?.window?.styleMask.insert(.resizable)
+            prefsWindowController?.window?.minSize = NSSize(width: 800, height: 580)
+            prefsWindowController?.window?.setFrameAutosaveName("TugboatPreferences")
         }
         NSApp.activate(ignoringOtherApps: true)
         prefsWindowController?.showWindow(self)

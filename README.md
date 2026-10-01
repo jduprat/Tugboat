@@ -35,7 +35,15 @@ Tugboat uses its own bundle identifier (`io.github.jduprat.Tugboat`), so it can 
 
 ## How to use it
 
-Tugboat starts with Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arrow or a letter, without asking; Settings can switch to the Spectacle set. The shortcuts are listed in the menu bar menu and in Settings. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
+Tugboat starts with all 22 of Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arrow or a letter, along with Tugboat's tiling and saved-position shortcuts. Existing customized bindings are preserved. The shortcuts are listed in the menu bar menu and in Settings. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
+
+### Set up shortcuts
+
+**Settings → Shortcuts** shows assigned bindings in a compact, searchable list. Select one to record new keys or change its action; **＋** adds a binding from the complete action catalog. Actions are grouped into Place, Arrange, Move, Resize, Restore, Record, Sidebar, and Access. Fractional placements are grouped by size.
+
+Key and action edits take effect together on **Save Shortcut**. **Cancel** discards the selected shortcut's edits. If another action uses the same keys, choose to replace its binding or, for supported single-window actions, share the key as a cycle. Existing shared-key cycles are preserved.
+
+Contextual **Shared settings** control the existing window behavior and save immediately; they also affect other shortcuts and snap actions using that behavior. General preferences and Snap Areas remain in their own tabs. Presets provide the full **Rectangle + Tugboat** set, a smaller **Compact** set, and **App Tiling**. Applying a preset replaces shortcuts after confirmation without resetting window behavior or snap areas. Removed shortcuts remain removed after config export and import.
 
 | Snap area                                              | Resulting action                       |
 |--------------------------------------------------------|----------------------------------------|
@@ -56,7 +64,7 @@ Tugboat starts with Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arr
 | ⌃⌥⇧V | Tile the focused app's windows in columns |
 | ⌃⌥⇧G | Tile the focused app's windows in a grid |
 
-Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts can be changed under Settings, General, Extras.
+Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts can be changed under **Settings → Shortcuts → Arrange**.
 
 ### Save and restore window positions
 
@@ -65,7 +73,7 @@ Rows and Columns come from Rectangle, which has no default keys for them. The ap
 | ⌃⌥⇧S | Save Window Positions: remember where every window on the current Space is |
 | ⌃⌥⇧R | Restore Window Positions: put every remembered window that is open back where it was saved |
 
-Both are also in the menu bar menu, and the shortcuts can be changed under Settings, General, Extras. Positions are kept per set of displays, one JSON file per set in `~/Library/Application Support/Tugboat/Arrangements/`, so the laptop alone and the laptop at the office desk each have their own. Saving again updates the windows that are open and keeps the rest. Restore is greyed out when nothing has been saved for the displays connected now. The file format is described in [docs/arrangements-design.md](docs/arrangements-design.md).
+Both are also in the menu bar menu, and the shortcuts can be changed under **Settings → Shortcuts**, using the **Record** and **Restore** action groups. Positions are kept per set of displays, one JSON file per set in `~/Library/Application Support/Tugboat/Arrangements/`, so the laptop alone and the laptop at the office desk each have their own. Saving again updates the windows that are open and keeps the rest. Restore is greyed out when nothing has been saved for the displays connected now. The file format is described in [docs/arrangements-design.md](docs/arrangements-design.md).
 
 Hidden settings are changed from the terminal with `defaults write io.github.jduprat.Tugboat …`; see [TerminalCommands.md](TerminalCommands.md). Settings can be exported to and imported from JSON in Settings, and a file at `~/Library/Application Support/Tugboat/TugboatConfig.json` is offered for import at launch.
 

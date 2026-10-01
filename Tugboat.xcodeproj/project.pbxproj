@@ -211,6 +211,8 @@
 		7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */; };
 		DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */; };
 		2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */; };
+		081369B2B1B84110ACF7A38B /* ShortcutOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */; };
+		4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -434,6 +436,8 @@
 		186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultShortcutTests.swift; sourceTree = "<group>"; };
 		3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModelTests.swift; sourceTree = "<group>"; };
 		F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutBehaviorSettingsTests.swift; sourceTree = "<group>"; };
+		2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutOptionsView.swift; sourceTree = "<group>"; };
+		501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -732,6 +736,7 @@
 				186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */,
 				3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */,
 				F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */,
+				501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */,
 				9824702122AF9B7E0037B409 /* Info.plist */,
 			);
 			path = TugboatTests;
@@ -752,6 +757,7 @@
 				944F25CC2CE5A144004B2FD2 /* PrefsViewController.swift */,
 				944F25CE2CE5A144004B2FD2 /* ShortcutRecordingObserver.swift */,
 				737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */,
+				2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */,
 				98910B3D231130AF0066EC23 /* SettingsViewController.swift */,
 				983DD03F28A844BE00BF1EEE /* SnapAreaViewController.swift */,
 				98C97FFC25893B040061F01F /* Config.swift */,
@@ -1148,6 +1154,7 @@
 				6490B39B27BF980F0056C220 /* TopRightEighthCalculation.swift in Sources */,
 				944F25CD2CE5A144004B2FD2 /* PrefsViewController.swift in Sources */,
 				944F25CF2CE5A144004B2FD2 /* ShortcutRecordingObserver.swift in Sources */,
+				081369B2B1B84110ACF7A38B /* ShortcutOptionsView.swift in Sources */,
 				C7FEC6B4E3344021A1F2C409 /* ShortcutEditorModel.swift in Sources */,
 				9818E01028B59396004AA524 /* HalvesCompoundCalculation.swift in Sources */,
 				988D066922EB4CCB004EABD7 /* LastThirdCalculation.swift in Sources */,
@@ -1198,6 +1205,7 @@
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
 				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,
+				4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */,
 				2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */,
 				DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */,
 				7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */,

@@ -3,7 +3,7 @@
   "strings" : {
     "0Ak-33-SM7.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Right\"; ObjectID = \"0Ak-33-SM7\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -561,7 +561,7 @@
     },
     "1Rc-Od-eP5.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Move Down\"; ObjectID = \"1Rc-Od-eP5\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -3225,7 +3225,7 @@
     },
     "3zd-xE-oWl.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First Two Thirds\"; ObjectID = \"3zd-xE-oWl\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -4875,7 +4875,7 @@
     },
     "6DV-cd-fda.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Maximize Height\"; ObjectID = \"6DV-cd-fda\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5253,7 +5253,7 @@
     },
     "6HX-rn-VIp.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Last Fourth\"; ObjectID = \"6HX-rn-VIp\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5445,7 +5445,7 @@
     },
     "6ma-hP-5xX.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom Left\"; ObjectID = \"6ma-hP-5xX\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5631,7 +5631,7 @@
     },
     "7YK-9Z-lzw.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Center Third\"; ObjectID = \"7YK-9Z-lzw\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6009,7 +6009,7 @@
     },
     "8Bg-SZ-hDO.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Move to Center\"; ObjectID = \"8Bg-SZ-hDO\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6525,7 +6525,7 @@
     },
     "8oe-J2-oUU.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Maximize\"; ObjectID = \"8oe-J2-oUU\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6717,7 +6717,7 @@
     },
     "08q-Ce-1QL.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Last Two Thirds\"; ObjectID = \"08q-Ce-1QL\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -8295,7 +8295,7 @@
     },
     "adp-cN-qkh.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Left\"; ObjectID = \"adp-cN-qkh\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -10766,7 +10766,7 @@
     },
     "bRX-dV-iAR.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Center\"; ObjectID = \"bRX-dV-iAR\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -11420,7 +11420,7 @@
     },
     "C9v-g0-DH8.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Restore\"; ObjectID = \"C9v-g0-DH8\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -12625,7 +12625,7 @@
     },
     "cRm-wn-Yv6.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Last Third\"; ObjectID = \"cRm-wn-Yv6\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -13136,7 +13136,7 @@
     },
     "d7y-s8-7GE.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top\"; ObjectID = \"d7y-s8-7GE\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -15534,7 +15534,7 @@
     },
     "e57-QJ-6bL.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Almost Maximize\"; ObjectID = \"e57-QJ-6bL\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -15726,7 +15726,7 @@
     },
     "Eah-KL-kbn.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Make Larger\"; ObjectID = \"Eah-KL-kbn\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -16098,7 +16098,7 @@
     },
     "ec4-FB-fMa.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom\"; ObjectID = \"ec4-FB-fMa\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -16705,7 +16705,7 @@
     },
     "f3Q-q7-Pcy.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Right Sixth\"; ObjectID = \"f3Q-q7-Pcy\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -16891,7 +16891,7 @@
     },
     "F8S-GI-LiB.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Right\"; ObjectID = \"F8S-GI-LiB\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -17077,7 +17077,7 @@
     },
     "F12-EV-Lfz.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First Third\"; ObjectID = \"F12-EV-Lfz\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -18031,7 +18031,7 @@
     },
     "Fko-xs-gN5.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Second Fourth\"; ObjectID = \"Fko-xs-gN5\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -21980,7 +21980,7 @@
     },
     "HOm-BV-2jc.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Move Up\"; ObjectID = \"HOm-BV-2jc\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -24177,7 +24177,7 @@
     },
     "iOQ-1e-esP.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom Center Sixth\"; ObjectID = \"iOQ-1e-esP\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -24885,7 +24885,7 @@
     },
     "J6t-sg-Wwz.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom Right\"; ObjectID = \"J6t-sg-Wwz\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -25485,7 +25485,7 @@
     },
     "Jnd-Lc-nlh.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Next Display\"; ObjectID = \"Jnd-Lc-nlh\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -28427,7 +28427,7 @@
     },
     "LqQ-pM-jRN.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom Left Sixth\"; ObjectID = \"LqQ-pM-jRN\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -29105,7 +29105,7 @@
     },
     "m2F-eA-g7w.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Bottom Right Sixth\"; ObjectID = \"m2F-eA-g7w\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -29661,7 +29661,7 @@
     },
     "mFt-Kg-UYG.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Left Sixth\"; ObjectID = \"mFt-Kg-UYG\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -30139,7 +30139,7 @@
     },
     "MKW-qf-Q2C.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"▶︎ ⋯\"; ObjectID = \"MKW-qf-Q2C\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -30683,7 +30683,7 @@
     },
     "MzN-CJ-ASD.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Make Smaller\"; ObjectID = \"MzN-CJ-ASD\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -31783,7 +31783,7 @@
     },
     "nwX-h6-fwm.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Last Three Fourths\"; ObjectID = \"nwX-h6-fwm\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -33452,6 +33452,7 @@
     },
     "oSu-n4-8Yu.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Center Two Thirds\"; ObjectID = \"oSu-n4-8Yu\";",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -35340,7 +35341,7 @@
     },
     "Q6Q-6J-okH.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First Fourth\"; ObjectID = \"Q6Q-6J-okH\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -36432,7 +36433,7 @@
     },
     "QwF-QN-YH7.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Previous Display\"; ObjectID = \"QwF-QN-YH7\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -38638,7 +38639,7 @@
     },
     "rzr-Qq-702.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Move Right\"; ObjectID = \"rzr-Qq-702\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -40274,7 +40275,7 @@
     },
     "T9Z-QF-gwc.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First Three Fourths\"; ObjectID = \"T9Z-QF-gwc\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -42434,7 +42435,7 @@
     },
     "TTx-7X-Wie.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Center Sixth\"; ObjectID = \"TTx-7X-Wie\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -44219,7 +44220,7 @@
     },
     "v2f-bX-xiM.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Move Left\"; ObjectID = \"v2f-bX-xiM\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -45792,7 +45793,7 @@
     },
     "Vph-Z0-euH.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Center Three Fourths\"; ObjectID = \"Vph-Z0-euH\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -47570,7 +47571,7 @@
     },
     "Xc8-Sm-pig.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Left\"; ObjectID = \"Xc8-Sm-pig\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -50426,7 +50427,7 @@
     },
     "ZTK-rS-b17.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Third Fourth\"; ObjectID = \"ZTK-rS-b17\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
