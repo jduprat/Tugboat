@@ -25,7 +25,7 @@ class WindowActionMenuTests: XCTestCase {
             XCTAssertEqual(tilingItems.count, 1)
             let tilingItem = try XCTUnwrap(tilingItems.first)
             XCTAssertEqual(tilingItem.submenu?.items.compactMap { $0.representedObject as? WindowAction },
-                           [.tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns])
+                           [.tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns, .tileActiveApp])
             XCTAssertEqual(tilingItem.isHidden, !showAdditional)
             let topLevelActions = menu.items.compactMap { $0.representedObject as? WindowAction }
             XCTAssertFalse(topLevelActions.contains(.tileRows))
@@ -43,6 +43,31 @@ class WindowActionMenuTests: XCTestCase {
         XCTAssertEqual(WindowAction.tileActiveAppColumns.category, .tiling)
         XCTAssertFalse(WindowAction.tileActiveAppRows.positionCycles)
         XCTAssertFalse(WindowAction.tileActiveAppColumns.isDragSnappable)
+    }
+
+    func testRecommendedDefaultsTileWithHVAndGWithoutClashes() throws {
+        let ctrlAlt = NSEvent.ModifierFlags([.control, .option]).rawValue
+        let ctrlAltShift = NSEvent.ModifierFlags([.control, .option, .shift]).rawValue
+        let expected: [WindowAction: (modifiers: UInt, keyCode: Int)] = [
+            .tileRows: (ctrlAlt, kVK_ANSI_H),
+            .tileColumns: (ctrlAlt, kVK_ANSI_V),
+            .tileActiveAppRows: (ctrlAltShift, kVK_ANSI_H),
+            .tileActiveAppColumns: (ctrlAltShift, kVK_ANSI_V),
+            .tileActiveApp: (ctrlAltShift, kVK_ANSI_G),
+        ]
+        for (action, combo) in expected {
+            let shortcut = try XCTUnwrap(action.alternateDefault, action.name)
+            XCTAssertEqual(shortcut.modifierFlags, combo.modifiers, action.name)
+            XCTAssertEqual(shortcut.keyCode, combo.keyCode, action.name)
+        }
+
+        // No two recommended defaults share a key combination, nor clash with Todo's ⌃⌥B and ⌃⌥N.
+        var seen: Set<String> = ["\(ctrlAlt)-\(kVK_ANSI_B)", "\(ctrlAlt)-\(kVK_ANSI_N)"]
+        for action in WindowAction.active {
+            guard let shortcut = action.alternateDefault else { continue }
+            XCTAssertTrue(seen.insert("\(shortcut.modifierFlags)-\(shortcut.keyCode)").inserted,
+                          "\(action.name) reuses a recommended shortcut")
+        }
     }
 
     func testShowAllActionsKeepsRowsAndColumnsFlat() {

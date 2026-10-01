@@ -44,9 +44,17 @@ Tugboat starts with Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arr
 | Bottom left, center, or right third                    | Respective third                       |
 | Bottom left or right third, then drag to bottom center | First or last two thirds, respectively |
 
-### Tile the windows of one app
+### Tile windows in rows, columns or a grid
 
-Beyond Rectangle's Rows and Columns, which tile every window on the display, Tugboat adds **Tile App Windows in Rows** and **Tile App Windows in Columns**. They act only on the windows of the app that has focus. Seven Terminal windows and one press of the Columns shortcut become seven tall strips across the display. Both are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts are set under Settings, General, Extras.
+| Shortcut | Action |
+|---|---|
+| ⌃⌥H | Tile every window on the display in rows |
+| ⌃⌥V | Tile every window on the display in columns |
+| ⌃⌥⇧H | Tile the focused app's windows in rows |
+| ⌃⌥⇧V | Tile the focused app's windows in columns |
+| ⌃⌥⇧G | Tile the focused app's windows in a grid |
+
+Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts can be changed under Settings, General, Extras.
 
 Hidden settings are changed from the terminal with `defaults write io.github.jduprat.Tugboat …`; see [TerminalCommands.md](TerminalCommands.md). Settings can be exported to and imported from JSON in Settings, and a file at `~/Library/Application Support/Tugboat/TugboatConfig.json` is offered for import at launch.
 

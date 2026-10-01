@@ -168,9 +168,9 @@ enum WindowAction: Int, Codable {
                          bottomLeftSixteenth, bottomCenterLeftSixteenth, bottomCenterRightSixteenth, bottomRightSixteenth,
                          doubleHeightUp, doubleHeightDown, doubleWidthLeft, doubleWidthRight,
                          halveHeightUp, halveHeightDown, halveWidthLeft, halveWidthRight,
-                         tileAll, tileRows, tileColumns, tileActiveAppRows, tileActiveAppColumns, cascadeAll,
+                         tileAll, tileRows, tileColumns, tileActiveAppRows, tileActiveAppColumns, tileActiveApp, cascadeAll,
                          leftTodo, rightTodo,
-                         cascadeActiveApp, tileActiveApp,
+                         cascadeActiveApp,
                          displayOne, displayTwo, displayThree, displayFour, displayFive,
                          displaySix, displaySeven, displayEight, displayNine
     ]
@@ -560,7 +560,10 @@ enum WindowAction: Int, Codable {
         case .tileActiveAppColumns:
             key = "tileActiveAppColumns.title"
             value = "Tile App Windows in Columns"
-        case .specified, .reverseAll, .tileAll, .cascadeAll, .leftTodo, .rightTodo, .cascadeActiveApp, .tileActiveApp:
+        case .tileActiveApp:
+            key = "tileActiveApp.title"
+            value = "Tile App Windows in a Grid"
+        case .specified, .reverseAll, .tileAll, .cascadeAll, .leftTodo, .rightTodo, .cascadeActiveApp:
             return nil
         case .centerProminently, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight:
             return nil
@@ -742,6 +745,11 @@ enum WindowAction: Int, Codable {
         case .centerThird: return Shortcut( ctrl|alt, kVK_ANSI_F )
         case .lastTwoThirds: return Shortcut( ctrl|alt, kVK_ANSI_T )
         case .lastThird: return Shortcut( ctrl|alt, kVK_ANSI_G )
+        case .tileRows: return Shortcut( ctrl|alt, kVK_ANSI_H )
+        case .tileColumns: return Shortcut( ctrl|alt, kVK_ANSI_V )
+        case .tileActiveAppRows: return Shortcut( ctrl|alt|shift, kVK_ANSI_H )
+        case .tileActiveAppColumns: return Shortcut( ctrl|alt|shift, kVK_ANSI_V )
+        case .tileActiveApp: return Shortcut( ctrl|alt|shift, kVK_ANSI_G )
         case .centerTwoThirds:
             if let installVersion = Defaults.installVersion.value,
                let intInstallVersion = Int(installVersion),
@@ -835,7 +843,7 @@ enum WindowAction: Int, Codable {
         case .leftTodo: return NSImage()
         case .rightTodo: return NSImage()
         case .cascadeActiveApp: return NSImage()
-        case .tileActiveApp: return NSImage()
+        case .tileActiveApp: return NSImage(imageLiteralResourceName: "tileGridTemplate")
         case .centerProminently: return NSImage()
         case .largerWidth: return NSImage(imageLiteralResourceName: "largerWidthTemplate")
         case .smallerWidth: return NSImage(imageLiteralResourceName: "smallerWidthTemplate")
@@ -972,7 +980,7 @@ enum WindowAction: Int, Codable {
         case .topLeftNinth, .topCenterNinth, .topRightNinth, .middleLeftNinth, .middleCenterNinth, .middleRightNinth, .bottomLeftNinth, .bottomCenterNinth, .bottomRightNinth: return .ninths
         case .topLeftTwelfth, .topCenterLeftTwelfth, .topCenterRightTwelfth, .topRightTwelfth, .middleLeftTwelfth, .middleCenterLeftTwelfth, .middleCenterRightTwelfth, .middleRightTwelfth, .bottomLeftTwelfth, .bottomCenterLeftTwelfth, .bottomCenterRightTwelfth, .bottomRightTwelfth: return .twelfths
         case .topLeftSixteenth, .topCenterLeftSixteenth, .topCenterRightSixteenth, .topRightSixteenth, .upperMiddleLeftSixteenth, .upperMiddleCenterLeftSixteenth, .upperMiddleCenterRightSixteenth, .upperMiddleRightSixteenth, .lowerMiddleLeftSixteenth, .lowerMiddleCenterLeftSixteenth, .lowerMiddleCenterRightSixteenth, .lowerMiddleRightSixteenth, .bottomLeftSixteenth, .bottomCenterLeftSixteenth, .bottomCenterRightSixteenth, .bottomRightSixteenth: return .sixteenths
-        case .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns: return .tiling
+        case .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns, .tileActiveApp: return .tiling
         case .moveUp, .moveDown, .moveLeft, .moveRight: return .move
         case .almostMaximize, .maximizeHeight, .larger, .smaller, .largerWidth, .smallerWidth, .largerHeight, .smallerHeight: return .size
         default: return nil
