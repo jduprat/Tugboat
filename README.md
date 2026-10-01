@@ -33,7 +33,7 @@ Tugboat uses its own bundle identifier (`io.github.jduprat.Tugboat`), so it can 
 
 ## How to use it
 
-The keyboard shortcuts are listed in the menu bar menu and in Settings. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
+Tugboat starts with Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arrow or a letter, without asking; Settings can switch to the Spectacle set. The shortcuts are listed in the menu bar menu and in Settings. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
 
 | Snap area                                              | Resulting action                       |
 |--------------------------------------------------------|----------------------------------------|

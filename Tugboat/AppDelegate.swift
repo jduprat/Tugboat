@@ -48,8 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Check for updates automatically unless the user turns it off. Registered before any Default is read.
-        UserDefaults.standard.register(defaults: ["SUEnableAutomaticChecks": true])
+        // Check for updates automatically unless the user turns it off, and start with the recommended
+        // shortcuts and repeat behavior instead of asking on first launch. Registered before any Default
+        // is read; the keys are literals because touching Defaults here would cache the unregistered values.
+        UserDefaults.standard.register(defaults: [
+            "SUEnableAutomaticChecks": true,
+            "alternateDefaultShortcuts": true,
+            "subsequentExecutionMode": SubsequentExecutionMode.acrossMonitor.rawValue,
+        ])
         Defaults.loadFromSupportDir()
         migrateShowEighthsInMenu()
 
@@ -59,7 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         checkLaunchOnLogin()
         
         let alreadyTrusted = accessibilityAuthorization.checkAccessibility {
-            self.showWelcomeWindow()
             self.checkForConflictingApps()
             self.openPreferences(self)
             self.statusItem.statusMenu = self.mainStatusMenu
@@ -239,25 +244,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
         
-    private func showWelcomeWindow() {
-        let welcomeWindowController = NSStoryboard(name: "Main", bundle: nil)
-            .instantiateController(withIdentifier: "WelcomeWindowController") as? NSWindowController
-        guard let welcomeWindow = welcomeWindowController?.window else { return }
-        welcomeWindow.delegate = self
-        
-        NSApp.activate(ignoringOtherApps: true)
-        
-        let response = NSApp.runModal(for: welcomeWindow)
-        
-        let usingRecommended = response == .alertFirstButtonReturn || response == .abort
-        
-        Defaults.alternateDefaultShortcuts.enabled = usingRecommended
-        
-        Defaults.subsequentExecutionMode.value = usingRecommended ? .acrossMonitor : .resize
-        
-        welcomeWindowController?.close()
-    }
-    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if Defaults.relaunchOpensMenu.enabled {
             statusItem.openMenu()
@@ -618,14 +604,6 @@ extension AppDelegate {
         
         todoWindowMenuItem.isHidden = !applicationToggle.todoAppIsActive() || TodoManager.isTodoWindowFront()
     }
-}
-
-extension AppDelegate: NSWindowDelegate {
-    
-    func windowWillClose(_ notification: Notification) {
-        NSApp.abortModal()
-    }
-    
 }
 
 extension AppDelegate {
