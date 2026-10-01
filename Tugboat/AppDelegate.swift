@@ -171,6 +171,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.titleBarManager = TitleBarManager()
         self.greenButtonManager = GreenButtonManager()
         self.initializeTodo()
+        ArrangementManager.start()
         checkForProblematicApps()
         MacTilingDefaults.checkForBuiltInTiling(skipIfAlreadyNotified: true)
     }
@@ -337,6 +338,7 @@ extension AppDelegate: NSMenuDelegate {
         }
         
         updateWindowActionMenuItems(menu: menu)
+        updateArrangementMenuItems(menu: menu)
         updateTodoModeMenuItems(menu: menu)
 
         viewLoggingMenuItem.keyEquivalentModifierMask = .option
@@ -448,8 +450,9 @@ extension AppDelegate: NSMenuDelegate {
         mainStatusMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
 
         menuIndex += 1
+        menuIndex = addArrangementMenuItems(startingIndex: menuIndex)
         addTodoModeMenuItems(startingIndex: menuIndex)
-        // Track total dynamic items: window actions + separators + todo items (4 items + 1 separator)
+        // Track total dynamic items: window actions + separators + arrangement items + todo items (4 items + 1 separator)
         dynamicMenuItemCount = menuIndex + 5
     }
 
@@ -476,6 +479,63 @@ extension AppDelegate: NSMenuDelegate {
         let category: WindowActionCategory
     }
 
+}
+
+// saved window positions
+extension AppDelegate {
+    enum ArrangementItem {
+        static let storeTag = 201
+        static let restoreTag = 202
+        static let separatorTag = 203
+    }
+
+    /// Save Window Positions, Restore Window Positions and a separator. Returns the index after them.
+    func addArrangementMenuItems(startingIndex: Int) -> Int {
+        var menuIndex = startingIndex
+
+        let storeTitle = NSLocalizedString("Save Window Positions", tableName: "Main", value: "Save Window Positions", comment: "")
+        let storeItem = NSMenuItem(title: storeTitle, action: #selector(storeArrangement), keyEquivalent: "")
+        storeItem.tag = ArrangementItem.storeTag
+        storeItem.target = self
+        mainStatusMenu.insertItem(storeItem, at: menuIndex)
+        menuIndex += 1
+
+        let restoreTitle = NSLocalizedString("Restore Window Positions", tableName: "Main", value: "Restore Window Positions", comment: "")
+        let restoreItem = NSMenuItem(title: restoreTitle, action: #selector(restoreArrangement), keyEquivalent: "")
+        restoreItem.tag = ArrangementItem.restoreTag
+        restoreItem.target = self
+        mainStatusMenu.insertItem(restoreItem, at: menuIndex)
+        menuIndex += 1
+
+        let separator = NSMenuItem.separator()
+        separator.tag = ArrangementItem.separatorTag
+        mainStatusMenu.insertItem(separator, at: menuIndex)
+        return menuIndex + 1
+    }
+
+    @objc func storeArrangement(_ sender: NSMenuItem) {
+        ArrangementManager.storeArrangement()
+    }
+
+    @objc func restoreArrangement(_ sender: NSMenuItem) {
+        ArrangementManager.restoreArrangement()
+    }
+
+    private func updateArrangementMenuItems(menu: NSMenu) {
+        guard let storeItem = menu.item(withTag: ArrangementItem.storeTag),
+              let restoreItem = menu.item(withTag: ArrangementItem.restoreTag)
+        else { return }
+
+        for (item, key) in [(storeItem, ArrangementManager.storeDefaultsKey), (restoreItem, ArrangementManager.restoreDefaultsKey)] {
+            if let (keyEquivalent, modifiers) = ArrangementManager.keyEquivalent(for: key), let keyEquivalent {
+                item.keyEquivalent = keyEquivalent.lowercased()
+                item.keyEquivalentModifierMask = modifiers
+            } else {
+                item.keyEquivalent = ""
+            }
+        }
+        restoreItem.isEnabled = ArrangementManager.hasArrangementForCurrentDisplays()
+    }
 }
 
 // todo mode

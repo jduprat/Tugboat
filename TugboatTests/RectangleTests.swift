@@ -61,8 +61,12 @@ class WindowActionMenuTests: XCTestCase {
             XCTAssertEqual(shortcut.keyCode, combo.keyCode, action.name)
         }
 
-        // No two recommended defaults share a key combination, nor clash with Todo's ⌃⌥B and ⌃⌥N.
+        // No two recommended defaults share a key combination, nor clash with Todo's ⌃⌥B and ⌃⌥N
+        // or with Save and Restore Window Positions.
         var seen: Set<String> = ["\(ctrlAlt)-\(kVK_ANSI_B)", "\(ctrlAlt)-\(kVK_ANSI_N)"]
+        for shortcut in ArrangementManager.defaultShortcuts.values {
+            XCTAssertTrue(seen.insert("\(shortcut.modifierFlags.rawValue)-\(shortcut.keyCode)").inserted)
+        }
         for action in WindowAction.active {
             guard let shortcut = action.alternateDefault else { continue }
             XCTAssertTrue(seen.insert("\(shortcut.modifierFlags)-\(shortcut.keyCode)").inserted,

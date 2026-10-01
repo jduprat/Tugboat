@@ -1099,6 +1099,30 @@ class SettingsViewController: NSViewController {
             mainStackView.addArrangedSubview(stackBadgeToggleRow)
             mainStackView.setCustomSpacing(8, after: stackBadgeToggleRow)
 
+            for (title, defaultsKey) in [
+                (NSLocalizedString("Save Window Positions", tableName: "Main", value: "Save Window Positions", comment: ""), ArrangementManager.storeDefaultsKey),
+                (NSLocalizedString("Restore Window Positions", tableName: "Main", value: "Restore Window Positions", comment: ""), ArrangementManager.restoreDefaultsKey),
+            ] {
+                let label = NSTextField(labelWithString: title)
+                label.alignment = .right
+                label.translatesAutoresizingMaskIntoConstraints = false
+                let shortcutView = MASShortcutView(frame: NSRect(x: 0, y: 0, width: 160, height: 19))
+                shortcutView.setAssociatedUserDefaultsKey(defaultsKey, withTransformerName: MASDictionaryTransformerName)
+                shortcutView.translatesAutoresizingMaskIntoConstraints = false
+                shortcutView.shortcutValidator = AppShortcutValidator(defaultsKey: defaultsKey)
+                shortcutRecordingObserver.observe([shortcutView])
+                let row = NSStackView()
+                row.orientation = .horizontal
+                row.alignment = .centerY
+                row.spacing = 18
+                row.addArrangedSubview(label)
+                row.addArrangedSubview(shortcutView)
+                mainStackView.addArrangedSubview(row)
+            }
+            if let lastArrangementRow = mainStackView.arrangedSubviews.last {
+                mainStackView.setCustomSpacing(8, after: lastArrangementRow)
+            }
+
 
             mainStackView.addArrangedSubview(splitRatioHeaderLabel)
             mainStackView.setCustomSpacing(10, after: splitRatioHeaderLabel)

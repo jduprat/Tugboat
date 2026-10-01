@@ -99,6 +99,11 @@
 		F1AC0DE000000000000000A4 /* StackBadgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AC0DE000000000000000A3 /* StackBadgeManager.swift */; };
 		F1AC0DE000000000000000A8 /* StackBadgeListPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AC0DE000000000000000A9 /* StackBadgeListPanel.swift */; };
 		F1AC0DE000000000000000AA /* StackBadgeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AC0DE000000000000000AB /* StackBadgeRowView.swift */; };
+		A7A0DE000000000000000B02 /* DisplaySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B01 /* DisplaySet.swift */; };
+		A7A0DE000000000000000B04 /* Arrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B03 /* Arrangement.swift */; };
+		A7A0DE000000000000000B06 /* ArrangementStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B05 /* ArrangementStore.swift */; };
+		A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B07 /* ArrangementManager.swift */; };
+		A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B09 /* ArrangementTests.swift */; };
 		983DD04028A844BE00BF1EEE /* SnapAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983DD03F28A844BE00BF1EEE /* SnapAreaViewController.swift */; };
 		983DD04428B0639E00BF1EEE /* SnapAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983DD04328B0639E00BF1EEE /* SnapAreaModel.swift */; };
 		984EDB0F29A42ED200D119D2 /* LaunchOnLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984EDB0E29A42ED200D119D2 /* LaunchOnLogin.swift */; };
@@ -332,6 +337,11 @@
 		F1AC0DE000000000000000A3 /* StackBadgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBadgeManager.swift; sourceTree = "<group>"; };
 		F1AC0DE000000000000000A9 /* StackBadgeListPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBadgeListPanel.swift; sourceTree = "<group>"; };
 		F1AC0DE000000000000000AB /* StackBadgeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBadgeRowView.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000B01 /* DisplaySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySet.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000B03 /* Arrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangement.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000B05 /* ArrangementStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementStore.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000B07 /* ArrangementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementManager.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000B09 /* ArrangementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementTests.swift; sourceTree = "<group>"; };
 		983DD03F28A844BE00BF1EEE /* SnapAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAreaViewController.swift; sourceTree = "<group>"; };
 		983DD04328B0639E00BF1EEE /* SnapAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapAreaModel.swift; sourceTree = "<group>"; };
 		984EDB0E29A42ED200D119D2 /* LaunchOnLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOnLogin.swift; sourceTree = "<group>"; };
@@ -730,6 +740,7 @@
 				98910B3C2311304D0066EC23 /* PrefsWindow */,
 				989DA30C243FC0C3008C7AA4 /* WelcomeWindow */,
 				98C2755F231FF6AE009B9292 /* Snapping */,
+				A7A0DE000000000000000B0B /* Arrangements */,
 				F1AC0DE000000000000000A5 /* StackBadge */,
 				98D4B6C925B625B6009C7BF6 /* TodoMode */,
 				985B9BFA22BE218C00A2E8F0 /* Popover */,
@@ -748,6 +759,7 @@
 				9824701F22AF9B7E0037B409 /* RectangleTests.swift */,
 				944F25D02CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift */,
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
+				A7A0DE000000000000000B09 /* ArrangementTests.swift */,
 				9824702122AF9B7E0037B409 /* Info.plist */,
 			);
 			path = TugboatTests;
@@ -819,6 +831,17 @@
 				F1AC0DE000000000000000AB /* StackBadgeRowView.swift */,
 			);
 			path = StackBadge;
+			sourceTree = "<group>";
+		};
+		A7A0DE000000000000000B0B /* Arrangements */ = {
+			isa = PBXGroup;
+			children = (
+				A7A0DE000000000000000B03 /* Arrangement.swift */,
+				A7A0DE000000000000000B07 /* ArrangementManager.swift */,
+				A7A0DE000000000000000B05 /* ArrangementStore.swift */,
+				A7A0DE000000000000000B01 /* DisplaySet.swift */,
+			);
+			path = Arrangements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1124,6 +1147,10 @@
 				F1AC0DE000000000000000A4 /* StackBadgeManager.swift in Sources */,
 				F1AC0DE000000000000000A8 /* StackBadgeListPanel.swift in Sources */,
 				F1AC0DE000000000000000AA /* StackBadgeRowView.swift in Sources */,
+				A7A0DE000000000000000B02 /* DisplaySet.swift in Sources */,
+				A7A0DE000000000000000B04 /* Arrangement.swift in Sources */,
+				A7A0DE000000000000000B06 /* ArrangementStore.swift in Sources */,
+				A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */,
 				988D067F22EB4EDE004EABD7 /* MoveLeftRightCalculation.swift in Sources */,
 				AA3A9E8B29230A82004EB8E5 /* CFExtension.swift in Sources */,
 				98C6DEF023CE191700CC0C1E /* GapCalculation.swift in Sources */,
@@ -1210,6 +1237,7 @@
 				9824702022AF9B7E0037B409 /* RectangleTests.swift in Sources */,
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
+				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@
 Tugboat is a window manager for macOS that does two things:
 
 1. **Places windows from the keyboard.** Halves, thirds, quarters, maximize, move between displays, snap areas when you drag a window to a screen edge. This half is [Rectangle](https://github.com/rxhanson/Rectangle), which Tugboat is forked from.
-2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. *This half is under construction; see the roadmap.*
+2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. *Saving and restoring by hand works today; automatic capture and restore are next, see the roadmap.*
 
 ## Status
 
@@ -55,6 +55,15 @@ Tugboat starts with Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arr
 | ⌃⌥⇧G | Tile the focused app's windows in a grid |
 
 Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts can be changed under Settings, General, Extras.
+
+### Save and restore window positions
+
+| Shortcut | Action |
+|---|---|
+| ⌃⌥⇧S | Save Window Positions: remember where every window on the current Space is |
+| ⌃⌥⇧R | Restore Window Positions: put every remembered window that is open back where it was saved |
+
+Both are also in the menu bar menu, and the shortcuts can be changed under Settings, General, Extras. Positions are kept per set of displays, one JSON file per set in `~/Library/Application Support/Tugboat/Arrangements/`, so the laptop alone and the laptop at the office desk each have their own. Saving again updates the windows that are open and keeps the rest. Restore is greyed out when nothing has been saved for the displays connected now. The file format is described in [docs/arrangements-design.md](docs/arrangements-design.md).
 
 Hidden settings are changed from the terminal with `defaults write io.github.jduprat.Tugboat …`; see [TerminalCommands.md](TerminalCommands.md). Settings can be exported to and imported from JSON in Settings, and a file at `~/Library/Application Support/Tugboat/TugboatConfig.json` is offered for import at launch.
 

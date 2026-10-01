@@ -2,8 +2,17 @@
 
 This is the design for the half of Tugboat that Rectangle does not have. It is
 written before the code so that the data model is settled first; the module
-lives in `Rectangle/Arrangements/` and touches the rest of the app in as few
+lives in `Tugboat/Arrangements/` and touches the rest of the app in as few
 places as possible.
+
+## Status
+
+Built so far (manual only): **Save Window Positions** (⌃⌥⇧S) and **Restore
+Window Positions** (⌃⌥⇧R) in the menu bar menu and in Settings, Extras. They
+use the file format, lookup, fallback adoption and window matching described
+below. Not built yet: automatic capture, restore on display change, app launch
+and wake, re-running `lastAction`, housekeeping, preserving unknown keys on
+rewrite, and listing display sets in the menu.
 
 ## Vocabulary
 
@@ -29,9 +38,12 @@ settings export:
     Dell U2723QE + Dell U2723QE.json
 ```
 
-One file is one arrangement. Forgetting a display set is deleting its file,
-inspecting or hand-editing one is opening it, and a file can be copied to
-another Mac that sees the same display UUIDs. Writes are atomic (write to a
+One file is one arrangement. Tugboat creates every file; people edit them.
+Forgetting a display set is deleting its file, adjusting a window record or a
+title pattern is editing it, and a file can be copied to another Mac that sees
+the same display UUIDs. A file is never expected to be written from scratch by
+hand: the `displays` block with its UUIDs is Tugboat's to produce, and a file
+without a valid one is skipped with a line in the log. Writes are atomic (write to a
 temp file, rename over the old one) and debounced, so a burst of window moves
 produces one write.
 
@@ -89,9 +101,9 @@ So the key is the display UUID, which already folds vendor, model and serial
 together and falls back sensibly when the serial is missing. The full identity
 (vendor, model, serial, name, sizes) is stored alongside it in every file, both
 for the fallback match and so a person reading the file knows which monitor is
-which. `CGDisplayCreateUUIDFromDisplayID` is not in
-the Swift SDK headers; it is declared in the bridging header the same way
-Rectangle declares `_AXUIElementGetWindow`.
+which. `CGDisplayCreateUUIDFromDisplayID` is callable from Swift as is (it
+comes in through ColorSync) and returns an unmanaged `CFUUID`; no bridging
+header declaration is needed.
 
 ## Shape of a file
 
