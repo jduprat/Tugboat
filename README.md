@@ -13,7 +13,7 @@ Early fork. The placement half is Rectangle 1.100 with a new name, icon, and bun
 
 ## System requirements
 
-macOS 12 or later. Tugboat is built and tested on Apple silicon; Intel builds are expected to work.
+macOS 14 or later. The deployment target follows the Xcode SDK's recommended minimum rather than a pinned number, so it rises when Apple raises it. Tugboat is built and tested on Apple silicon; Intel builds are expected to work.
 
 ## Installation
 
