@@ -34,3 +34,7 @@ build/
 *.dat
 *.dep
 
+
+## Local AI assistant settings
+.claude/
+.codex/
