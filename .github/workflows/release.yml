@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Derive version from tag
         run: |
@@ -32,14 +34,13 @@ jobs:
           VERSION="${TAG#v}"
           echo "TAG=$TAG" >> "$GITHUB_ENV"
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
-          echo "BUILD=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
-          echo "Building Tugboat $VERSION (build $GITHUB_RUN_NUMBER)"
+          echo "Building Tugboat $VERSION"
 
       - name: Archive
         run: |
           xcodebuild -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" -configuration Release \
             -derivedDataPath "$DERIVED_DATA" -archivePath build/Tugboat.xcarchive archive \
-            CODE_SIGN_IDENTITY="-" MARKETING_VERSION="$VERSION" CURRENT_PROJECT_VERSION="$BUILD"
+            CODE_SIGN_IDENTITY="-" MARKETING_VERSION="$VERSION"
 
       - name: Export
         run: |

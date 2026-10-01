@@ -29,6 +29,8 @@ xcodebuild -project Tugboat.xcodeproj -scheme Tugboat -configuration Release bui
 
 or open `Tugboat.xcodeproj` in Xcode and run the `Tugboat` scheme. On first launch Tugboat asks for Accessibility permission. Debug builds are signed with an Apple Development certificate so the permission survives rebuilds; the project names the maintainer's team, so pick your own under Signing & Capabilities. An ad-hoc signed build loses the permission every time it is rebuilt.
 
+The current version is 0.2.0. Each build uses the number of commits reachable from the checked-out commit as its build number. The About panel records the full commit ID and whether the working tree was clean or dirty when built, including staged, unstaged, and nonignored untracked files. It also shows the branch name outside `main`, or “Detached HEAD” when building a checked-out commit or tag. Rebuilding the same commit keeps its build number. Builds require a full Git checkout so the count is accurate; generated metadata stays in Xcode’s derived data.
+
 Tugboat uses its own bundle identifier (`io.github.jduprat.Tugboat`), so it can be installed next to Rectangle. Do not run both at the same time, or every shortcut fires twice.
 
 ## How to use it

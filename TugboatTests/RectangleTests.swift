@@ -16,6 +16,77 @@ class RectangleTests: XCTestCase {
 
 class AboutCreditsTests: XCTestCase {
 
+    func testBuiltAppContainsGitMetadata() throws {
+        let info = try XCTUnwrap(Bundle.main.infoDictionary)
+        let build = try XCTUnwrap(info["CFBundleVersion"] as? String)
+        XCTAssertGreaterThan(try XCTUnwrap(Int(build)), 0)
+        XCTAssertFalse(try XCTUnwrap(info["TugboatGitCommit"] as? String).isEmpty)
+        XCTAssertFalse(try XCTUnwrap(info["TugboatGitBranch"] as? String).isEmpty)
+        XCTAssertTrue(["clean", "dirty"].contains(try XCTUnwrap(info["TugboatGitTreeState"] as? String)))
+    }
+
+    func testMainCleanBuildDetailsShowFullCommitAndOmitBranch() {
+        let commit = "0123456789abcdef0123456789abcdef01234567"
+        let text = AboutCredits.attributedString(infoDictionary: [
+            "TugboatGitCommit": commit,
+            "TugboatGitBranch": "main",
+            "TugboatGitTreeState": "clean"
+        ]).string
+
+        let expected = [formatted("about.build.commit", "Commit: %@", commit),
+                        formatted("about.build.workingTree", "Working tree: %@", localized("about.build.clean", "Clean"))]
+        XCTAssertTrue(text.hasPrefix(expected.joined(separator: "\n") + "\n\n"))
+    }
+
+    func testFeatureDirtyBuildDetailsIncludeBranch() {
+        let commit = "abcdef0123456789abcdef0123456789abcdef01"
+        let text = AboutCredits.attributedString(infoDictionary: [
+            "TugboatGitCommit": commit,
+            "TugboatGitBranch": "codex/build-details",
+            "TugboatGitTreeState": "dirty"
+        ]).string
+
+        let expected = [formatted("about.build.commit", "Commit: %@", commit),
+                        formatted("about.build.workingTree", "Working tree: %@", localized("about.build.dirty", "Dirty")),
+                        formatted("about.build.branch", "Branch: %@", "codex/build-details")]
+        XCTAssertTrue(text.hasPrefix(expected.joined(separator: "\n") + "\n\n"))
+    }
+
+    func testDetachedBuildDetailsSayDetachedHead() {
+        let commit = String(repeating: "a", count: 64)
+        let text = AboutCredits.attributedString(infoDictionary: [
+            "TugboatGitCommit": commit,
+            "TugboatGitBranch": "HEAD",
+            "TugboatGitTreeState": "clean"
+        ]).string
+
+        let expected = [formatted("about.build.commit", "Commit: %@", commit),
+                        formatted("about.build.workingTree", "Working tree: %@", localized("about.build.clean", "Clean")),
+                        localized("about.build.detachedHead", "Detached HEAD")]
+        XCTAssertTrue(text.hasPrefix(expected.joined(separator: "\n") + "\n\n"))
+    }
+
+    func testMissingBuildDetailsRemainUnknown() {
+        let text = AboutCredits.attributedString(infoDictionary: nil).string
+        let unknown = localized("about.build.unknown", "Unknown")
+
+        let expected = [formatted("about.build.commit", "Commit: %@", unknown),
+                        formatted("about.build.workingTree", "Working tree: %@", unknown),
+                        formatted("about.build.branch", "Branch: %@", unknown)]
+        XCTAssertTrue(text.hasPrefix(expected.joined(separator: "\n") + "\n\n"))
+    }
+
+    func testEveryAboutMenuUsesCreditsHandler() throws {
+        let delegate = try XCTUnwrap(NSApp.delegate as? AppDelegate)
+        let applicationMenu = try XCTUnwrap(NSApp.mainMenu?.items.first?.submenu)
+        for menu in [applicationMenu, try XCTUnwrap(delegate.mainStatusMenu), try XCTUnwrap(delegate.unauthorizedMenu)] {
+            let about = try XCTUnwrap(menu.items.first { $0.action == #selector(AppDelegate.showAbout(_:)) },
+                                     "Every About entry must route through the handler that supplies credits.")
+            XCTAssertTrue(about.target as AnyObject? === delegate)
+            XCTAssertFalse(menu.items.contains { $0.action == #selector(NSApplication.orderFrontStandardAboutPanel(_:)) })
+        }
+    }
+
     func testCreditsNameAndLinkEveryProjectTugboatBuildsOn() throws {
         let credits = AboutCredits.attributedString
         let text = credits.string
@@ -30,6 +101,14 @@ class AboutCreditsTests: XCTestCase {
         for author in ["Ryan Hanson", "Eric Czarny", "Cordless Dog"] {
             XCTAssertTrue(text.contains(author), "\(author) is not credited")
         }
+    }
+
+    private func formatted(_ key: String, _ value: String, _ argument: String) -> String {
+        String(format: localized(key, value), argument)
+    }
+
+    private func localized(_ key: String, _ value: String) -> String {
+        NSLocalizedString(key, tableName: "Main", value: value, comment: "")
     }
 }
 

@@ -8197,6 +8197,90 @@
         }
       }
     },
+    "about.build.branch" : {
+      "comment" : "About panel: the Git branch used for this build",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Branch: %@"
+          }
+        }
+      }
+    },
+    "about.build.clean" : {
+      "comment" : "About panel: the source tree had no uncommitted changes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Clean"
+          }
+        }
+      }
+    },
+    "about.build.commit" : {
+      "comment" : "About panel: the full Git commit ID used for this build",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Commit: %@"
+          }
+        }
+      }
+    },
+    "about.build.detachedHead" : {
+      "comment" : "About panel: the build used a detached Git commit, not a branch",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Detached HEAD"
+          }
+        }
+      }
+    },
+    "about.build.dirty" : {
+      "comment" : "About panel: the source tree had uncommitted changes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dirty"
+          }
+        }
+      }
+    },
+    "about.build.unknown" : {
+      "comment" : "About panel: build metadata was unavailable",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "about.build.workingTree" : {
+      "comment" : "About panel: whether the source tree had uncommitted changes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Working tree: %@"
+          }
+        }
+      }
+    },
     "about.lineage" : {
       "comment" : "About panel: the projects Tugboat is descended from",
       "extractionState" : "extracted_with_value",

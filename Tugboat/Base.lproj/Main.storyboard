@@ -19,7 +19,7 @@
                                         <menuItem title="About Tugboat" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <action selector="showAbout:" target="Voe-Tx-rLC" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -282,7 +282,7 @@
                         <menuItem title="About" id="jxe-nr-LDQ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="orderFrontStandardAboutPanel:" target="hnw-xV-0zn" id="o6b-d0-Qt8"/>
+                                <action selector="showAbout:" target="Voe-Tx-rLC" id="o6b-d0-Qt8"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Quit Tugboat" keyEquivalent="q" id="yvN-PE-bxn">

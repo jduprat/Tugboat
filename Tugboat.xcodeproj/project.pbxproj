@@ -363,6 +363,7 @@
 		A4D034DBD7EFAC4CF5F8D67B /* TopCenterRightTwelfthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCenterRightTwelfthCalculation.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B01 /* DisplaySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySet.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000D01 /* AboutCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCredits.swift; sourceTree = "<group>"; };
+		B02000000000000000000001 /* generate-build-info.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "generate-build-info.sh"; sourceTree = "<group>"; };
 		A7A0DE000000000000000B03 /* Arrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangement.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B05 /* ArrangementStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementStore.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B07 /* ArrangementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementManager.swift; sourceTree = "<group>"; };
@@ -647,6 +648,7 @@
 			children = (
 				9824700B22AF9B7D0037B409 /* Tugboat */,
 				9824701E22AF9B7E0037B409 /* TugboatTests */,
+				B02000000000000000000002 /* scripts */,
 				9824700A22AF9B7D0037B409 /* Products */,
 				9821405C22B3ED3600ABFB3F /* Frameworks */,
 			);
@@ -803,6 +805,14 @@
 			path = StackBadge;
 			sourceTree = "<group>";
 		};
+		B02000000000000000000002 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B02000000000000000000001 /* generate-build-info.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -810,6 +820,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Tugboat" */;
 			buildPhases = (
+				B02000000000000000000003 /* Generate build metadata */,
 				9824700522AF9B7D0037B409 /* Sources */,
 				9824700622AF9B7D0037B409 /* Frameworks */,
 				9824700722AF9B7D0037B409 /* Resources */,
@@ -949,6 +960,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B02000000000000000000003 /* Generate build metadata */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/scripts/generate-build-info.sh",
+				"$(SRCROOT)/Tugboat/Info.plist",
+			);
+			name = "Generate build metadata";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Tugboat-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/bash \"${SCRIPT_INPUT_FILE_0}\" \"${SRCROOT}\" \"${SCRIPT_INPUT_FILE_1}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9824700522AF9B7D0037B409 /* Sources */ = {
@@ -1316,17 +1349,17 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5C2GG7XXJR;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Tugboat/Info.plist;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "$(DERIVED_FILE_DIR)/Tugboat-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;
@@ -1350,17 +1383,17 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Tugboat/Info.plist;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "$(DERIVED_FILE_DIR)/Tugboat-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;

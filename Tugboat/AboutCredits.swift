@@ -2,8 +2,7 @@
 
 import Cocoa
 
-/// What the About panel says about where Tugboat comes from: the project it is forked from, the one
-/// that project came from, and the app whose idea the arrangements half follows.
+/// The About panel's build provenance and acknowledgements for the projects Tugboat builds on.
 enum AboutCredits {
 
     private static let lineage = (
@@ -22,11 +21,15 @@ enum AboutCredits {
     )
 
     static var attributedString: NSAttributedString {
-        let credits = NSMutableAttributedString()
+        attributedString(infoDictionary: Bundle.main.infoDictionary)
+    }
+
+    static func attributedString(infoDictionary: [String: Any]?) -> NSAttributedString {
+        let details = buildDetails(infoDictionary: infoDictionary)
+        let credits = NSMutableAttributedString(string: details)
+        let detailsRange = NSRange(location: 0, length: credits.length)
         for paragraph in [lineage, arrangements] {
-            if credits.length > 0 {
-                credits.append(NSAttributedString(string: "\n\n"))
-            }
+            credits.append(NSAttributedString(string: "\n\n"))
             credits.append(linked(paragraph.text, paragraph.links))
         }
 
@@ -35,7 +38,58 @@ enum AboutCredits {
         credits.addAttributes([.paragraphStyle: style,
                                .font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)],
                               range: NSRange(location: 0, length: credits.length))
+        credits.addAttribute(.font, value: NSFont.monospacedSystemFont(ofSize: 10, weight: .regular),
+                             range: detailsRange)
         return credits
+    }
+
+    private static func buildDetails(infoDictionary: [String: Any]?) -> String {
+        let unknown = NSLocalizedString("about.build.unknown", tableName: "Main", value: "Unknown",
+                                        comment: "About panel: build metadata was unavailable")
+        let commitFormat = NSLocalizedString("about.build.commit", tableName: "Main", value: "Commit: %@",
+                                             comment: "About panel: the full Git commit ID used for this build")
+        let treeFormat = NSLocalizedString("about.build.workingTree", tableName: "Main", value: "Working tree: %@",
+                                           comment: "About panel: whether the source tree had uncommitted changes")
+        let branchFormat = NSLocalizedString("about.build.branch", tableName: "Main", value: "Branch: %@",
+                                             comment: "About panel: the Git branch used for this build")
+
+        let rawCommit = metadataString("TugboatGitCommit", in: infoDictionary)
+        let hexadecimal = CharacterSet(charactersIn: "0123456789abcdefABCDEF")
+        let commit = rawCommit.flatMap { value in
+            [40, 64].contains(value.count) && value.unicodeScalars.allSatisfy(hexadecimal.contains) ? value : nil
+        } ?? unknown
+
+        let treeState: String
+        switch metadataString("TugboatGitTreeState", in: infoDictionary) {
+        case "clean":
+            treeState = NSLocalizedString("about.build.clean", tableName: "Main", value: "Clean",
+                                          comment: "About panel: the source tree had no uncommitted changes")
+        case "dirty":
+            treeState = NSLocalizedString("about.build.dirty", tableName: "Main", value: "Dirty",
+                                          comment: "About panel: the source tree had uncommitted changes")
+        default:
+            treeState = unknown
+        }
+
+        var lines = [String(format: commitFormat, commit), String(format: treeFormat, treeState)]
+        switch metadataString("TugboatGitBranch", in: infoDictionary) {
+        case "main":
+            break
+        case "HEAD":
+            lines.append(NSLocalizedString("about.build.detachedHead", tableName: "Main", value: "Detached HEAD",
+                                           comment: "About panel: the build used a detached Git commit, not a branch"))
+        case let branch?:
+            lines.append(String(format: branchFormat, branch))
+        case nil:
+            lines.append(String(format: branchFormat, unknown))
+        }
+        return lines.joined(separator: "\n")
+    }
+
+    private static func metadataString(_ key: String, in infoDictionary: [String: Any]?) -> String? {
+        guard let value = infoDictionary?[key] as? String else { return nil }
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
     }
 
     /// Turns each name that appears in the sentence into a link, leaving a translation that drops or
