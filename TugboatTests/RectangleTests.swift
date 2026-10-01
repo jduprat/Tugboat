@@ -95,7 +95,7 @@ class AboutCreditsTests: XCTestCase {
             let range = try XCTUnwrap(text.range(of: name), "\(name) is not mentioned")
             let link = credits.attribute(.link, at: NSRange(range, in: text).location, effectiveRange: nil)
             let url = try XCTUnwrap(link as? URL, "\(name) is not linked")
-            XCTAssertEqual(url.host(), host, name)
+            XCTAssertEqual(url.host, host, name)
         }
 
         for author in ["Ryan Hanson", "Eric Czarny", "Cordless Dog"] {

@@ -58,7 +58,8 @@ class SettingsViewController: NSViewController {
     @IBAction func toggleLaunchOnLogin(_ sender: NSButton) {
         let newSetting: Bool = sender.state == .on
         LaunchOnLogin.isEnabled = newSetting
-        Defaults.launchOnLogin.enabled = newSetting
+        Defaults.launchOnLogin.enabled = LaunchOnLogin.isEnabled
+        sender.state = LaunchOnLogin.isEnabled ? .on : .off
     }
     
     @IBAction func toggleHideMenuBarIcon(_ sender: NSButton) {

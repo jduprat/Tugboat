@@ -63,6 +63,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainStatusMenu.delegate = self
         statusItem.refreshVisibility()
         checkLaunchOnLogin()
+        if #unavailable(macOS 13.0) {
+            DistributedNotificationCenter.default().postNotificationName(
+                Notification.Name("killLauncher"), object: "io.github.jduprat.Tugboat", userInfo: nil, deliverImmediately: true)
+        }
         
         let alreadyTrusted = accessibilityAuthorization.checkAccessibility {
             self.checkForConflictingApps()
@@ -296,7 +300,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func checkLaunchOnLogin() {
-        if Defaults.launchOnLogin.enabled, !LaunchOnLogin.isEnabled {
+        if #available(macOS 13.0, *) {
+            if Defaults.launchOnLogin.enabled, !LaunchOnLogin.isEnabled { LaunchOnLogin.isEnabled = true }
+        } else if Defaults.launchOnLogin.enabled {
             LaunchOnLogin.isEnabled = true
         }
     }
