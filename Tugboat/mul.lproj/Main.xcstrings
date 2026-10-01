@@ -8185,6 +8185,30 @@
         }
       }
     },
+    "about.arrangements" : {
+      "comment" : "About panel: the app whose idea the window arrangements follow",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remembering where your windows go, down to a separate set of windows per display configuration, comes from Stay by Cordless Dog. Stay is closed source, so none of its code is here, only the debt."
+          }
+        }
+      }
+    },
+    "about.lineage" : {
+      "comment" : "About panel: the projects Tugboat is descended from",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tugboat is a fork of Rectangle by Ryan Hanson, itself based on Spectacle by Eric Czarny, both MIT licensed."
+          }
+        }
+      }
+    },
     "adp-cN-qkh.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Top Left\"; ObjectID = \"adp-cN-qkh\";",
       "extractionState" : "extracted_with_value",

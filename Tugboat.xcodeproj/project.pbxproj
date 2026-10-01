@@ -148,6 +148,7 @@
 		A32D3739AA16C537F6427C4F /* TopCenterRightSixteenthCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918F847FF15D524B6DB2E6DA /* TopCenterRightSixteenthCalculation.swift */; };
 		A73749B5FB00D2CC2DB08744 /* LowerMiddleCenterRightSixteenthCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE08B666CCCD1805CAB08BD /* LowerMiddleCenterRightSixteenthCalculation.swift */; };
 		A7A0DE000000000000000B02 /* DisplaySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B01 /* DisplaySet.swift */; };
+		A7A0DE000000000000000D02 /* AboutCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000D01 /* AboutCredits.swift */; };
 		A7A0DE000000000000000B04 /* Arrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B03 /* Arrangement.swift */; };
 		A7A0DE000000000000000B06 /* ArrangementStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B05 /* ArrangementStore.swift */; };
 		A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000B07 /* ArrangementManager.swift */; };
@@ -361,6 +362,7 @@
 		A3B5B09465C38F8B766B3C3C /* UpperMiddleRightSixteenthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperMiddleRightSixteenthCalculation.swift; sourceTree = "<group>"; };
 		A4D034DBD7EFAC4CF5F8D67B /* TopCenterRightTwelfthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCenterRightTwelfthCalculation.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B01 /* DisplaySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySet.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000D01 /* AboutCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCredits.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B03 /* Arrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangement.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B05 /* ArrangementStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementStore.swift; sourceTree = "<group>"; };
 		A7A0DE000000000000000B07 /* ArrangementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangementManager.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				9808018523D05C0B0077774A /* TugboatRelease.entitlements */,
 				9824701622AF9B7E0037B409 /* Tugboat.entitlements */,
 				9821405F22B3EFB200ABFB3F /* Defaults.swift */,
+				A7A0DE000000000000000D01 /* AboutCredits.swift */,
 				984EDB0E29A42ED200D119D2 /* LaunchOnLogin.swift */,
 				98C1008B2305F1FA006E5344 /* SubsequentExecutionMode.swift */,
 				7BE578EE2C5BF4ED0083DAE3 /* CycleSize.swift */,
@@ -1057,6 +1060,7 @@
 				F1AC0DE000000000000000A8 /* StackBadgeListPanel.swift in Sources */,
 				F1AC0DE000000000000000AA /* StackBadgeRowView.swift in Sources */,
 				A7A0DE000000000000000B02 /* DisplaySet.swift in Sources */,
+				A7A0DE000000000000000D02 /* AboutCredits.swift in Sources */,
 				A7A0DE000000000000000B04 /* Arrangement.swift in Sources */,
 				A7A0DE000000000000000B06 /* ArrangementStore.swift in Sources */,
 				A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */,

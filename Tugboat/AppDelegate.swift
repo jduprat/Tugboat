@@ -267,7 +267,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showAbout(_ sender: Any) {
         NSApp.activate(ignoringOtherApps: true)
-        NSApp.orderFrontStandardAboutPanel(sender)
+        NSApp.orderFrontStandardAboutPanel(options: [.credits: AboutCredits.attributedString])
     }
     
     @IBAction func viewLogging(_ sender: Any) {
