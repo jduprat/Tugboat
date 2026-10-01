@@ -138,7 +138,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func addMenuIcons() {
-        guard #available(macOS 11, *) else { return }
         for item in mainStatusMenu.items {
             switch item.action {
             case #selector(openPreferences):
@@ -148,8 +147,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case #selector(checkForUpdates):
                 item.image = NSImage(systemSymbolName: "arrow.down.circle", accessibilityDescription: nil)
             default:
-                break
+                continue
             }
+            item.keepImageVisible()
         }
     }
 
@@ -366,7 +366,8 @@ extension AppDelegate: NSMenuDelegate {
 
             menuItem.image = windowAction.image.copy() as? NSImage
             menuItem.image?.size = NSSize(width: 18, height: 12)
-            
+            menuItem.keepImageVisible()
+
             if isPortrait && windowAction.classification == .thirds {
                 menuItem.image = menuItem.image?.rotated(by: 270)
                 menuItem.image?.isTemplate = true

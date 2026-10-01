@@ -167,6 +167,7 @@
 		AA0AC004291C48DE00D125D2 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0AC003291C48DE00D125D2 /* SequenceExtension.swift */; };
 		AA0ACC2F2864A86D0025E376 /* StageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0ACC2E2864A86D0025E376 /* StageUtil.swift */; };
 		AA3A9E8B29230A82004EB8E5 /* CFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A9E8A29230A82004EB8E5 /* CFExtension.swift */; };
+		A7A0DE000000000000000C02 /* NSMenuItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0DE000000000000000C01 /* NSMenuItemExtension.swift */; };
 		AA49DD1129B8C1B100690E13 /* TitleBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49DD1029B8C1B100690E13 /* TitleBarManager.swift */; };
 		AA49DD2129B8C1B100690E13 /* GreenButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49DD2029B8C1B100690E13 /* GreenButtonManager.swift */; };
 		AA4DA2FB28FDC94A00355CEB /* DispatchTimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA2FA28FDC94A00355CEB /* DispatchTimeExtension.swift */; };
@@ -400,6 +401,7 @@
 		AA0AC003291C48DE00D125D2 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		AA0ACC2E2864A86D0025E376 /* StageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageUtil.swift; sourceTree = "<group>"; };
 		AA3A9E8A29230A82004EB8E5 /* CFExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFExtension.swift; sourceTree = "<group>"; };
+		A7A0DE000000000000000C01 /* NSMenuItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItemExtension.swift; sourceTree = "<group>"; };
 		AA49DD1029B8C1B100690E13 /* TitleBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarManager.swift; sourceTree = "<group>"; };
 		AA49DD2029B8C1B100690E13 /* GreenButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButtonManager.swift; sourceTree = "<group>"; };
 		AA4DA2FA28FDC94A00355CEB /* DispatchTimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimeExtension.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				AA0ABFFF291C1B5E00D125D2 /* CGExtension.swift */,
 				AA0AC003291C48DE00D125D2 /* SequenceExtension.swift */,
 				AA3A9E8A29230A82004EB8E5 /* CFExtension.swift */,
+				A7A0DE000000000000000C01 /* NSMenuItemExtension.swift */,
 				98C2755D231FF6A9009B9292 /* EventMonitor.swift */,
 				F1AC0DE000000000000000C1 /* OverlapOffsetGeometry.swift */,
 			);
@@ -1153,6 +1156,7 @@
 				A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */,
 				988D067F22EB4EDE004EABD7 /* MoveLeftRightCalculation.swift in Sources */,
 				AA3A9E8B29230A82004EB8E5 /* CFExtension.swift in Sources */,
+				A7A0DE000000000000000C02 /* NSMenuItemExtension.swift in Sources */,
 				98C6DEF023CE191700CC0C1E /* GapCalculation.swift in Sources */,
 				98910B3E231130AF0066EC23 /* SettingsViewController.swift in Sources */,
 				98A009AD2512498000CFBF0C /* FirstFourthCalculation.swift in Sources */,
