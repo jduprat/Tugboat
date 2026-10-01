@@ -27,7 +27,7 @@ cd Tugboat
 xcodebuild -project Tugboat.xcodeproj -scheme Tugboat -configuration Release build
 ```
 
-or open `Tugboat.xcodeproj` in Xcode and run the `Tugboat` scheme. On first launch Tugboat asks for Accessibility permission; a rebuild that changes the code signature will ask again.
+or open `Tugboat.xcodeproj` in Xcode and run the `Tugboat` scheme. On first launch Tugboat asks for Accessibility permission. Debug builds are signed with an Apple Development certificate so the permission survives rebuilds; the project names the maintainer's team, so pick your own under Signing & Capabilities. An ad-hoc signed build loses the permission every time it is rebuilt.
 
 Tugboat uses its own bundle identifier (`io.github.jduprat.Tugboat`), so it can be installed next to Rectangle. Do not run both at the same time, or every shortcut fires twice.
 
