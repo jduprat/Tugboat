@@ -1151,13 +1151,26 @@ class ConfigImportTests: XCTestCase {
         super.tearDown()
     }
 
+    /// Cleared means no shortcut can be read back. When the app under test holds a live MASShortcut
+    /// binding on the key - it does once Accessibility is granted to the test host - removing the key
+    /// makes the binding write an empty dictionary in its place, which reads back as no shortcut too.
+    private func assertShortcutCleared(_ defaultsKey: String, file: StaticString = #filePath, line: UInt = #line) {
+        let value = UserDefaults.standard.object(forKey: defaultsKey)
+        if let dictionary = value as? [String: Any] {
+            XCTAssertTrue(dictionary.isEmpty, "\(defaultsKey) still holds \(dictionary)", file: file, line: line)
+        } else {
+            XCTAssertNil(value, file: file, line: line)
+        }
+        XCTAssertNil(ShortcutCycle.shortcut(forDefaultsKey: defaultsKey), file: file, line: line)
+    }
+
     func testImportClearsOmittedActiveShortcut() throws {
         let action = WindowAction.almostMaximize
         store(Shortcut(NSEvent.ModifierFlags.command.rawValue, 10), forKey: action.name)
 
         try loadConfig(shortcuts: [:])
 
-        XCTAssertNil(UserDefaults.standard.object(forKey: action.name))
+        assertShortcutCleared(action.name)
     }
 
     func testImportClearsOmittedTodoShortcut() throws {
@@ -1166,7 +1179,7 @@ class ConfigImportTests: XCTestCase {
 
         try loadConfig(shortcuts: [:])
 
-        XCTAssertNil(UserDefaults.standard.object(forKey: defaultsKey))
+        assertShortcutCleared(defaultsKey)
     }
 
     func testImportClearsOmittedStackBadgeShortcut() throws {
@@ -1175,7 +1188,7 @@ class ConfigImportTests: XCTestCase {
 
         try loadConfig(shortcuts: [:])
 
-        XCTAssertNil(UserDefaults.standard.object(forKey: defaultsKey))
+        assertShortcutCleared(defaultsKey)
     }
 
     func testImportAppliesSuppliedActiveShortcut() throws {
@@ -1207,7 +1220,7 @@ class ConfigImportTests: XCTestCase {
 
         try loadConfig(shortcuts: [action.name: Shortcut(NSEvent.ModifierFlags.command.rawValue, -1)])
 
-        XCTAssertNil(UserDefaults.standard.object(forKey: action.name))
+        assertShortcutCleared(action.name)
     }
 
     private func store(_ shortcut: Shortcut, forKey key: String) {
