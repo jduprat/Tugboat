@@ -207,6 +207,9 @@
 		F7B6C43BB57F8064F49DDBB6 /* BottomLeftSixteenthCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE147786B2CD7350FAFB700 /* BottomLeftSixteenthCalculation.swift */; };
 		FA34D0FF2F7E896E00EEBEF1 /* SpecificDisplayCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34D0FE2F7E896E00EEBEF1 /* SpecificDisplayCalculation.swift */; };
 		FDE8FCE027C2950400EACCAA /* MultiWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8FCDF27C2950400EACCAA /* MultiWindowManager.swift */; };
+		C7FEC6B4E3344021A1F2C409 /* ShortcutEditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */; };
+		7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */; };
+		DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +429,9 @@
 		FDE8FCDF27C2950400EACCAA /* MultiWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiWindowManager.swift; sourceTree = "<group>"; };
 		FEE147786B2CD7350FAFB700 /* BottomLeftSixteenthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLeftSixteenthCalculation.swift; sourceTree = "<group>"; };
 		de0950b8b00f40308934a523 /* JSONDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDefaultTests.swift; sourceTree = "<group>"; };
+		737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModel.swift; sourceTree = "<group>"; };
+		186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultShortcutTests.swift; sourceTree = "<group>"; };
+		3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,6 +727,8 @@
 				944F25D02CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift */,
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
 				A7A0DE000000000000000B09 /* ArrangementTests.swift */,
+				186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */,
+				3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */,
 				9824702122AF9B7E0037B409 /* Info.plist */,
 			);
 			path = TugboatTests;
@@ -740,6 +748,7 @@
 			children = (
 				944F25CC2CE5A144004B2FD2 /* PrefsViewController.swift */,
 				944F25CE2CE5A144004B2FD2 /* ShortcutRecordingObserver.swift */,
+				737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */,
 				98910B3D231130AF0066EC23 /* SettingsViewController.swift */,
 				983DD03F28A844BE00BF1EEE /* SnapAreaViewController.swift */,
 				98C97FFC25893B040061F01F /* Config.swift */,
@@ -1136,6 +1145,7 @@
 				6490B39B27BF980F0056C220 /* TopRightEighthCalculation.swift in Sources */,
 				944F25CD2CE5A144004B2FD2 /* PrefsViewController.swift in Sources */,
 				944F25CF2CE5A144004B2FD2 /* ShortcutRecordingObserver.swift in Sources */,
+				C7FEC6B4E3344021A1F2C409 /* ShortcutEditorModel.swift in Sources */,
 				9818E01028B59396004AA524 /* HalvesCompoundCalculation.swift in Sources */,
 				988D066922EB4CCB004EABD7 /* LastThirdCalculation.swift in Sources */,
 				98A6EDEC2528FFC100F74B10 /* WindowActionCategory.swift in Sources */,
@@ -1185,6 +1195,8 @@
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
 				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,
+				DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */,
+				7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

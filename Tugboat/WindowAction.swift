@@ -750,13 +750,10 @@ enum WindowAction: Int, Codable {
         case .tileActiveAppRows: return Shortcut( ctrl|alt|shift, kVK_ANSI_H )
         case .tileActiveAppColumns: return Shortcut( ctrl|alt|shift, kVK_ANSI_V )
         case .tileActiveApp: return Shortcut( ctrl|alt|shift, kVK_ANSI_G )
-        case .centerTwoThirds:
-            if let installVersion = Defaults.installVersion.value,
-               let intInstallVersion = Int(installVersion),
-               intInstallVersion > 94 {
-                return Shortcut( ctrl|alt, kVK_ANSI_R )
-            }
-            return nil
+        // Tugboat uses its own build numbering. Rectangle's installVersion > 94
+        // migration gate would omit this standard shortcut on a clean Tugboat install.
+        // User-customized and cleared bindings still override this registration default.
+        case .centerTwoThirds: return Shortcut( ctrl|alt, kVK_ANSI_R )
         default: return nil
         }
     }

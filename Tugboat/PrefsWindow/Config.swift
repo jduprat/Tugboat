@@ -7,22 +7,7 @@ extension Defaults {
     static func encoded() -> String? {
         guard let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else { return nil }
         
-        var shortcuts = [String: Shortcut]()
-        for action in WindowAction.active {
-            if let masShortcut = ShortcutCycle.shortcut(for: action) {
-                shortcuts[action.name] = Shortcut(masShortcut: masShortcut)
-            }
-        }
-        for defaultsKey in TodoManager.defaultsKeys + StackBadgeManager.defaultsKeys + ArrangementManager.defaultsKeys {
-            guard
-                let shortcutDict = UserDefaults.standard.dictionary(forKey: defaultsKey),
-                let dictTransformer = ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)),
-                let shortcut = dictTransformer.transformedValue(shortcutDict) as? MASShortcut
-            else {
-                continue
-            }
-            shortcuts[defaultsKey] = Shortcut(masShortcut: shortcut)
-        }
+        let snapshot = Config.shortcutSnapshot()
         
         var codableDefaults = [String: CodableDefault]()
         for exportableDefault in Defaults.array {
@@ -31,8 +16,9 @@ extension Defaults {
                 
         let config = Config(bundleId: "io.github.jduprat.Tugboat",
                             version: version,
-                            shortcuts: shortcuts,
-                            defaults: codableDefaults)
+                            shortcuts: snapshot.shortcuts,
+                            defaults: codableDefaults,
+                            clearedShortcuts: snapshot.clearedShortcuts.isEmpty ? nil : snapshot.clearedShortcuts)
         
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -51,7 +37,7 @@ extension Defaults {
     }
     
     static func load(fileUrl: URL, notificationCenter: NotificationCenter = .default) {
-        guard let dictTransformer = ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)) else { return }
+        guard ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)) != nil else { return }
         
         // Size cap: legitimate configs are ~tens of KB; refuse anything that
         // looks abusive (defense against OOM via a giant config file).
@@ -69,25 +55,7 @@ extension Defaults {
             }
         }
         
-        for action in WindowAction.active {
-            let importedShortcut = config.shortcuts[action.name] ?? action.aliasName.flatMap { config.shortcuts[$0] }
-            if let importedShortcut, importedShortcut.keyCode >= 0 {
-                let shortcut = importedShortcut.toMASSHortcut()
-                let dictValue = dictTransformer.reverseTransformedValue(shortcut)
-                UserDefaults.standard.setValue(dictValue, forKey: action.name)
-            } else {
-                UserDefaults.standard.removeObject(forKey: action.name)
-            }
-        }
-        for defaultsKey in TodoManager.defaultsKeys + StackBadgeManager.defaultsKeys + ArrangementManager.defaultsKeys {
-            if let importedShortcut = config.shortcuts[defaultsKey], importedShortcut.keyCode >= 0 {
-                let shortcut = importedShortcut.toMASSHortcut()
-                let dictValue = dictTransformer.reverseTransformedValue(shortcut)
-                UserDefaults.standard.setValue(dictValue, forKey: defaultsKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: defaultsKey)
-            }
-        }
+        config.applyShortcutPreferences()
         
         Notification.Name.configImported.post(center: notificationCenter)
     }
@@ -175,4 +143,49 @@ struct Config: Codable {
     let version: String
     let shortcuts: [String: Shortcut]
     let defaults: [String: CodableDefault]
+    /// Optional for old exports. An explicit clear must mask a registered default after import.
+    var clearedShortcuts: [String]? = nil
+
+    static func shortcutSnapshot(userDefaults: UserDefaults = .standard)
+        -> (shortcuts: [String: Shortcut], clearedShortcuts: [String]) {
+        let keys = WindowAction.active.map(\.name)
+            + TodoManager.defaultsKeys + StackBadgeManager.defaultsKeys + ArrangementManager.defaultsKeys
+        var shortcuts = [String: Shortcut]()
+        var cleared = [String]()
+        for key in keys {
+            if userDefaults.dictionary(forKey: key)?.isEmpty == true {
+                cleared.append(key)
+            } else if let shortcut = ShortcutCycle.shortcut(forDefaultsKey: key, userDefaults: userDefaults),
+                      shortcut.keyCode >= 0 {
+                shortcuts[key] = Shortcut(masShortcut: shortcut)
+            }
+        }
+        return (shortcuts, cleared)
+    }
+
+    /// Missing entries retain the historical import behavior. Only an explicit clear in a new
+    /// export suppresses registered defaults; bindings retain their existing dictionary format.
+    func applyShortcutPreferences(userDefaults: UserDefaults = .standard) {
+        guard let transformer = ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)) else { return }
+        let cleared = Set(clearedShortcuts ?? [])
+        func apply(_ shortcut: Shortcut?, key: String, explicitlyCleared: Bool) {
+            if explicitlyCleared {
+                userDefaults.set([String: Any](), forKey: key)
+            } else if let shortcut, shortcut.keyCode >= 0 {
+                userDefaults.set(transformer.reverseTransformedValue(shortcut.toMASSHortcut()), forKey: key)
+            } else {
+                userDefaults.removeObject(forKey: key)
+            }
+        }
+        for action in WindowAction.active {
+            let shortcut = shortcuts[action.name] ?? action.aliasName.flatMap { shortcuts[$0] }
+            let clearAlias = shortcuts[action.name] == nil && action.aliasName.map { cleared.contains($0) } == true
+            // A stale renamed preference must not restore a cleared binding during the rebind.
+            if let alias = action.aliasName { userDefaults.removeObject(forKey: alias) }
+            apply(shortcut, key: action.name, explicitlyCleared: cleared.contains(action.name) || clearAlias)
+        }
+        for key in TodoManager.defaultsKeys + StackBadgeManager.defaultsKeys + ArrangementManager.defaultsKeys {
+            apply(shortcuts[key], key: key, explicitlyCleared: cleared.contains(key))
+        }
+    }
 }
