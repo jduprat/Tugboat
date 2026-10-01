@@ -27,9 +27,9 @@ upstream `origin/main` still points to `b1921c3`. Changes remain uncommitted.
   windows where needed. App minimum-size clamps are observed, and recovery retries
   translation after a clamp. Infeasible tiled constraints retain topology and may
   require overlap; stored intent remains unchanged.
-- macOS 12 deployment target, modern login API guarded to macOS 13+, a minimal
-  embedded macOS 12 helper, and generated legacy icon fallback. Default project
-  signing is ad hoc with no development team, so local Xcode builds need no account.
+- macOS 14 deployment target and SMAppService for launch at login. Legacy icon
+  fallback generation is enabled. Default project signing is ad hoc with no
+  development team, so local Xcode builds need no account.
 
 ## Membership and editing policies
 
@@ -104,12 +104,12 @@ Logs and build products are under `/private/tmp/tugboat-resume-native`; final lo
 are `/private/tmp/tugboat-local-signing-tests.log` and
 `/private/tmp/tugboat-universal-release.log`. The test host skips app startup to
 avoid registering live shortcuts or running migrations during unit tests.
-Xcode 27's XCTest frameworks require macOS 14; this affects the test bundle, not
-the shipped application.
-
-A universal Release build targets macOS 12 for both arm64 and x86_64. Actual
-macOS 12 runtime/login behavior and physical monitor unplug/reconnect have not
-been tested. The product baseline is compile-validated, not runtime-certified.
+The application and test bundle now target macOS 14. On 1 October 2026, all 426
+tests passed and a universal Release build succeeded for arm64 and x86_64. Both
+binaries and the app's Info.plist declare macOS 14.0 as the minimum, and the app
+contains no embedded login helper. Logs are `/private/tmp/tugboat-macos14-tests.log`
+and `/private/tmp/tugboat-macos14-release.log`. Runtime behavior on macOS 14 and
+physical monitor unplug/reconnect have not been tested.
 
 For the device pass: verify repeated-title Terminal ordering through unplug and
 reconnect, displays above/left of primary, Dock/menu-bar/scaling changes, ignored

@@ -13,7 +13,7 @@ Early fork. The placement half is Rectangle 1.100 with a new name, icon, and bun
 
 ## System requirements
 
-macOS 12 or later. The deployment target is pinned to macOS 12. Launch at login uses an embedded helper on macOS 12 and SMAppService on macOS 13 or later. Tugboat is built and tested on Apple silicon; Intel builds are expected to work. Runtime validation on macOS 12 is still required.
+macOS 14 or later. Launch at login uses SMAppService. Tugboat is built and tested on Apple silicon; Intel builds are expected to work. Runtime validation on macOS 14 is still required.
 
 ## Installation
 

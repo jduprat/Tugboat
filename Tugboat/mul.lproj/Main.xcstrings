@@ -7231,192 +7231,6 @@
         }
       }
     },
-    "9XM-Zb-HEb.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"If the checkbox is disabled, click the padlock and enter your password\"; ObjectID = \"9XM-Zb-HEb\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "إذا تم تعطيل مربع الاختيار ، فانقر فوق القفل وأدخل كلمة المرور الخاصة بك"
-          }
-        },
-        "ca" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si la casella de selecció està desactivada, feu clic al cadenat i introduïu la vostra contrasenya."
-          }
-        },
-        "ca-ES" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si la casella de selecció està desactivada, feu clic al cadenat i introduïu la vostra contrasenya."
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pokud je zaškrtávací políčko vypnuto, tak klikněte na zámek a zadejte vaše heslo"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wenn das Kontrollkästchen deaktiviert ist, klicke auf das Vorhängeschloss und gib dein Passwort ein."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "If the checkbox is disabled, click the padlock and enter your password"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si la casilla de verificación está desactivada, haga clic en el candado e introduzca su contraseña."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si la casilla de verificación está desactivada, haga clic en el candado e introduzca su contraseña."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si la case est décochée, cliquez sur le cadenas et entrez votre mot de passe."
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jika kotak centang dinonaktifkan, klik gembok dan masukkan kata sandi Anda"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se la casella di controllo è disattivata, fai clic sul lucchetto e inserisci la password"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "チェックボックスが無効になっている場合は、カギをクリックしてパスワードを入力してください"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "확인란이 비활성화되어 있으면, 자물쇠를 클릭하고 암호를 입력하세요"
-          }
-        },
-        "lt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jei žymėjimas yra išjungtas, spustelėkite užraktą ir įveskite savo slaptažodį"
-          }
-        },
-        "nb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om avkryssingsboksen er inaktiv, klikker du på hengelåsen og skriver inn passordet ditt."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Als het selectievakje is uitgeschakeld, klik dan op het hangslot en voer uw wachtwoord in."
-          }
-        },
-        "nn" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om avkryssingsboksen er inaktiv, klikkar du på hengelåsen og skriv inn passordet ditt."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jeśli pole wyboru nie jest zaznaczone, kliknij kłódkę i wpisz hasło."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se a seleção estiver desativada, clique no cadeado e insira sua senha"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se a caixa de verificação estiver desactivada, clique no cadeado e introduza a sua palavra-passe"
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dacă checkbox-ul este dezactivat, apăsați pe lacăt și introduceți parola"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Если флажок отключен, щелкните на замок и введите свой пароль"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ak je zaškrtávacie políčko vypnuté, klikni na zámok a zadaj svoje heslo"
-          }
-        },
-        "sv-SE" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om kryssrutan är inaktiverad klickar du på hänglåset och anger ditt lösenord."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eğer işaret kutusu devre dışı ise, kilit simgesine tıklayıp şifrenizi girin"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Якщо галочка вимкнена, натисніть на замок і введіть пароль"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nếu hộp kiểm bị tắt, hãy nhấp vào ổ khóa và nhập mật khẩu của bạn"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果复选框已禁用，点按锁型图标，然后输入您的密码"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果註記框已停用，按一下鎖頭圖示，然後輸入您的密碼"
-          }
-        },
-        "zh-Hant-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果剔選框已停用，按一下掛鎖圖像，然後輸入你的密碼"
-          }
-        }
-      }
-    },
     "9yt-4B-nSM.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Smart Copy/Paste\"; ObjectID = \"9yt-4B-nSM\";",
       "extractionState" : "manual",
@@ -20089,184 +19903,6 @@
         }
       }
     },
-    "Go to System Settings → Privacy & Security → Accessibility" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aller dans Réglages Système → Confidentialité et sécurité → Accessibilité"
-          }
-        },
-        "ca" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "ca-ES" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gehe zu Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vaya a ajustes de sistema → Privacidad y Seguridad → Accesibilidad"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vaya a ajustes de sistema → Privacidad y Seguridad → Accesibilidad"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aller dans Réglages Système → Confidentialité et sécurité → Accessibilité"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vai a Impostazioni di Sistema → Privacy e sicurezza → Accessibilità"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "システム設定→プライバシーとセキュリティ→アクセシビリティを選択します"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시스템 설정 → 개인정보 보호 및 보안 → 손쉬운 사용"
-          }
-        },
-        "lt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eikite į Sistemos nuostatas → Privatumas ir saugumas → Privatumas → Universalus prieinamumas"
-          }
-        },
-        "nb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gå til Systeminnstillinger → Personvern og sikkerhet → Tilgjengelighet"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "nn" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gå til Systeminnstillingar → Personvern og tryggleik → Tilgjengelegheit"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vá em Preferências do Sistema → Segurança e Privacidade → Privacidade → Acessibilidade"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейдите в Системные настройки → Конфиденциальность и безопасность → Конфиденциальность → Универсальный доступ"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prejdi do Systémové nastavenia → Súkromie a bezpečnosť → Prístupnosť"
-          }
-        },
-        "sv-SE" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings → Privacy & Security → Accessibility"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sistem Ayarları → Gizlilik ve Güvenlik → Erişikebilirlik menüsüne gidin"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейти до Налаштування системи → Конфіденційність та безпека → Доступність"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đi đến Cài đặt hệ thống → Quyền riêng tư & Bảo mật → Trợ năng"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "前往 系统设置 → 安全性与隐私 → 辅助功能"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "前往 系統設定 → 隱私權與安全性 → 輔助使用"
-          }
-        },
-        "zh-Hant-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "前往 系統設定 → 保安與私隱 → 輔助使用"
-          }
-        }
-      }
-    },
     "Green stoplight button maximizes instead of Full Screen" : {
 
     },
@@ -24368,31 +24004,31 @@
       }
     },
     "iWV-c2-BJD.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Open System Preferences\"; ObjectID = \"iWV-c2-BJD\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"Open System Settings\"; ObjectID = \"iWV-c2-BJD\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "افتح تفضيلات النظام"
+            "value" : "Ouvrir les Réglages Système"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obrir preferències del sistema"
+            "value" : "Open System Settings"
           }
         },
         "ca-ES" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obrir preferències del sistema"
+            "value" : "Open System Settings"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otevřít systémové předvolby"
+            "value" : "Open System Settings"
           }
         },
         "de" : {
@@ -24404,79 +24040,79 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Open System Preferences"
+            "value" : "Open System Settings"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir preferencias del sistema"
+            "value" : "Abra los ajustes del sistema"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir preferencias del sistema"
+            "value" : "Abra los ajustes del sistema"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrir les Préférences Système"
+            "value" : "Ouvrir les Réglages Système"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buka Preferensi Sistem"
+            "value" : "Open System Settings"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apri Preferenze di Sistema"
+            "value" : "Apri Impostazioni di Sistema"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "システム環境設定を開く"
+            "value" : "システム設定を開く"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "시스템 환경설정 열기"
+            "value" : "시스템 설정 열기"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atidaryti sistemos nustatymus"
+            "value" : "Atidaryti sistemos nuostatas"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Åpne systeminnstllingene"
+            "value" : "Åpne Systeminnstillingene"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open Systeemvoorkeuren"
+            "value" : "Open System Settings"
           }
         },
         "nn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opna systeminnstllingane"
+            "value" : "Opne Systeminnstillingane"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz ustawienia systemowe"
+            "value" : "Open System Settings"
           }
         },
         "pt-BR" : {
@@ -24488,37 +24124,37 @@
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir Preferências de Sistema"
+            "value" : "Open System Settings"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deschide Preferințele de Sistem"
+            "value" : "Open System Settings"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть Cистемные настройки"
+            "value" : "Открыть Системные настройки"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otvoriť systémové nastavenia"
+            "value" : "Otvoriť Systémové nastavenia"
           }
         },
         "sv-SE" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öppna systeminställningar"
+            "value" : "Open System Settings"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sistem Tercihlerini Aç"
+            "value" : "Open System Settings"
           }
         },
         "uk" : {
@@ -24530,25 +24166,25 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở cài đặt hệ thống"
+            "value" : "Mở Cài đặt hệ thống "
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开系统偏好设置"
+            "value" : "打开系统设置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打開系統偏好設定"
+            "value" : "開啟系統設定"
           }
         },
         "zh-Hant-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開啟系統偏好設定"
+            "value" : "開啟系統設定"
           }
         }
       }
@@ -28240,115 +27876,115 @@
       }
     },
     "lgE-cR-cQ5.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Go to System Preferences → Security & Privacy → Privacy → Accessibility\"; ObjectID = \"lgE-cR-cQ5\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Go to System Settings → Privacy & Security → Accessibility\"; ObjectID = \"lgE-cR-cQ5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "انتقل إلى تفضيلات النظام ← الأمان والخصوصية ← الخصوصية ← إمكانية الوصول"
+            "value" : "Aller dans Réglages Système → Confidentialité et sécurité → Accessibilité"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anar a Preferències del sistema → Seguretat i privacitat → Privacitat → Accesibilitat"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "ca-ES" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anar a Preferències del sistema → Seguretat i privacitat → Privacitat → Accesibilitat"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jděte do Předvolby systému -> Zabezpečení a soukromí -> Soukromí -> Zpřístupnění"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gehe zu Systemeinstellungen → Sicherheit & Datenschutz → Datenschutz → Bedienungshilfen"
+            "value" : "Gehe zu Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Go to System Preferences → Security & Privacy → Privacy → Accessibility"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vaya a Preferencias del sistema → Seguridad y privacidad → Privacidad → Accesibilidad"
+            "value" : "Vaya a ajustes de sistema → Privacidad y Seguridad → Accesibilidad"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vaya a Preferencias del sistema → Seguridad y privacidad → Privacidad → Accesibilidad"
+            "value" : "Vaya a ajustes de sistema → Privacidad y Seguridad → Accesibilidad"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allez dans Préférences Système → Sécurité et confidentialité → Confidentialité → Accessibilité"
+            "value" : "Aller dans Réglages Système → Confidentialité et sécurité → Accessibilité"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buka Preferensi Sistem → Keamanan & Privasi → Privasi → Aksesibilitas"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vai a Preferenze di Sistema → Sicurezza e privacy → Privacy → Accessibilità"
+            "value" : "Vai a Impostazioni di Sistema → Privacy e sicurezza → Accessibilità"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "システム環境設定→セキュリティとプライバシー→プライバシー→アクセシビリティに移動してください"
+            "value" : "システム設定→プライバシーとセキュリティ→アクセシビリティを選択します"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "시스템 환경설정 → 보안 및 개인 정보 보호 → 개인 정보 보호 → 손쉬운 사용으로 이동하십시오"
+            "value" : "시스템 설정 → 개인정보 보호 및 보안 → 손쉬운 사용"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eikite į Sistemos nustatymus → Apsauga ir saugumas → Privatumas → Universalusis prieinamumas"
+            "value" : "Eikite į Sistemos nuostatas → Privatumas ir saugumas → Privatumas → Universalus prieinamumas"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gå til Systeminnstillinger → Personvern og sikkerhet → Personvern → Tilgjengelighet"
+            "value" : "Gå til Systeminnstillinger → Personvern og sikkerhet → Tilgjengelighet"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ga naar Systeemvoorkeuren → Beveiliging en privacy → Privacy → Toegankelijkheid"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "nn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gå til Systeminnstillingar → Personvern og tryggleik → Personvern → Tilgjengelegheit"
+            "value" : "Gå til Systeminnstillingar → Personvern og tryggleik → Tilgjengelegheit"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Przejdź do Preferencji systemowych → Ochrona i prywatność → Prywatność → Dostępność"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "pt-BR" : {
@@ -28360,43 +27996,43 @@
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aceda a Preferências do Sistema → Segurança e Privacidade → Privacidade → Privacidade → Acessibilidade"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deschide System Preferences → Security & Privacy → Privacy → Accesibilitate"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перейдите в Системные настройки → Защита и безопасность → Конфиденциальность → Универсальный доступ"
+            "value" : "Перейдите в Системные настройки → Конфиденциальность и безопасность → Конфиденциальность → Универсальный доступ"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prejdi do Systémové nastavenia -> Súkromie a bezpečnosť -> Súkromie -> Prístupnosť"
+            "value" : "Prejdi do Systémové nastavenia → Súkromie a bezpečnosť → Prístupnosť"
           }
         },
         "sv-SE" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gå till Systeminställningar → Säkerhet och sekretess → Sekretess → Tillgänglighet"
+            "value" : "Go to System Settings → Privacy & Security → Accessibility"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sistem Tercihleri -> Güvenlik & Gizlilik > Güvenlik > Erişilebilirlik menüsüne gidin."
+            "value" : "Sistem Ayarları → Gizlilik ve Güvenlik → Erişikebilirlik menüsüne gidin"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перейдіть до Налаштування системи → Безпека та конфіденційність → Конфіденційність → Доступність"
+            "value" : "Перейти до Налаштування системи → Конфіденційність та безпека → Доступність"
           }
         },
         "vi" : {
@@ -28408,19 +28044,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前往 系统偏好设置 → 安全性与隐私 → 隐私 → 辅助功能"
+            "value" : "前往 系统设置 → 安全性与隐私 → 辅助功能"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前往 系統偏好設定 → 安全性與隱私權 → 隱私權 → 輔助使用"
+            "value" : "前往 系統設定 → 隱私權與安全性 → 輔助使用"
           }
         },
         "zh-Hant-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前往 系統設定 → 保安與私隱 → 私隱 → 輔助使用"
+            "value" : "前往 系統設定 → 保安與私隱 → 輔助使用"
           }
         }
       }

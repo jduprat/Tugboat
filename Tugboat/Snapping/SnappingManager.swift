@@ -185,7 +185,7 @@ class SnappingManager {
             }
         }
         if let windowId = windowId {
-            if StageUtil.stageCapable && StageUtil.stageEnabled && StageUtil.getStageStripWindowGroup(windowId) != nil {
+            if StageUtil.stageEnabled && StageUtil.getStageStripWindowGroup(windowId) != nil {
                 return false
             }
         }
@@ -324,22 +324,18 @@ class SnappingManager {
         if let restoreRect = getRestoreRect(windowId: windowId) {
             
             if let windowElement = windowElement {
-                if #available(macOS 12, *) { // earlier versions of macOS would stutter the reposition when dragging the window
-                    var newRect = currentRect
-                    newRect.size = restoreRect.size
-                    if let cursorLoc = cursorLoc {
-                        if !newRect.contains(cursorLoc) { // keep the same maxX if possible
-                            newRect.origin = CGPoint(x: currentRect.maxX - newRect.width, y: newRect.minY)
-                            
-                            if !newRect.contains(cursorLoc) { // still doesn't contain cursor
-                                newRect.origin = CGPoint(x: cursorLoc.x - (newRect.width / 2), y: newRect.minY)
-                            }
+                var newRect = currentRect
+                newRect.size = restoreRect.size
+                if let cursorLoc = cursorLoc {
+                    if !newRect.contains(cursorLoc) { // keep the same maxX if possible
+                        newRect.origin = CGPoint(x: currentRect.maxX - newRect.width, y: newRect.minY)
+
+                        if !newRect.contains(cursorLoc) { // still doesn't contain cursor
+                            newRect.origin = CGPoint(x: cursorLoc.x - (newRect.width / 2), y: newRect.minY)
                         }
                     }
-                    windowElement.setFrame(newRect, adjustSizeFirst: false)
-                } else {
-                    windowElement.size = restoreRect.size
                 }
+                windowElement.setFrame(newRect, adjustSizeFirst: false)
             }
             
             AppDelegate.windowHistory.lastRectangleActions.removeValue(forKey: windowId)

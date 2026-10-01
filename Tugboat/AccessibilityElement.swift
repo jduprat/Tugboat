@@ -378,7 +378,7 @@ extension AccessibilityElement {
 
         if let info = getWindowInfo(position) {
             if !Defaults.dragFromStage.userDisabled {
-                if StageUtil.stageCapable && StageUtil.stageEnabled,
+                if StageUtil.stageEnabled,
                    let group = StageUtil.getStageStripWindowGroup(info.id),
                    let windowId = group.first,
                    windowId != info.id,

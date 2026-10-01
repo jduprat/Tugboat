@@ -6,13 +6,6 @@ class StageUtil {
     private static let windowManagerDefaults = UserDefaults(suiteName: "com.apple.WindowManager")
     private static let dockDefaults = UserDefaults(suiteName: "com.apple.dock")
     
-    static var stageCapable: Bool {
-        guard #available(macOS 13, *) else {
-            return false
-        }
-        return true
-    }
-    
     static var stageEnabled: Bool {
         guard let value = windowManagerDefaults?.object(forKey: "GloballyEnabled") as? Bool else {
             return false
@@ -34,11 +27,7 @@ class StageUtil {
         case "right":
             return .left
         default: // bottom
-            var isRTL = false
-            if #available(macOS 13, *), Locale.current.language.characterDirection == .rightToLeft {
-                isRTL = true
-            }
-            return isRTL ? .right : .left
+            return Locale.current.language.characterDirection == .rightToLeft ? .right : .left
         }
     }
     

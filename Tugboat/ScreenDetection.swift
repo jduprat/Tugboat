@@ -403,7 +403,7 @@ extension NSScreen {
         }
 
         if !ignoreStage && Defaults.stageSize.value > 0 {
-            if StageUtil.stageCapable && StageUtil.stageEnabled && StageUtil.stageStripShow && StageUtil.isStageStripVisible(self) {
+            if StageUtil.stageEnabled && StageUtil.stageStripShow && StageUtil.isStageStripVisible(self) {
                 let stageSize = Defaults.stageSize.value < 1
                     ? newFrame.size.width * Defaults.stageSize.cgFloat
                     : Defaults.stageSize.cgFloat
@@ -431,7 +431,7 @@ extension NSScreen {
         newFrame.origin.y += Defaults.screenEdgeGapBottom.cgFloat
         newFrame.size.width -= (Defaults.screenEdgeGapLeft.cgFloat + Defaults.screenEdgeGapRight.cgFloat)
         
-        if #available(macOS 12.0, *), self.safeAreaInsets.top != 0, Defaults.screenEdgeGapTopNotch.value != 0 {
+        if self.safeAreaInsets.top != 0, Defaults.screenEdgeGapTopNotch.value != 0 {
             newFrame.size.height -= (Defaults.screenEdgeGapTopNotch.cgFloat + Defaults.screenEdgeGapBottom.cgFloat)
         } else {
             newFrame.size.height -= (Defaults.screenEdgeGapTop.cgFloat + Defaults.screenEdgeGapBottom.cgFloat)

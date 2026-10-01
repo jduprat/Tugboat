@@ -28,7 +28,6 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var todoAppSidePopUpButton: NSPopUpButton!
     @IBOutlet weak var toggleTodoShortcutView: MASShortcutView!
     @IBOutlet weak var reflowTodoShortcutView: MASShortcutView!
-    @IBOutlet weak var stageView: NSStackView!
     @IBOutlet weak var stageSlider: NSSlider!
     @IBOutlet weak var stageLabel: NSTextField!
 
@@ -150,12 +149,8 @@ class SettingsViewController: NSViewController {
         let newSetting: Bool = sender.state == .on
         if newSetting && !TitleBarManager.systemSettingDisabled {
             
-            var openSystemSettingsButtonName = NSLocalizedString("iWV-c2-BJD.title", tableName: "Main", value: "Open System Preferences", comment: "")
-            
-            if #available(macOS 13, *) {
-                openSystemSettingsButtonName = NSLocalizedString(
-                    "Open System Settings", tableName: "Main", value: "", comment: "")
-            }
+            let openSystemSettingsButtonName = NSLocalizedString(
+                "Open System Settings", tableName: "Main", value: "", comment: "")
 
             let conflictTitleText = NSLocalizedString(
                 "Conflict with system setting", tableName: "Main", value: "", comment: "")
@@ -1372,13 +1367,9 @@ class SettingsViewController: NSViewController {
         halvesPreserveOtherAxisSizeCheckbox?.state = Defaults.halvesPreserveOtherAxisSize.enabled ? .on : .off
         repeatedMaximizeRestoresPreviousCheckbox?.state = Defaults.repeatedMaximizeRestoresPrevious.enabled ? .on : .off
 
-        if StageUtil.stageCapable {
-            stageSlider.intValue = Int32(Defaults.stageSize.value)
-            stageSlider.isContinuous = true
-            stageLabel.stringValue = "\(stageSlider.intValue) px"
-        } else {
-            stageView.isHidden = true
-        }
+        stageSlider.intValue = Int32(Defaults.stageSize.value)
+        stageSlider.isContinuous = true
+        stageLabel.stringValue = "\(stageSlider.intValue) px"
         setToggleStatesForCycleSizeCheckboxes()
         setToggleStatesForCornerCycleExpansionAxisButtons()
         setToggleStateForCooperativeCornerResizeCheckbox()

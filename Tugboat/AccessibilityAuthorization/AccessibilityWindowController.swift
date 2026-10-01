@@ -19,20 +19,6 @@ class AccessibilityWindowController: NSWindowController {
 
 class AccessibilityViewController: NSViewController {
     
-    @IBOutlet weak var sysPrefsPathField: NSTextField!
-    @IBOutlet weak var openSysPrefsButton: NSButton!
-    @IBOutlet weak var padlockField: NSTextField!
-    
-    override func viewDidLoad() {
-        if #available(OSX 13, *) {
-            sysPrefsPathField.stringValue =  NSLocalizedString(
-                "Go to System Settings → Privacy & Security → Accessibility", tableName: "Main", value: "", comment: "")
-            openSysPrefsButton.title = NSLocalizedString(
-                "Open System Settings", tableName: "Main", value: "", comment: "")
-            padlockField.isHidden = true
-        }
-    }
-    
     @IBAction func requestAccess(_ sender: Any) {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary
         _ = AXIsProcessTrustedWithOptions(options)

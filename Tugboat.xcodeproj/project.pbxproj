@@ -214,8 +214,6 @@
 		081369B2B1B84110ACF7A38B /* ShortcutOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */; };
 		4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */; };
 
-        AB1200000000000000000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1200000000000000000002; };
-        AB1200000000000000000003 /* TugboatLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB1200000000000000000004; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD1200000000000000000002 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000001; };
 		AD1200000000000000000004 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000003; };
 		AD1200000000000000000006 /* DynamicLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000005; };
@@ -230,19 +228,7 @@
 			remoteInfo = Tugboat;
 		};
 
-        AB120000000000000000000D = {isa = PBXContainerItemProxy; containerPortal = 9824700122AF9B7D0037B409; proxyType = 1; remoteGlobalIDString = AB1200000000000000000009; remoteInfo = TugboatLauncher; };
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-        AB1200000000000000000007 /* Embed login helper */ = {
-            isa = PBXCopyFilesBuildPhase;
-            buildActionMask = 2147483647;
-            dstPath = Contents/Library/LoginItems;
-            dstSubfolderSpec = 1;
-            files = (AB1200000000000000000003 /* TugboatLauncher.app in CopyFiles */, );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		16B4044DB4809116039F96EB /* SixteenthsRepeated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixteenthsRepeated.swift; sourceTree = "<group>"; };
@@ -458,9 +444,6 @@
 		2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutOptionsView.swift; sourceTree = "<group>"; };
 		501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorViewTests.swift; sourceTree = "<group>"; };
 
-        AB1200000000000000000002 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-        AB1200000000000000000004 /* TugboatLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = TugboatLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        AB1200000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1200000000000000000001 /* DynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
 		AD1200000000000000000003 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
 		AD1200000000000000000005 /* DynamicLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutTests.swift; sourceTree = "<group>"; };
@@ -686,7 +669,6 @@
 			children = (
 				9824700B22AF9B7D0037B409 /* Tugboat */,
 				9824701E22AF9B7E0037B409 /* TugboatTests */,
-                AB1200000000000000000006 /* TugboatLauncher */,
 				B02000000000000000000002 /* scripts */,
 				9824700A22AF9B7D0037B409 /* Products */,
 				9821405C22B3ED3600ABFB3F /* Frameworks */,
@@ -698,7 +680,6 @@
 			children = (
 				9824700922AF9B7D0037B409 /* Tugboat.app */,
 				9824701B22AF9B7E0037B409 /* TugboatTests.xctest */,
-                AB1200000000000000000004 /* TugboatLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -855,7 +836,6 @@
 			sourceTree = "<group>";
 		};
 
-        AB1200000000000000000006 /* TugboatLauncher */ = {isa = PBXGroup; children = (AB1200000000000000000002, AB1200000000000000000005, ); path = TugboatLauncher; sourceTree = "<group>"; };
 		B02000000000000000000002 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,12 +855,10 @@
 				9824700522AF9B7D0037B409 /* Sources */,
 				9824700622AF9B7D0037B409 /* Frameworks */,
 				9824700722AF9B7D0037B409 /* Resources */,
-                AB1200000000000000000007 /* Embed login helper */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-                AB120000000000000000000E,
 			);
 			name = Tugboat;
 			packageProductDependencies = (
@@ -910,7 +888,6 @@
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 
-        AB1200000000000000000009 /* TugboatLauncher */ = {isa = PBXNativeTarget; buildConfigurationList = AB120000000000000000000A; buildPhases = (B02000000000000000000004, AB1200000000000000000008, ); buildRules = (); dependencies = (); name = TugboatLauncher; productName = TugboatLauncher; productReference = AB1200000000000000000004; productType = "com.apple.product-type.application"; };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -989,7 +966,6 @@
 			targets = (
 				9824700822AF9B7D0037B409 /* Tugboat */,
 				9824701A22AF9B7E0037B409 /* TugboatTests */,
-                AB1200000000000000000009 /* TugboatLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -1027,25 +1003,6 @@
 			inputPaths = (
 				"$(SRCROOT)/scripts/generate-build-info.sh",
 				"$(SRCROOT)/Tugboat/Info.plist",
-			);
-			name = "Generate build metadata";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Tugboat-Info.plist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/bin/bash \"${SCRIPT_INPUT_FILE_0}\" \"${SRCROOT}\" \"${SCRIPT_INPUT_FILE_1}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B02000000000000000000004 /* Generate build metadata */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/scripts/generate-build-info.sh",
-				"$(SRCROOT)/TugboatLauncher/Info.plist",
 			);
 			name = "Generate build metadata";
 			outputPaths = (
@@ -1273,7 +1230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-        AB1200000000000000000008 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AB1200000000000000000001, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1283,7 +1239,6 @@
 			targetProxy = 9824701C22AF9B7E0037B409 /* PBXContainerItemProxy */;
 		};
 
-        AB120000000000000000000E = {isa = PBXTargetDependency; target = AB1200000000000000000009; targetProxy = AB120000000000000000000D; };
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1356,7 +1311,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1417,7 +1372,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -1446,7 +1401,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
@@ -1480,7 +1435,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
@@ -1507,7 +1462,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1531,7 +1486,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1541,9 +1496,7 @@
 			name = Release;
 		};
 
-        AB120000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_IDENTITY = "-"; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = ""; ENABLE_HARDENED_RUNTIME = YES; ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = "$(DERIVED_FILE_DIR)/Tugboat-Info.plist"; MACOSX_DEPLOYMENT_TARGET = 12.0; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher; PRODUCT_NAME = TugboatLauncher; SKIP_INSTALL = YES; SWIFT_VERSION = 5.0; }; name = Debug; };
 
-        AB120000000000000000000C = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_IDENTITY = "-"; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = ""; ENABLE_HARDENED_RUNTIME = YES; ENABLE_USER_SCRIPT_SANDBOXING = NO; INFOPLIST_FILE = "$(DERIVED_FILE_DIR)/Tugboat-Info.plist"; MACOSX_DEPLOYMENT_TARGET = 12.0; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher; PRODUCT_NAME = TugboatLauncher; SKIP_INSTALL = YES; SWIFT_VERSION = 5.0; }; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1575,7 +1528,6 @@
 			defaultConfigurationName = Release;
 		};
 
-        AB120000000000000000000A = {isa = XCConfigurationList; buildConfigurations = (AB120000000000000000000B, AB120000000000000000000C, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */

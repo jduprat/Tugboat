@@ -34,10 +34,8 @@ class FootprintWindow: NSWindow {
         
         if #available(macOS 26.0, *) {
             boxView.cornerRadius = 16
-        } else if #available(macOS 11.0, *) {
-            boxView.cornerRadius = 10
         } else {
-            boxView.cornerRadius = 5
+            boxView.cornerRadius = 10
         }
         boxView.wantsLayer = true
         boxView.fillColor = Defaults.footprintColor.typedValue?.nsColor ?? NSColor.black
@@ -47,7 +45,7 @@ class FootprintWindow: NSWindow {
     
     override var isVisible: Bool {
         // Workaround for footprint getting pushed off of Stage Manager
-        if StageUtil.stageCapable && StageUtil.stageEnabled && StageUtil.stageStripShow {
+        if StageUtil.stageEnabled && StageUtil.stageStripShow {
             return true
         }
         return realIsVisible
