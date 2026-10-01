@@ -2,13 +2,8 @@ import Foundation
 
 final class SpecifiedCalculation: WindowCalculation {
 
-    private let specifiedHeight: CGFloat
-    private let specifiedWidth: CGFloat
-
-    override init() {
-        specifiedHeight = CGFloat(Defaults.specifiedHeight.value)
-        specifiedWidth = CGFloat(Defaults.specifiedWidth.value)
-    }
+    private var specifiedHeight: CGFloat { CGFloat(Defaults.specifiedHeight.value) }
+    private var specifiedWidth: CGFloat { CGFloat(Defaults.specifiedWidth.value) }
 
     override func calculateRect(_ params: RectCalculationParameters) -> RectResult {
 

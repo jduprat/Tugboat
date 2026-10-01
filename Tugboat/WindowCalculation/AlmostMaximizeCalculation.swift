@@ -4,19 +4,15 @@ import Foundation
 
 class AlmostMaximizeCalculation: WindowCalculation {
     
-    let almostMaximizeHeight: CGFloat
-    let almostMaximizeWidth: CGFloat
+    // This calculation is a shared instance; preferences remain editable.
+    var almostMaximizeHeight: CGFloat {
+        let value = Defaults.almostMaximizeHeight.value
+        return (value <= 0 || value > 1) ? 0.9 : CGFloat(value)
+    }
 
-    override init() {
-        let defaultHeight = Defaults.almostMaximizeHeight.value
-        almostMaximizeHeight = (defaultHeight <= 0 || defaultHeight > 1)
-            ? 0.9
-            : CGFloat(defaultHeight)
-
-        let defaultWidth = Defaults.almostMaximizeWidth.value
-        almostMaximizeWidth = (defaultWidth <= 0 || defaultWidth > 1)
-            ? 0.9
-            : CGFloat(defaultWidth)
+    var almostMaximizeWidth: CGFloat {
+        let value = Defaults.almostMaximizeWidth.value
+        return (value <= 0 || value > 1) ? 0.9 : CGFloat(value)
     }
     
     override func calculate(_ params: WindowCalculationParameters) -> WindowCalculationResult? {
@@ -40,4 +36,3 @@ class AlmostMaximizeCalculation: WindowCalculation {
     }
     
 }
-

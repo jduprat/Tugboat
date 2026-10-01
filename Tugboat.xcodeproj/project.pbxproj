@@ -210,6 +210,7 @@
 		C7FEC6B4E3344021A1F2C409 /* ShortcutEditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */; };
 		7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */; };
 		DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */; };
+		2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -432,6 +433,7 @@
 		737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModel.swift; sourceTree = "<group>"; };
 		186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultShortcutTests.swift; sourceTree = "<group>"; };
 		3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModelTests.swift; sourceTree = "<group>"; };
+		F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutBehaviorSettingsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,6 +731,7 @@
 				A7A0DE000000000000000B09 /* ArrangementTests.swift */,
 				186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */,
 				3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */,
+				F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */,
 				9824702122AF9B7E0037B409 /* Info.plist */,
 			);
 			path = TugboatTests;
@@ -1195,6 +1198,7 @@
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
 				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,
+				2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */,
 				DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */,
 				7473AF022B1D49AA8BDFE9C8 /* DefaultShortcutTests.swift in Sources */,
 			);

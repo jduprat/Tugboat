@@ -4,23 +4,21 @@ import Foundation
 
 class ChangeSizeCalculation: WindowCalculation, ChangeWindowDimensionCalculation {
 
-    let screenEdgeGapSize: CGFloat
-    let sizeOffsetAbs: CGFloat
-    let curtainChangeSize = Defaults.curtainChangeSize.enabled != false
-    let smallerShrinksMaximizedHeight = Defaults.smallerShrinksMaximizedHeight.enabled
+    // Calculation instances are shared for the lifetime of the app. Read
+    // editable preferences at execution time so changes take effect at once.
+    var screenEdgeGapSize: CGFloat {
+        let gap = Defaults.gapSize.value
+        return gap <= 0 ? 5.0 : CGFloat(gap)
+    }
+    var sizeOffsetAbs: CGFloat {
+        let offset = Defaults.sizeOffset.value
+        return offset <= 0 ? 30.0 : CGFloat(offset)
+    }
+    var curtainChangeSize: Bool { Defaults.curtainChangeSize.enabled != false }
+    var smallerShrinksMaximizedHeight: Bool { Defaults.smallerShrinksMaximizedHeight.enabled }
 
     var widthOffsetAbs: CGFloat {
         CGFloat(Defaults.widthStepSize.value)
-    }
-
-    override init() {
-        let windowGapSize = Defaults.gapSize.value
-        screenEdgeGapSize = (windowGapSize <= 0) ? 5.0 : CGFloat(windowGapSize)
-
-        let defaultSizeOffset = Defaults.sizeOffset.value
-        sizeOffsetAbs = (defaultSizeOffset <= 0)
-            ? 30.0
-            : CGFloat(defaultSizeOffset)
     }
 
     override func calculateRect(_ params: RectCalculationParameters) -> RectResult {
