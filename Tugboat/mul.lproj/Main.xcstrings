@@ -38313,6 +38313,18 @@
         }
       }
     },
+    "rQA-cC-ess.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Request Access\"; ObjectID = \"rQA-cC-ess\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Request Access"
+          }
+        }
+      }
+    },
     "Rqc-34-cIF.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Superscript\"; ObjectID = \"Rqc-34-cIF\";",
       "extractionState" : "manual",

@@ -66,7 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let alreadyTrusted = accessibilityAuthorization.checkAccessibility {
             self.checkForConflictingApps()
-            self.openPreferences(self)
             self.statusItem.statusMenu = self.mainStatusMenu
             self.accessibilityTrusted()
         }
