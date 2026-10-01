@@ -4,6 +4,7 @@ import Cocoa
 import ServiceManagement
 import Sparkle
 import MASShortcut
+import UniformTypeIdentifiers
 
 class SettingsViewController: NSViewController {
         
@@ -281,7 +282,7 @@ class SettingsViewController: NSViewController {
     @IBAction func exportConfig(_ sender: NSButton) {
         Notification.Name.windowSnapping.post(object: false)
         let savePanel = NSSavePanel()
-        savePanel.allowedFileTypes = ["json"]
+        savePanel.allowedContentTypes = [.json]
         savePanel.nameFieldStringValue = "TugboatConfig"
         let response = savePanel.runModal()
         if response == .OK, let url = savePanel.url {
@@ -300,7 +301,7 @@ class SettingsViewController: NSViewController {
     @IBAction func importConfig(_ sender: NSButton) {
         Notification.Name.windowSnapping.post(object: false)
         let openPanel = NSOpenPanel()
-        openPanel.allowedFileTypes = ["json"]
+        openPanel.allowedContentTypes = [.json]
         let response = openPanel.runModal()
         if response == .OK, let url = openPanel.url {
             Defaults.load(fileUrl: url)

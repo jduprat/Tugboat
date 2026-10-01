@@ -22,15 +22,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                                 selector: #selector(self.terminate),
                                                                 name: killNotification,
                                                                 object: mainAppIdentifier)
-            let path = Bundle.main.bundlePath as NSString
-            var components = path.pathComponents
-            components.removeLast()
-            components.removeLast()
-            components.removeLast()
-            components.append("MacOS")
-            components.append("Tugboat")
-            let newPath = NSString.path(withComponents: components)
-            NSWorkspace.shared.launchApplication(newPath)
+            // This launcher lives in Tugboat.app/Contents/Library/LoginItems, so four levels up is
+            // the app itself. The modern API opens an app bundle, not the executable inside it.
+            let mainAppURL = Bundle.main.bundleURL
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+            NSWorkspace.shared.openApplication(at: mainAppURL, configuration: NSWorkspace.OpenConfiguration())
         }
     }
     

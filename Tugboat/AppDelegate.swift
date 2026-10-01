@@ -195,6 +195,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    /// The app of that name in /Applications or ~/Applications. These apps carry a dynamic bundle id,
+    /// so their name is all there is to find them by, and LaunchServices has no name-based lookup that
+    /// isn't deprecated.
+    private func applicationURL(named name: String) -> URL? {
+        let fileManager = FileManager.default
+        return fileManager.urls(for: .applicationDirectory, in: [.localDomainMask, .userDomainMask])
+            .map { $0.appendingPathComponent("\(name).app") }
+            .first { fileManager.fileExists(atPath: $0.path) }
+    }
+
     /// certain applications have issues with the click listening done by the drag to snap feature
     func checkForProblematicApps() {
         guard !Defaults.windowSnapping.userDisabled, !Defaults.notifiedOfProblemApps.enabled else { return }
@@ -224,8 +234,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         for name in problemJavaAppNames {
-            if let path = NSWorkspace.shared.fullPath(forApplication: name) {
-                if let bundle = Bundle(path: path),
+            if let url = applicationURL(named: name) {
+                if let bundle = Bundle(url: url),
                    let bundleId = bundle.bundleIdentifier {
                     
                     if !applicationToggle.isDisabled(bundleId: bundleId),
