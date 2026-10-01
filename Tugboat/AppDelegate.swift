@@ -8,8 +8,6 @@ import os.log
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    static let launcherAppId = "io.github.jduprat.TugboatLauncher"
-
     private let accessibilityAuthorization = AccessibilityAuthorization()
     private let statusItem = RectangleStatusItem.instance
     static let windowHistory = WindowHistory()
@@ -118,10 +116,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             if intLastVersion < 64 {
                 SnapAreaModel.instance.migrate()
-            }
-            if intLastVersion < 72 {
-                // Launch at login moved to SMAppService; retire the helper a previous version registered.
-                try? SMAppService.loginItem(identifier: AppDelegate.launcherAppId).unregister()
             }
         } else {
             Defaults.installVersion.value = currentVersion

@@ -67,10 +67,6 @@
 		9821403322B38A1B00ABFB3F /* UpperLeftCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821403222B38A1B00ABFB3F /* UpperLeftCalculation.swift */; };
 		9821403522B38A2B00ABFB3F /* UpperRightCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821403422B38A2B00ABFB3F /* UpperRightCalculation.swift */; };
 		9821403722B3D16700ABFB3F /* MaximizeHeightCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821403622B3D16700ABFB3F /* MaximizeHeightCalculation.swift */; };
-		9821403F22B3EBD900ABFB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821403E22B3EBD900ABFB3F /* AppDelegate.swift */; };
-		9821404322B3EBDA00ABFB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9821404222B3EBDA00ABFB3F /* Assets.xcassets */; };
-		9821404622B3EBDA00ABFB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9821404422B3EBDA00ABFB3F /* Main.storyboard */; };
-		9821405B22B3ECCA00ABFB3F /* TugboatLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9821405E22B3ED3600ABFB3F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9821405D22B3ED3600ABFB3F /* ServiceManagement.framework */; };
 		9821406022B3EFB200ABFB3F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821405F22B3EFB200ABFB3F /* Defaults.swift */; };
 		9824700D22AF9B7D0037B409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9824700C22AF9B7D0037B409 /* AppDelegate.swift */; };
@@ -223,16 +219,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9821405A22B3EC9900ABFB3F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				9821405B22B3ECCA00ABFB3F /* TugboatLauncher.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -241,7 +227,6 @@
 		30166BCF24F27D6A00A38608 /* SpecifiedCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedCalculation.swift; sourceTree = "<group>"; };
 		378C96D832D4CC6BCCF9D604 /* LowerMiddleCenterLeftSixteenthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerMiddleCenterLeftSixteenthCalculation.swift; sourceTree = "<group>"; };
 		423DC1992AE681F900C98564 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
-		42627A972ADA03D200D047C6 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		482E9E412EB1528D00D7928A /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		482EA970820F37C6917FCD98 /* BottomRightSixteenthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRightSixteenthCalculation.swift; sourceTree = "<group>"; };
 		5070DE9100E45D374053F0C2 /* MiddleCenterLeftTwelfthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleCenterLeftTwelfthCalculation.swift; sourceTree = "<group>"; };
@@ -278,7 +263,6 @@
 		94E9B08F2C3E4578004C7F41 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9698D1D9EE0180D7C4468304 /* TopCenterLeftTwelfthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCenterLeftTwelfthCalculation.swift; sourceTree = "<group>"; };
 		9808018523D05C0B0077774A /* TugboatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatRelease.entitlements; sourceTree = "<group>"; };
-		9808018623D05C1F0077774A /* TugboatLauncherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatLauncherRelease.entitlements; sourceTree = "<group>"; };
 		9818E00C28B59205004AA524 /* CompoundSnapArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSnapArea.swift; sourceTree = "<group>"; };
 		9818E00F28B59396004AA524 /* HalvesCompoundCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalvesCompoundCalculation.swift; sourceTree = "<group>"; };
 		9818E01128B59B64004AA524 /* ThirdsCompoundCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdsCompoundCalculation.swift; sourceTree = "<group>"; };
@@ -298,12 +282,6 @@
 		9821403222B38A1B00ABFB3F /* UpperLeftCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperLeftCalculation.swift; sourceTree = "<group>"; };
 		9821403422B38A2B00ABFB3F /* UpperRightCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperRightCalculation.swift; sourceTree = "<group>"; };
 		9821403622B3D16700ABFB3F /* MaximizeHeightCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximizeHeightCalculation.swift; sourceTree = "<group>"; };
-		9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TugboatLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9821403E22B3EBD900ABFB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9821404222B3EBDA00ABFB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9821404522B3EBDA00ABFB3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9821404722B3EBDA00ABFB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9821404822B3EBDA00ABFB3F /* TugboatLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatLauncher.entitlements; sourceTree = "<group>"; };
 		9821405D22B3ED3600ABFB3F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9821405F22B3EFB200ABFB3F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9821552627BFFB13002523EC /* Tugboat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tugboat-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -451,13 +429,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9821403922B3EBD900ABFB3F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9824700622AF9B7D0037B409 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,19 +470,6 @@
 				FDE8FCDF27C2950400EACCAA /* MultiWindowManager.swift */,
 			);
 			path = MultiWindow;
-			sourceTree = "<group>";
-		};
-		9821403D22B3EBD900ABFB3F /* TugboatLauncher */ = {
-			isa = PBXGroup;
-			children = (
-				9808018623D05C1F0077774A /* TugboatLauncherRelease.entitlements */,
-				9821403E22B3EBD900ABFB3F /* AppDelegate.swift */,
-				9821404222B3EBDA00ABFB3F /* Assets.xcassets */,
-				9821404422B3EBDA00ABFB3F /* Main.storyboard */,
-				9821404722B3EBDA00ABFB3F /* Info.plist */,
-				9821404822B3EBDA00ABFB3F /* TugboatLauncher.entitlements */,
-			);
-			path = TugboatLauncher;
 			sourceTree = "<group>";
 		};
 		9821405C22B3ED3600ABFB3F /* Frameworks */ = {
@@ -690,7 +648,6 @@
 			children = (
 				9824700B22AF9B7D0037B409 /* Tugboat */,
 				9824701E22AF9B7E0037B409 /* TugboatTests */,
-				9821403D22B3EBD900ABFB3F /* TugboatLauncher */,
 				9824700A22AF9B7D0037B409 /* Products */,
 				9821405C22B3ED3600ABFB3F /* Frameworks */,
 			);
@@ -701,7 +658,6 @@
 			children = (
 				9824700922AF9B7D0037B409 /* Tugboat.app */,
 				9824701B22AF9B7E0037B409 /* TugboatTests.xctest */,
-				9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -850,23 +806,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9821403B22B3EBD900ABFB3F /* TugboatLauncher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "TugboatLauncher" */;
-			buildPhases = (
-				9821403822B3EBD900ABFB3F /* Sources */,
-				9821403922B3EBD900ABFB3F /* Frameworks */,
-				9821403A22B3EBD900ABFB3F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TugboatLauncher;
-			productName = TugboatLauncher;
-			productReference = 9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */;
-			productType = "com.apple.product-type.application";
-		};
 		9824700822AF9B7D0037B409 /* Tugboat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Tugboat" */;
@@ -874,7 +813,6 @@
 				9824700522AF9B7D0037B409 /* Sources */,
 				9824700622AF9B7D0037B409 /* Frameworks */,
 				9824700722AF9B7D0037B409 /* Resources */,
-				9821405A22B3EC9900ABFB3F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -918,17 +856,6 @@
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Ryan Hanson";
 				TargetAttributes = {
-					9821403B22B3EBD900ABFB3F = {
-						CreatedOnToolsVersion = 10.2.1;
-						SystemCapabilities = {
-							com.apple.HardenedRuntime = {
-								enabled = 0;
-							};
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
 					9824700822AF9B7D0037B409 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1320;
@@ -996,21 +923,11 @@
 			targets = (
 				9824700822AF9B7D0037B409 /* Tugboat */,
 				9824701A22AF9B7E0037B409 /* TugboatTests */,
-				9821403B22B3EBD900ABFB3F /* TugboatLauncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9821403A22B3EBD900ABFB3F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9821404322B3EBDA00ABFB3F /* Assets.xcassets in Resources */,
-				9821404622B3EBDA00ABFB3F /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9824700722AF9B7D0037B409 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1034,14 +951,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9821403822B3EBD900ABFB3F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9821403F22B3EBD900ABFB3F /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9824700522AF9B7D0037B409 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1256,15 +1165,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9821404422B3EBDA00ABFB3F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9821404522B3EBDA00ABFB3F /* Base */,
-				42627A972ADA03D200D047C6 /* mul */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9824701222AF9B7E0037B409 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1277,64 +1177,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9821405522B3EBDA00ABFB3F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TugboatLauncher/TugboatLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 5C2GG7XXJR;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = TugboatLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher;
-				PRODUCT_MODULE_NAME = TugboatLauncher;
-				PRODUCT_NAME = TugboatLauncher;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		9821405622B3EBDA00ABFB3F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TugboatLauncher/TugboatLauncherRelease.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = TugboatLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher;
-				PRODUCT_MODULE_NAME = TugboatLauncher;
-				PRODUCT_NAME = TugboatLauncher;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		9824702222AF9B7E0037B409 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1579,15 +1421,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "TugboatLauncher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9821405522B3EBDA00ABFB3F /* Debug */,
-				9821405622B3EBDA00ABFB3F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9824700422AF9B7D0037B409 /* Build configuration list for PBXProject "Tugboat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
