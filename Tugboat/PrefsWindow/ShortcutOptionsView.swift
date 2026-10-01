@@ -47,8 +47,14 @@ final class ShortcutOptionsView: NSView {
         }
 
         switch action {
-        case .tileAll, .tileActiveApp, .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns:
-            note("Tiles eligible windows on the current Space and display. Row and column layouts adapt to the number of windows and each app’s size limits.")
+        case .tileRows, .tileColumns, .tileActiveAppRows, .tileActiveAppColumns:
+            heading("Shared tiling settings")
+            check("Keep row and column layouts when displays change", preference: Defaults.maintainTiledLayouts, defaultEnabled: true)
+            note("Keeps the same window order and proportions. A single-window placement command releases that window from the group. Moving a member to another display moves its group.")
+            if action == .tileActiveAppRows || action == .tileActiveAppColumns { applicationScope(action) }
+            return
+        case .tileAll, .tileActiveApp:
+            note("Tiles eligible windows on the current Space and display in a grid. Grid layouts are applied once.")
             return
         case .reverseAll:
             note("Mirrors window positions from left to right on the current display, keeping their sizes. Run again to reverse them back.")
@@ -236,6 +242,28 @@ final class ShortcutOptionsView: NSView {
         view.setContentCompressionResistancePriority(.required, for: .vertical)
         destination.addArrangedSubview(view)
         view.widthAnchor.constraint(equalTo: destination.widthAnchor).isActive = true
+    }
+
+    private func applicationScope(_ action: WindowAction) {
+        let selected = Defaults.tilingApplications.typedValue?[action.name]
+        var identifiers = Set(NSWorkspace.shared.runningApplications.compactMap(\.bundleIdentifier))
+        identifiers.remove(Bundle.main.bundleIdentifier ?? "")
+        identifiers.insert("com.apple.Terminal")
+        if let selected { identifiers.insert(selected) }
+        let apps = identifiers.compactMap { id -> (String, String)? in
+            guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: id) else {
+                return id == selected ? (id, id + " (unavailable)") : nil
+            }
+            return (id, FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: ""))
+        }.sorted { $0.1.localizedCaseInsensitiveCompare($1.1) == .orderedAscending }
+        let ids = [String?](arrayLiteral: nil) + apps.map { Optional($0.0) }
+        popup("Application", items: [("Current app", 0)] + apps.enumerated().map { ($0.element.1, $0.offset + 1) },
+              selected: ids.firstIndex(of: selected) ?? 0) { index in
+            var scopes = Defaults.tilingApplications.typedValue ?? [:]
+            scopes[action.name] = ids[index]
+            Defaults.tilingApplications.typedValue = scopes
+        }
+        note("A named app's visible windows are brought to the active display, even when another app has focus. This setting applies immediately to this command.")
     }
 
     private func note(_ text: String, in destination: NSStackView? = nil) {

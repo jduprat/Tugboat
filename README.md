@@ -5,7 +5,7 @@
 Tugboat is a window manager for macOS that does two things:
 
 1. **Places windows from the keyboard.** Halves, thirds, quarters, maximize, move between displays, snap areas when you drag a window to a screen edge. This half is [Rectangle](https://github.com/rxhanson/Rectangle), which Tugboat is forked from.
-2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. The idea, down to storing a separate set of windows per display configuration, comes from [Stay](https://cordlessdog.com/stay/) by Cordless Dog, which has done this well since 2010; Stay is closed source, so none of its code is here, only the debt. *Saving and restoring by hand works today; automatic capture and restore are next, see the roadmap.*
+2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. The idea, down to storing a separate set of windows per display configuration, comes from [Stay](https://cordlessdog.com/stay/) by Cordless Dog, which has done this well since 2010; Stay is closed source, so none of its code is here, only the debt. *Manual save/restore and restoration after display changes or wake work today. Automatic capture and restoration on app launch are still planned.*
 
 ## Status
 
@@ -74,6 +74,16 @@ Rows and Columns come from Rectangle, which has no default keys for them. The ap
 | ⌃⌥⇧R | Restore Window Positions: put every remembered window that is open back where it was saved |
 
 Both are also in the menu bar menu, and the shortcuts can be changed under **Settings → Shortcuts**, using the **Record** and **Restore** action groups. Positions are kept per set of displays, one JSON file per set in `~/Library/Application Support/Tugboat/Arrangements/`, so the laptop alone and the laptop at the office desk each have their own. Saving again updates the windows that are open and keeps the rest. Restore is greyed out when nothing has been saved for the displays connected now. The file format is described in [docs/arrangements-design.md](docs/arrangements-design.md).
+
+### Adaptive row and column layouts
+
+Row and column tiling remembers the group's order, proportions, and preferred display. After a display change or wake, Tugboat reflows the surviving visible members into the available area. Columns stay columns and rows stay rows. Temporary recovery on the laptop does not rewrite the preferred display or saved proportions; reconnecting the original display reflows there again.
+
+For **Tile app windows in rows/columns**, select **Application → Terminal** in the shortcut's shared settings to target Terminal even while another app has focus. Its eligible windows on the current Space are brought to the active display. A named app must be running. The **Keep row and column layouts when displays change** checkbox controls this behavior globally. Grid and cascade commands remain one-shot arrangements.
+
+Moving a grouped window with the next/previous-display shortcut moves its whole visible group. A single-window placement/resize/restore command releases that window; grid, cascade, reverse, and manual position restore also release affected windows. New windows join on the next explicit tiling command, appended after surviving members. Manual dragging changes current geometry but does not change stored group order or proportions; explicitly tile again to replace the layout.
+
+After an app or Tugboat relaunch, unique app/title/subrole matches can resume a group. Identical titles are intentionally left unmatched rather than assigned to slots by their shuffled geometry. Reapply the tiling shortcut to establish a new group in that case. Tugboat also brings inaccessible title bars of eligible current-Space windows into reach after display changes, respecting exclusions and app size constraints. If minimum dimensions cannot fit, windows can overlap. Detailed behavior and remaining work are in [docs/adaptive-layouts.md](docs/adaptive-layouts.md).
 
 Hidden settings are changed from the terminal with `defaults write io.github.jduprat.Tugboat …`; see [TerminalCommands.md](TerminalCommands.md). Settings can be exported to and imported from JSON in Settings, and a file at `~/Library/Application Support/Tugboat/TugboatConfig.json` is offered for import at launch.
 

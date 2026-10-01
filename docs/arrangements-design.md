@@ -7,12 +7,18 @@ places as possible.
 
 ## Status
 
-Built so far (manual only): **Save Window Positions** (⌃⌥⇧S) and **Restore
-Window Positions** (⌃⌥⇧R) in the menu bar menu and in Settings, Extras. They
-use the file format, lookup, fallback adoption and window matching described
-below. Not built yet: automatic capture, restore on display change, app launch
-and wake, re-running `lastAction`, housekeeping, preserving unknown keys on
-rewrite, and listing display sets in the menu.
+Built so far: **Save Window Positions** (⌃⌥⇧S) and **Restore Window Positions**
+(⌃⌥⇧R), plus debounced restore after a display geometry change or wake. Manual
+saving is blocked while display-change recovery is settling. Stored positions
+are never captured automatically, so temporary recovery cannot overwrite them.
+Dynamic row/column groups have separate intent and take precedence over recorded
+positions during automatic restore; see [adaptive-layouts.md](adaptive-layouts.md).
+Manual restore releases affected dynamic members.
+
+Not built yet: automatic capture, restore on app launch/window creation,
+re-running `lastAction`, housekeeping, preserving unknown keys on rewrite,
+and listing display sets in the menu. The sections below describe the broader
+design; consult this Status before relying on planned behavior.
 
 ## Vocabulary
 
@@ -162,7 +168,7 @@ app bundle identifier:
    by x then y position among the app's windows that tie on the rules above,
    which disambiguates two Terminal windows both titled `bash`.
 
-Live windows that match nothing are left alone. Records that match nothing
+Live windows that match nothing keep safe placements. After display changes, eligible windows with inaccessible title bars are rescued onto a connected display. Records that match nothing
 stay in the file until they expire (see housekeeping). Window ids are never
 stored: they change on every launch and Rectangle already has to synthesise
 them for some apps.

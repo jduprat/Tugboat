@@ -3,6 +3,8 @@
 import Cocoa
 
 class Defaults {
+    static let maintainTiledLayouts = OptionalBoolDefault(key: "maintainTiledLayouts")
+    static let tilingApplications = JSONDefault<[String: String]>(key: "tilingApplications")
     static let launchOnLogin = BoolDefault(key: "launchOnLogin")
     static let disabledApps = JSONDefault<Set<String>>(key: "disabledApps")
     static let hideMenuBarIcon = BoolDefault(key: "hideMenubarIcon")
@@ -113,6 +115,8 @@ class Defaults {
     static let greenButtonOverride = BoolDefault(key: "greenButtonOverride")
     static var array: [Default] = [
         launchOnLogin,
+        maintainTiledLayouts,
+        tilingApplications,
         disabledApps,
         hideMenuBarIcon,
         alternateDefaultShortcuts,

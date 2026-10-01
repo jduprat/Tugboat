@@ -75,6 +75,11 @@ class ArrangementManager {
     }
 
     static func storeArrangement() {
+        guard !DynamicLayoutManager.shared.isSettling else {
+            NSSound.beep()
+            Logger.log("Arrangements: wait for displays to settle before saving positions")
+            return
+        }
         let connected = ConnectedDisplay.current()
         guard !connected.isEmpty else {
             NSSound.beep()
@@ -104,10 +109,11 @@ class ArrangementManager {
         }
     }
 
-    static func restoreArrangement() {
+    static func restoreArrangement(automatically: Bool = false, excluding: Set<AccessibilityElement> = [],
+                                   isCurrent: @escaping () -> Bool = { true }) {
         let connected = ConnectedDisplay.current()
         guard let lookup = ArrangementStore.lookup(connected.map(\.identity), in: store.loadAll()) else {
-            NSSound.beep()
+            if !automatically { NSSound.beep() }
             Logger.log("Arrangements: nothing saved for the connected displays")
             return
         }
@@ -121,7 +127,8 @@ class ArrangementManager {
             try? store.write(found.arrangement, to: found.url)
         }
 
-        let live = liveWindows()
+        let live = liveWindows().filter { !excluding.contains($0.element) }
+        if !automatically { live.forEach { DynamicLayoutManager.shared.release($0.element) } }
         let placements = entry.arrangement.placements(for: live.map(\.window), on: connected)
         var moved = [(element: AccessibilityElement, target: CGRect)]()
         for (index, target) in placements where !framesClose(live[index].element.frame, target) {
@@ -132,6 +139,7 @@ class ArrangementManager {
 
         // macOS sometimes puts a window back or clamps it on the way between displays; check once and retry.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            guard isCurrent() else { return }
             for (element, target) in moved where !framesClose(element.frame, target) {
                 element.setFrame(target)
             }
@@ -140,12 +148,17 @@ class ArrangementManager {
 
     /// Windows that can be saved and moved: those on the current Space, except Tugboat's own, ignored
     /// apps, the Todo window, sheets, dialogs, and minimized, hidden or full-screen windows.
-    private static func liveWindows() -> [(element: AccessibilityElement, window: LiveWindow)] {
+    static func liveWindows() -> [(element: AccessibilityElement, window: LiveWindow)] {
         let onScreen = WindowUtil.getWindowList(forceRefresh: true)
         let onScreenIds = Set(onScreen.map(\.id))
         let ownPid = ProcessInfo.processInfo.processIdentifier
         let ignoredApps = Defaults.disabledApps.typedValue ?? []
-        return AccessibilityElement.getAllWindowElements(from: onScreen).compactMap { element -> (element: AccessibilityElement, window: LiveWindow)? in
+        let candidates = AccessibilityElement.getAllWindowElements(from: onScreen)
+        let snapshots = candidates.map {
+            MultiWindowManager.TilingWindow(element: $0, frame: $0.frame, windowId: $0.windowId, pid: $0.pid, isFocused: false)
+        }
+        let eligible = MultiWindowManager.selectCurrentSpaceWindows(snapshots, visibleWindowInfo: onScreen).map(\.element)
+        return eligible.compactMap { element -> (element: AccessibilityElement, window: LiveWindow)? in
             guard element.isWindow == true, element.isSheet != true, element.isSystemDialog != true,
                   element.isMinimized != true, element.isHidden != true, element.isFullScreen != true,
                   let pid = element.pid, pid != ownPid,

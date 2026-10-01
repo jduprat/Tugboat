@@ -216,6 +216,9 @@
 
         AB1200000000000000000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1200000000000000000002; };
         AB1200000000000000000003 /* TugboatLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB1200000000000000000004; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD1200000000000000000002 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000001; };
+		AD1200000000000000000004 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000003; };
+		AD1200000000000000000006 /* DynamicLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000005; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -458,6 +461,9 @@
         AB1200000000000000000002 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
         AB1200000000000000000004 /* TugboatLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = TugboatLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
         AB1200000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD1200000000000000000001 /* DynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
+		AD1200000000000000000003 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
+		AD1200000000000000000005 /* DynamicLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -755,6 +761,7 @@
 				944F25D02CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift */,
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
 				A7A0DE000000000000000B09 /* ArrangementTests.swift */,
+				AD1200000000000000000005 /* DynamicLayoutTests.swift */,
 				186A818CF7F14D36996154B6 /* DefaultShortcutTests.swift */,
 				3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */,
 				F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */,
@@ -827,6 +834,8 @@
 			isa = PBXGroup;
 			children = (
 				A7A0DE000000000000000B03 /* Arrangement.swift */,
+				AD1200000000000000000003 /* DynamicLayoutManager.swift */,
+				AD1200000000000000000001 /* DynamicLayout.swift */,
 				A7A0DE000000000000000B07 /* ArrangementManager.swift */,
 				A7A0DE000000000000000B05 /* ArrangementStore.swift */,
 				A7A0DE000000000000000B01 /* DisplaySet.swift */,
@@ -1161,6 +1170,8 @@
 				A7A0DE000000000000000B02 /* DisplaySet.swift in Sources */,
 				A7A0DE000000000000000D02 /* AboutCredits.swift in Sources */,
 				A7A0DE000000000000000B04 /* Arrangement.swift in Sources */,
+				AD1200000000000000000004 /* DynamicLayoutManager.swift in Sources */,
+				AD1200000000000000000002 /* DynamicLayout.swift in Sources */,
 				A7A0DE000000000000000B06 /* ArrangementStore.swift in Sources */,
 				A7A0DE000000000000000B08 /* ArrangementManager.swift in Sources */,
 				988D067F22EB4EDE004EABD7 /* MoveLeftRightCalculation.swift in Sources */,
@@ -1253,6 +1264,7 @@
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
 				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,
+				AD1200000000000000000006 /* DynamicLayoutTests.swift in Sources */,
 				4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */,
 				2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */,
 				DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */,

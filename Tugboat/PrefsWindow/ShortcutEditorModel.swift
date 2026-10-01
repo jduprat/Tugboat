@@ -277,8 +277,8 @@ final class ShortcutEditorModel {
 
     private static func summary(for action: WindowAction) -> String {
         switch action {
-        case .tileActiveAppRows: return "Arrange visible windows of the current app in rows on this display."
-        case .tileActiveAppColumns: return "Arrange visible windows of the current app in columns on this display."
+        case .tileActiveAppRows: return "Arrange visible windows of the chosen app in rows on the active display. Application defaults to the current app."
+        case .tileActiveAppColumns: return "Arrange visible windows of the chosen app in columns on the active display. Application defaults to the current app."
         case .tileActiveApp: return "Arrange visible windows of the current app in a grid on this display."
         case .tileRows: return "Arrange visible windows in rows on this display."
         case .tileColumns: return "Arrange visible windows in columns on this display."

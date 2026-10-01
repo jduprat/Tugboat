@@ -60,6 +60,14 @@ class WindowManager {
         // The window id can be unavailable when macOS stops vending window info
         // after a session transition (#640). Actions still execute; only
         // window-id-keyed history is skipped.
+        DynamicLayoutManager.shared.cancelPendingReflow()
+        if parameters.action == .nextDisplay || parameters.action == .previousDisplay,
+           let screens = screenDetection.detectScreens(using: frontmostWindowElement),
+           let destination = parameters.action == .nextDisplay ? screens.adjacentScreens?.next : screens.adjacentScreens?.prev,
+           DynamicLayoutManager.shared.moveGroup(containing: frontmostWindowElement, to: destination) {
+            return
+        }
+        DynamicLayoutManager.shared.release(frontmostWindowElement)
         let windowId = parameters.windowId ?? frontmostWindowElement.getWindowId()
 
         let action = parameters.action

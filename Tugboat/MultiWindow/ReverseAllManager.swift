@@ -31,6 +31,7 @@ class ReverseAllManager {
 
         rect.origin.x = screenFrame.maxX - offsetFromLeft - rect.width
 
+        DynamicLayoutManager.shared.release(w)
         w.setFrame(rect)
     }
 }

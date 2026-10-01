@@ -170,6 +170,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.greenButtonManager = GreenButtonManager()
         self.initializeTodo()
         ArrangementManager.start()
+        DynamicLayoutManager.shared.start()
         checkForProblematicApps()
         MacTilingDefaults.checkForBuiltInTiling(skipIfAlreadyNotified: true)
     }

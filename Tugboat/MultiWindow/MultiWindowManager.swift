@@ -69,6 +69,7 @@ class MultiWindowManager {
     }
 
     static func execute(parameters: ExecutionParameters) -> Bool {
+        DynamicLayoutManager.shared.cancelPendingReflow()
         // TODO: Protocol and factory for all multi-window positioning algorithms
         switch parameters.action {
         case .reverseAll:
@@ -148,7 +149,10 @@ class MultiWindowManager {
                w.isSheet != true,
                w.isMinimized != true,
                w.isHidden != true,
-               w.isSystemDialog != true
+               w.isSystemDialog != true,
+               w.isFullScreen != true,
+               w.pid != ProcessInfo.processInfo.processIdentifier,
+               !((Defaults.disabledApps.typedValue ?? []).contains(w.bundleIdentifier ?? ""))
             {
                 actualWindows.append(w)
             }
@@ -189,20 +193,31 @@ class MultiWindowManager {
         let screenDetection = ScreenDetection()
         guard let context = tilingContext(focusedWindow: AccessibilityElement.getFocusedWindowElement(),
                                           screenDetection: screenDetection) else { return }
-        let activeAppPid = onlyActiveApp ? (context.focusedWindow?.pid ?? AccessibilityElement.getFrontWindowElement()?.pid) : nil
-        if onlyActiveApp && activeAppPid == nil { return }
+        let command: WindowAction = direction == .rows ? .tileActiveAppRows : .tileActiveAppColumns
+        let namedApp = onlyActiveApp ? Defaults.tilingApplications.typedValue?[command.name] : nil
+        let activeAppPid: pid_t?
+        if let namedApp {
+            activeAppPid = NSWorkspace.shared.runningApplications.first { $0.bundleIdentifier == namedApp }?.processIdentifier
+        } else {
+            activeAppPid = onlyActiveApp ? (context.focusedWindow?.pid ?? AccessibilityElement.getFrontWindowElement()?.pid) : nil
+        }
+        if onlyActiveApp && activeAppPid == nil {
+            NSSound.beep()
+            Logger.log("Tiling: target app is not running or has no accessible window")
+            return
+        }
 
         // Reuse this new on-screen snapshot for AX app discovery and for Space
         // membership, even when another tiling action just moved windows.
         let visibleInfo = WindowUtil.getWindowList(forceRefresh: true)
         let windows = windowsOnScreen(screens: context.screens,
                                       windows: AccessibilityElement.getAllWindowElements(from: visibleInfo),
-                                      focusedWindow: context.focusedWindow,
-                                      combineScreens: !NSScreen.screensHaveSeparateSpaces && Defaults.combinedDisplayMode.userEnabled,
+                                      focusedWindow: namedApp == nil ? context.focusedWindow : nil,
+                                      combineScreens: namedApp != nil || !NSScreen.screensHaveSeparateSpaces && Defaults.combinedDisplayMode.userEnabled,
                                       screenFor: { screenDetection.detectScreens(using: $0)?.currentScreen }).windows
             .filter { activeAppPid == nil || $0.pid == activeAppPid }
 
-        tileWindowsInBands(direction, focusedWindow: context.focusedWindow, windows: windows,
+        tileWindowsInBands(direction, focusedWindow: namedApp == nil ? context.focusedWindow : nil, windows: windows,
                            visibleWindowInfo: visibleInfo, screen: context.screens.currentScreen,
                            visibleFrame: context.screens.currentScreen.adjustedVisibleFrame())
     }
@@ -224,7 +239,9 @@ class MultiWindowManager {
 
         let currentSpaceWindows = selectCurrentSpaceWindows(snapshots, visibleWindowInfo: visibleWindowInfo,
                                                            frameTolerance: 1 / max(1, screen.backingScaleFactor))
-        let ordered = orderForBandTiling(currentSpaceWindows, direction: direction)
+        let kind: DynamicLayout.Kind = direction == .rows ? .rows : .columns
+        let ordered = DynamicLayoutManager.shared.ordered(
+            orderForBandTiling(currentSpaceWindows, direction: direction), kind: kind, screen: screen)
         guard !ordered.isEmpty else { return }
 
         let bounds = BackingPixelBounds(screen.convertRectToBacking(visibleFrame))
@@ -245,22 +262,31 @@ class MultiWindowManager {
         applyBandTiling(ordered, bounds: bounds, direction: direction, constraints: constraints,
                         pointFrame: { screen.convertRectFromBacking($0).screenFlipped },
                         backingFrame: { screen.convertRectToBacking($0.screenFlipped) })
+        let apps = Set(ordered.compactMap { $0.element.bundleIdentifier })
+        DynamicLayoutManager.shared.remember(ordered, kind: kind, app: apps.count == 1 ? apps.first : nil, screen: screen)
     }
 
     static func applyBandTiling(_ ordered: [TilingWindow],
                                 bounds: BackingPixelBounds,
                                 direction: BandDirection,
                                 constraints initialConstraints: [BandConstraint],
+                                weights: [Double]? = nil,
                                 pointFrame: (CGRect) -> CGRect,
                                 backingFrame: (CGRect) -> CGRect) {
         var constraints = initialConstraints
         let totalPixels = bounds.extent(direction)
         var lastRequestedFrames = [CGRect?](repeating: nil, count: ordered.count)
+        func allocate(_ limits: [BandConstraint]) -> (lengths: [Int], feasible: Bool) {
+            let balanced = balancedBandLengths(totalPixels: totalPixels, constraints: limits)
+            guard let weights, weights.count == limits.count else { return balanced }
+            return (DynamicLayout.lengths(total: totalPixels, weights: weights,
+                minimums: limits.map(\.lowerBound), maximums: limits.map(\.upperBound)), balanced.feasible)
+        }
 
         // A clamp changes the remaining targets now and earlier targets on the
         // next pass. Avoid repeating a frame request that was already made.
         for _ in 0..<(2 * ordered.count + 1) {
-            var allocation = balancedBandLengths(totalPixels: totalPixels, constraints: constraints)
+            var allocation = allocate(constraints)
             var frames = backingBandRects(bounds: bounds, lengths: allocation.lengths, direction: direction)
             var learnedConstraint = false
             var infeasibleConstraint = false
@@ -279,8 +305,7 @@ class MultiWindowManager {
                             if revised != constraints[index] {
                                 var candidateConstraints = constraints
                                 candidateConstraints[index] = revised
-                                let candidateAllocation = balancedBandLengths(totalPixels: totalPixels,
-                                                                              constraints: candidateConstraints)
+                                let candidateAllocation = allocate(candidateConstraints)
                                 if candidateAllocation.feasible {
                                     constraints = candidateConstraints
                                     allocation = candidateAllocation
@@ -491,6 +516,7 @@ class MultiWindowManager {
     }
 
     private static func tileWindow(_ w: AccessibilityElement, screenFrame: CGRect, size: CGSize, column: Int, row: Int) {
+        DynamicLayoutManager.shared.release(w)
         var rect = w.frame
 
         // TODO: save previous position in history
@@ -567,6 +593,7 @@ class MultiWindowManager {
     }
 
     private static func cascadeWindow(_ w: AccessibilityElement, screenFrame: CGRect, delta: CGFloat, index: Int, cascadeParameters: CascadeActiveAppParameters? = nil) {
+        DynamicLayoutManager.shared.release(w)
         var rect = w.frame
 
         // TODO: save previous position in history
