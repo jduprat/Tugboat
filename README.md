@@ -5,7 +5,7 @@
 Tugboat is a window manager for macOS that does two things:
 
 1. **Places windows from the keyboard.** Halves, thirds, quarters, maximize, move between displays, snap areas when you drag a window to a screen edge. This half is [Rectangle](https://github.com/rxhanson/Rectangle), which Tugboat is forked from.
-2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. *Saving and restoring by hand works today; automatic capture and restore are next, see the roadmap.*
+2. **Remembers where your windows go.** For every set of displays you use (laptop alone, laptop plus the office monitor, the two displays at home) Tugboat keeps track of where each window lives and puts it back when you dock, undock, wake the machine, or relaunch an app. The idea, down to storing a separate set of windows per display configuration, comes from [Stay](https://cordlessdog.com/stay/) by Cordless Dog, which has done this well since 2010; Stay is closed source, so none of its code is here, only the debt. *Saving and restoring by hand works today; automatic capture and restore are next, see the roadmap.*
 
 ## Status
 
