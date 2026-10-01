@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9824700822AF9B7D0037B409"
                BuildableName = "Tugboat.app"
-               BlueprintName = "Rectangle"
+               BlueprintName = "Tugboat"
                ReferencedContainer = "container:Tugboat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,7 +32,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
             BuildableName = "Tugboat.app"
-            BlueprintName = "Rectangle"
+            BlueprintName = "Tugboat"
             ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9824701A22AF9B7E0037B409"
-               BuildableName = "RectangleTests.xctest"
-               BlueprintName = "RectangleTests"
+               BuildableName = "TugboatTests.xctest"
+               BlueprintName = "TugboatTests"
                ReferencedContainer = "container:Tugboat.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
             BuildableName = "Tugboat.app"
-            BlueprintName = "Rectangle"
+            BlueprintName = "Tugboat"
             ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -82,7 +82,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9824700822AF9B7D0037B409"
             BuildableName = "Tugboat.app"
-            BlueprintName = "Rectangle"
+            BlueprintName = "Tugboat"
             ReferencedContainer = "container:Tugboat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

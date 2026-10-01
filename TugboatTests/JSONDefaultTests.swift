@@ -1,7 +1,7 @@
 /// JSONDefaultTests.swift
 
 import XCTest
-@testable import Rectangle
+@testable import Tugboat
 
 class JSONDefaultTests: XCTestCase {
 

@@ -70,7 +70,7 @@
 		9821403F22B3EBD900ABFB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821403E22B3EBD900ABFB3F /* AppDelegate.swift */; };
 		9821404322B3EBDA00ABFB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9821404222B3EBDA00ABFB3F /* Assets.xcassets */; };
 		9821404622B3EBDA00ABFB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9821404422B3EBDA00ABFB3F /* Main.storyboard */; };
-		9821405B22B3ECCA00ABFB3F /* RectangleLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9821403C22B3EBD900ABFB3F /* RectangleLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9821405B22B3ECCA00ABFB3F /* TugboatLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9821405E22B3ED3600ABFB3F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9821405D22B3ED3600ABFB3F /* ServiceManagement.framework */; };
 		9821406022B3EFB200ABFB3F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821405F22B3EFB200ABFB3F /* Defaults.swift */; };
 		9824700D22AF9B7D0037B409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9824700C22AF9B7D0037B409 /* AppDelegate.swift */; };
@@ -212,7 +212,7 @@
 			containerPortal = 9824700122AF9B7D0037B409 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9824700822AF9B7D0037B409;
-			remoteInfo = Rectangle;
+			remoteInfo = Tugboat;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -223,7 +223,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				9821405B22B3ECCA00ABFB3F /* RectangleLauncher.app in CopyFiles */,
+				9821405B22B3ECCA00ABFB3F /* TugboatLauncher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +271,8 @@
 		94E9B08D2C3B8D97004C7F41 /* MacTilingDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTilingDefaults.swift; sourceTree = "<group>"; };
 		94E9B08F2C3E4578004C7F41 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9698D1D9EE0180D7C4468304 /* TopCenterLeftTwelfthCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCenterLeftTwelfthCalculation.swift; sourceTree = "<group>"; };
-		9808018523D05C0B0077774A /* RectangleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RectangleRelease.entitlements; sourceTree = "<group>"; };
-		9808018623D05C1F0077774A /* RectangleLauncherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RectangleLauncherRelease.entitlements; sourceTree = "<group>"; };
+		9808018523D05C0B0077774A /* TugboatRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatRelease.entitlements; sourceTree = "<group>"; };
+		9808018623D05C1F0077774A /* TugboatLauncherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatLauncherRelease.entitlements; sourceTree = "<group>"; };
 		9818E00C28B59205004AA524 /* CompoundSnapArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSnapArea.swift; sourceTree = "<group>"; };
 		9818E00F28B59396004AA524 /* HalvesCompoundCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalvesCompoundCalculation.swift; sourceTree = "<group>"; };
 		9818E01128B59B64004AA524 /* ThirdsCompoundCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdsCompoundCalculation.swift; sourceTree = "<group>"; };
@@ -292,22 +292,22 @@
 		9821403222B38A1B00ABFB3F /* UpperLeftCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperLeftCalculation.swift; sourceTree = "<group>"; };
 		9821403422B38A2B00ABFB3F /* UpperRightCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperRightCalculation.swift; sourceTree = "<group>"; };
 		9821403622B3D16700ABFB3F /* MaximizeHeightCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximizeHeightCalculation.swift; sourceTree = "<group>"; };
-		9821403C22B3EBD900ABFB3F /* RectangleLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RectangleLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TugboatLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9821403E22B3EBD900ABFB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9821404222B3EBDA00ABFB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9821404522B3EBDA00ABFB3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9821404722B3EBDA00ABFB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9821404822B3EBDA00ABFB3F /* RectangleLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RectangleLauncher.entitlements; sourceTree = "<group>"; };
+		9821404822B3EBDA00ABFB3F /* TugboatLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TugboatLauncher.entitlements; sourceTree = "<group>"; };
 		9821405D22B3ED3600ABFB3F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9821405F22B3EFB200ABFB3F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		9821552627BFFB13002523EC /* Rectangle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rectangle-Bridging-Header.h"; sourceTree = "<group>"; };
-		9824700922AF9B7D0037B409 /* Rectangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rectangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9821552627BFFB13002523EC /* Tugboat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tugboat-Bridging-Header.h"; sourceTree = "<group>"; };
+		9824700922AF9B7D0037B409 /* Tugboat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tugboat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824700C22AF9B7D0037B409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9824701022AF9B7E0037B409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9824701322AF9B7E0037B409 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9824701522AF9B7E0037B409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9824701622AF9B7E0037B409 /* Rectangle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rectangle.entitlements; sourceTree = "<group>"; };
-		9824701B22AF9B7E0037B409 /* RectangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RectangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9824701622AF9B7E0037B409 /* Tugboat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tugboat.entitlements; sourceTree = "<group>"; };
+		9824701B22AF9B7E0037B409 /* TugboatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TugboatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824701F22AF9B7E0037B409 /* RectangleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTests.swift; sourceTree = "<group>"; };
 		9824702122AF9B7E0037B409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9824702A22AFA22E0037B409 /* AccessibilityWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityWindowController.swift; sourceTree = "<group>"; };
@@ -489,17 +489,17 @@
 			path = MultiWindow;
 			sourceTree = "<group>";
 		};
-		9821403D22B3EBD900ABFB3F /* RectangleLauncher */ = {
+		9821403D22B3EBD900ABFB3F /* TugboatLauncher */ = {
 			isa = PBXGroup;
 			children = (
-				9808018623D05C1F0077774A /* RectangleLauncherRelease.entitlements */,
+				9808018623D05C1F0077774A /* TugboatLauncherRelease.entitlements */,
 				9821403E22B3EBD900ABFB3F /* AppDelegate.swift */,
 				9821404222B3EBDA00ABFB3F /* Assets.xcassets */,
 				9821404422B3EBDA00ABFB3F /* Main.storyboard */,
 				9821404722B3EBDA00ABFB3F /* Info.plist */,
-				9821404822B3EBDA00ABFB3F /* RectangleLauncher.entitlements */,
+				9821404822B3EBDA00ABFB3F /* TugboatLauncher.entitlements */,
 			);
-			path = RectangleLauncher;
+			path = TugboatLauncher;
 			sourceTree = "<group>";
 		};
 		9821405C22B3ED3600ABFB3F /* Frameworks */ = {
@@ -675,9 +675,9 @@
 		9824700022AF9B7D0037B409 = {
 			isa = PBXGroup;
 			children = (
-				9824700B22AF9B7D0037B409 /* Rectangle */,
-				9824701E22AF9B7E0037B409 /* RectangleTests */,
-				9821403D22B3EBD900ABFB3F /* RectangleLauncher */,
+				9824700B22AF9B7D0037B409 /* Tugboat */,
+				9824701E22AF9B7E0037B409 /* TugboatTests */,
+				9821403D22B3EBD900ABFB3F /* TugboatLauncher */,
 				9824700A22AF9B7D0037B409 /* Products */,
 				9821405C22B3ED3600ABFB3F /* Frameworks */,
 			);
@@ -686,14 +686,14 @@
 		9824700A22AF9B7D0037B409 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9824700922AF9B7D0037B409 /* Rectangle.app */,
-				9824701B22AF9B7E0037B409 /* RectangleTests.xctest */,
-				9821403C22B3EBD900ABFB3F /* RectangleLauncher.app */,
+				9824700922AF9B7D0037B409 /* Tugboat.app */,
+				9824701B22AF9B7E0037B409 /* TugboatTests.xctest */,
+				9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9824700B22AF9B7D0037B409 /* Rectangle */ = {
+		9824700B22AF9B7D0037B409 /* Tugboat */ = {
 			isa = PBXGroup;
 			children = (
 				9824700C22AF9B7D0037B409 /* AppDelegate.swift */,
@@ -702,9 +702,9 @@
 				9824701222AF9B7E0037B409 /* Main.storyboard */,
 				9824701522AF9B7E0037B409 /* Info.plist */,
 				981F27D02340E3E1006CD263 /* InternetAccessPolicy.plist */,
-				9821552627BFFB13002523EC /* Rectangle-Bridging-Header.h */,
-				9808018523D05C0B0077774A /* RectangleRelease.entitlements */,
-				9824701622AF9B7E0037B409 /* Rectangle.entitlements */,
+				9821552627BFFB13002523EC /* Tugboat-Bridging-Header.h */,
+				9808018523D05C0B0077774A /* TugboatRelease.entitlements */,
+				9824701622AF9B7E0037B409 /* Tugboat.entitlements */,
 				9821405F22B3EFB200ABFB3F /* Defaults.swift */,
 				984EDB0E29A42ED200D119D2 /* LaunchOnLogin.swift */,
 				98C1008B2305F1FA006E5344 /* SubsequentExecutionMode.swift */,
@@ -739,10 +739,10 @@
 				982140EB22B7DB1A00ABFB3F /* AccessibilityAuthorization */,
 				982140EC22B7DB5700ABFB3F /* Utilities */,
 			);
-			path = Rectangle;
+			path = Tugboat;
 			sourceTree = "<group>";
 		};
-		9824701E22AF9B7E0037B409 /* RectangleTests */ = {
+		9824701E22AF9B7E0037B409 /* TugboatTests */ = {
 			isa = PBXGroup;
 			children = (
 				9824701F22AF9B7E0037B409 /* RectangleTests.swift */,
@@ -750,7 +750,7 @@
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
 				9824702122AF9B7E0037B409 /* Info.plist */,
 			);
-			path = RectangleTests;
+			path = TugboatTests;
 			sourceTree = "<group>";
 		};
 		985B9BFA22BE218C00A2E8F0 /* Popover */ = {
@@ -824,9 +824,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9821403B22B3EBD900ABFB3F /* RectangleLauncher */ = {
+		9821403B22B3EBD900ABFB3F /* TugboatLauncher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "RectangleLauncher" */;
+			buildConfigurationList = 9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "TugboatLauncher" */;
 			buildPhases = (
 				9821403822B3EBD900ABFB3F /* Sources */,
 				9821403922B3EBD900ABFB3F /* Frameworks */,
@@ -836,14 +836,14 @@
 			);
 			dependencies = (
 			);
-			name = RectangleLauncher;
-			productName = RectangleLauncher;
-			productReference = 9821403C22B3EBD900ABFB3F /* RectangleLauncher.app */;
+			name = TugboatLauncher;
+			productName = TugboatLauncher;
+			productReference = 9821403C22B3EBD900ABFB3F /* TugboatLauncher.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9824700822AF9B7D0037B409 /* Rectangle */ = {
+		9824700822AF9B7D0037B409 /* Tugboat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Rectangle" */;
+			buildConfigurationList = 9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Tugboat" */;
 			buildPhases = (
 				9824700522AF9B7D0037B409 /* Sources */,
 				9824700622AF9B7D0037B409 /* Frameworks */,
@@ -854,18 +854,18 @@
 			);
 			dependencies = (
 			);
-			name = Rectangle;
+			name = Tugboat;
 			packageProductDependencies = (
 				9877B63929C8AC0E00F02D74 /* MASShortcut */,
 				9877B63C29C8AC3600F02D74 /* Sparkle */,
 			);
-			productName = Rectangle;
-			productReference = 9824700922AF9B7D0037B409 /* Rectangle.app */;
+			productName = Tugboat;
+			productReference = 9824700922AF9B7D0037B409 /* Tugboat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9824701A22AF9B7E0037B409 /* RectangleTests */ = {
+		9824701A22AF9B7E0037B409 /* TugboatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9824702722AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "RectangleTests" */;
+			buildConfigurationList = 9824702722AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "TugboatTests" */;
 			buildPhases = (
 				9824701722AF9B7E0037B409 /* Sources */,
 				9824701822AF9B7E0037B409 /* Frameworks */,
@@ -876,9 +876,9 @@
 			dependencies = (
 				9824701D22AF9B7E0037B409 /* PBXTargetDependency */,
 			);
-			name = RectangleTests;
-			productName = RectangleTests;
-			productReference = 9824701B22AF9B7E0037B409 /* RectangleTests.xctest */;
+			name = TugboatTests;
+			productName = TugboatTests;
+			productReference = 9824701B22AF9B7E0037B409 /* TugboatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -921,7 +921,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9824700422AF9B7D0037B409 /* Build configuration list for PBXProject "Rectangle" */;
+			buildConfigurationList = 9824700422AF9B7D0037B409 /* Build configuration list for PBXProject "Tugboat" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -968,9 +968,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9824700822AF9B7D0037B409 /* Rectangle */,
-				9824701A22AF9B7E0037B409 /* RectangleTests */,
-				9821403B22B3EBD900ABFB3F /* RectangleLauncher */,
+				9824700822AF9B7D0037B409 /* Tugboat */,
+				9824701A22AF9B7E0037B409 /* TugboatTests */,
+				9821403B22B3EBD900ABFB3F /* TugboatLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -1218,7 +1218,7 @@
 /* Begin PBXTargetDependency section */
 		9824701D22AF9B7E0037B409 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9824700822AF9B7D0037B409 /* Rectangle */;
+			target = 9824700822AF9B7D0037B409 /* Tugboat */;
 			targetProxy = 9824701C22AF9B7E0037B409 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1249,7 +1249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RectangleLauncher/RectangleLauncher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TugboatLauncher/TugboatLauncher.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1257,7 +1257,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = RectangleLauncher/Info.plist;
+				INFOPLIST_FILE = TugboatLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1265,7 +1265,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher;
-				PRODUCT_MODULE_NAME = RectangleLauncher;
+				PRODUCT_MODULE_NAME = TugboatLauncher;
 				PRODUCT_NAME = TugboatLauncher;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1278,7 +1278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RectangleLauncher/RectangleLauncherRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TugboatLauncher/TugboatLauncherRelease.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1286,7 +1286,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = RectangleLauncher/Info.plist;
+				INFOPLIST_FILE = TugboatLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1294,7 +1294,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.TugboatLauncher;
-				PRODUCT_MODULE_NAME = RectangleLauncher;
+				PRODUCT_MODULE_NAME = TugboatLauncher;
 				PRODUCT_NAME = TugboatLauncher;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1437,7 +1437,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Rectangle/Rectangle.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Tugboat/Tugboat.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1445,7 +1445,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				INFOPLIST_FILE = Rectangle/Info.plist;
+				INFOPLIST_FILE = Tugboat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1453,11 +1453,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
-				PRODUCT_MODULE_NAME = Rectangle;
+				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Rectangle/Rectangle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tugboat/Tugboat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1470,7 +1470,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Rectangle/RectangleRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Tugboat/TugboatRelease.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -1479,7 +1479,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Rectangle/Info.plist;
+				INFOPLIST_FILE = Tugboat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1487,11 +1487,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
-				PRODUCT_MODULE_NAME = Rectangle;
+				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Rectangle/Rectangle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tugboat/Tugboat-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1506,7 +1506,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = RectangleTests/Info.plist;
+				INFOPLIST_FILE = TugboatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1531,7 +1531,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = RectangleTests/Info.plist;
+				INFOPLIST_FILE = TugboatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1549,7 +1549,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "RectangleLauncher" */ = {
+		9821405422B3EBDA00ABFB3F /* Build configuration list for PBXNativeTarget "TugboatLauncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9821405522B3EBDA00ABFB3F /* Debug */,
@@ -1558,7 +1558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9824700422AF9B7D0037B409 /* Build configuration list for PBXProject "Rectangle" */ = {
+		9824700422AF9B7D0037B409 /* Build configuration list for PBXProject "Tugboat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9824702222AF9B7E0037B409 /* Debug */,
@@ -1567,7 +1567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Rectangle" */ = {
+		9824702422AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "Tugboat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9824702522AF9B7E0037B409 /* Debug */,
@@ -1576,7 +1576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9824702722AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "RectangleTests" */ = {
+		9824702722AF9B7E0037B409 /* Build configuration list for PBXNativeTarget "TugboatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9824702822AF9B7E0037B409 /* Debug */,

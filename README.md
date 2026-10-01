@@ -9,7 +9,7 @@ Tugboat is a window manager for macOS that does two things:
 
 ## Status
 
-Early fork. The placement half is Rectangle 1.100 with a new name, icon, and bundle identifier. The arrangements half is being built in `Rectangle/Arrangements/`.
+Early fork. The placement half is Rectangle 1.100 with a new name, icon, and bundle identifier. The arrangements half is being built in `Tugboat/Arrangements/`.
 
 ## System requirements
 

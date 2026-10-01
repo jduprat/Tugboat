@@ -12,7 +12,7 @@ Open an issue describing the problem you are trying to solve before writing code
 
 ## Coding Style
 
-Match the existing style. Keep Tugboat-specific code in its own directories (for example `Rectangle/Arrangements/`) and keep edits to files shared with Rectangle small, so merges from upstream stay cheap.
+Match the existing style. Keep Tugboat-specific code in its own directories (for example `Tugboat/Arrangements/`) and keep edits to files shared with Rectangle small, so merges from upstream stay cheap.
 
 ## License
 

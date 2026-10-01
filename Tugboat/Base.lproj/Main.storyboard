@@ -215,7 +215,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Rectangle" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Tugboat" customModuleProvider="target">
                     <connections>
                         <outlet property="ignoreMenuItem" destination="D99-0O-MB6" id="iBN-Bc-ds7"/>
                         <outlet property="mainStatusMenu" destination="6wc-Rn-2EG" id="UWt-be-ZH1"/>
@@ -318,7 +318,7 @@
         <!--Prefs View Controller-->
         <scene sceneID="vcH-Iu-BJm">
             <objects>
-                <viewController storyboardIdentifier="PrefsViewController" showSeguePresentationStyle="single" id="zlF-FD-XEr" customClass="PrefsViewController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrefsViewController" showSeguePresentationStyle="single" id="zlF-FD-XEr" customClass="PrefsViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="8J7-VI-pmF">
                         <rect key="frame" x="0.0" y="0.0" width="850" height="686"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2682,7 +2682,7 @@
         <!--Settings View Controller-->
         <scene sceneID="tRx-9g-sUa">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="yhc-gS-h02" customClass="SettingsViewController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="yhc-gS-h02" customClass="SettingsViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="mTk-eQ-4uf">
                         <rect key="frame" x="0.0" y="0.0" width="850" height="627"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3002,7 +3002,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <textField focusRingType="none" horizontalHuggingPriority="200" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9VW-Hc-lh2" customClass="AutoSaveFloatField" customModule="Rectangle" customModuleProvider="target">
+                                                            <textField focusRingType="none" horizontalHuggingPriority="200" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9VW-Hc-lh2" customClass="AutoSaveFloatField" customModule="Tugboat" customModuleProvider="target">
                                                                 <rect key="frame" x="102" y="0.0" width="87" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="87" id="1tz-tU-hh9"/>
@@ -3462,7 +3462,7 @@
         <!--Window Controller-->
         <scene sceneID="lEt-lj-rQC">
             <objects>
-                <windowController storyboardIdentifier="AccessibilityWindowController" id="GjB-3W-g3G" customClass="AccessibilityWindowController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="AccessibilityWindowController" id="GjB-3W-g3G" customClass="AccessibilityWindowController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Authorize Tugboat" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="9JD-tZ-7jf">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
@@ -3483,7 +3483,7 @@
         <!--Accessibility View Controller-->
         <scene sceneID="yOZ-qp-n9s">
             <objects>
-                <viewController id="5D9-0a-Mbi" customClass="AccessibilityViewController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5D9-0a-Mbi" customClass="AccessibilityViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1ZR-Nv-NGc">
                         <rect key="frame" x="0.0" y="0.0" width="290" height="406"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3759,7 +3759,7 @@ DQ
         <!--Welcome View Controller-->
         <scene sceneID="fYD-GK-ZAf">
             <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" id="suu-55-jFR" customClass="WelcomeViewController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="suu-55-jFR" customClass="WelcomeViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="BAr-aA-3ku">
                         <rect key="frame" x="0.0" y="0.0" width="290" height="328"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3875,7 +3875,7 @@ DQ
         <!--Snap Area View Controller-->
         <scene sceneID="WiD-Tk-7pr">
             <objects>
-                <viewController storyboardIdentifier="HookshotConfigViewController" id="t2d-Q7-RLy" customClass="SnapAreaViewController" customModule="Rectangle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HookshotConfigViewController" id="t2d-Q7-RLy" customClass="SnapAreaViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="yfQ-gV-dm5">
                         <rect key="frame" x="0.0" y="0.0" width="850" height="670"/>
                         <autoresizingMask key="autoresizingMask"/>

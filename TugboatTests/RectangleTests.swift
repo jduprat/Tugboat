@@ -3,7 +3,7 @@
 import Carbon.HIToolbox
 import MASShortcut
 import XCTest
-@testable import Rectangle
+@testable import Tugboat
 
 class RectangleTests: XCTestCase {
 
