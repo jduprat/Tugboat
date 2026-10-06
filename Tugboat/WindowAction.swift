@@ -758,6 +758,14 @@ enum WindowAction: Int, Codable {
         }
     }
 
+    /// Vector artwork for enlarged shortcut previews, separate from the
+    /// pixel-aligned menu icons below.
+    var previewImage: NSImage {
+        NSImage(named: "\(name)PreviewTemplate")
+            ?? NSImage(systemSymbolName: "macwindow", accessibilityDescription: displayName)
+            ?? NSImage()
+    }
+
     var image: NSImage {
         switch self {
         case .leftHalf: return NSImage(imageLiteralResourceName: "leftHalfTemplate")

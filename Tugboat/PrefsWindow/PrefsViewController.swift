@@ -330,7 +330,7 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         actionChoices = commands.filter { section(for: $0) == section(for: draft.command) }
         actionPicker.removeAllItems(); actionPicker.addItems(withTitles: actionChoices.map(\.title))
         actionPicker.selectItem(at: actionChoices.firstIndex(where: { $0.id == draft.command.id }) ?? 0)
-        preview.image = draft.command.windowAction?.image ?? NSImage(systemSymbolName: draft.command.family == .record ? "square.and.arrow.down" : "rectangle.on.rectangle", accessibilityDescription: draft.command.title)
+        preview.image = draft.command.windowAction?.previewImage ?? NSImage(systemSymbolName: draft.command.family == .record ? "square.and.arrow.down" : "rectangle.on.rectangle", accessibilityDescription: draft.command.title)
         summary.stringValue = draft.command.summary
         options.configure(action: draft.command.windowAction, defaultsKey: draft.command.id)
         removeButton.isEnabled = selectedID != newID
