@@ -93,5 +93,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Publish Tugboat Release"
+               scriptText = "exec /usr/bin/python3 &quot;${SRCROOT}/scripts/release-from-archive.py&quot; &quot;${ARCHIVE_PATH}&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "9824700822AF9B7D0037B409"
+                     BuildableName = "Tugboat.app"
+                     BlueprintName = "Tugboat"
+                     ReferencedContainer = "container:Tugboat.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>

@@ -3,10 +3,9 @@
   The Sparkle feed Tugboat checks for updates, served from
   https://raw.githubusercontent.com/jduprat/Tugboat/main/appcast.xml
 
-  It is empty until the first release: a feed with no items means "no update
-  available", where a missing file means "an error occurred in retrieving update
-  information". The release workflow regenerates this file on every v* tag and
-  commits it back to main, so do not edit the items by hand.
+  The local Xcode Archive release helper invokes the feed-signing workflow
+  after publishing a notarized DMG. That workflow regenerates this file and
+  commits it to main, so do not edit the items by hand.
 -->
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>

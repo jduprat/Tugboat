@@ -1,0 +1,86 @@
+name: Publish Sparkle feed
+run-name: Publish Sparkle feed for ${{ inputs.tag }}
+
+# The local Archive helper invokes this after publishing a notarized DMG.
+# Apple signing and notarization happen on the release Mac; this job only
+# uses the existing Sparkle key to publish update metadata.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published Tugboat version tag
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_27.0.app/Contents/Developer
+  DERIVED_DATA: build/DerivedData
+
+jobs:
+  appcast:
+    runs-on: xcode-27
+    steps:
+      - name: Checkout update feed
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download and verify notarized release
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Expected a release tag such as v0.2.1." >&2
+            exit 1
+          fi
+          VERSION="${TAG#v}"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          mkdir -p build/archives
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "Tugboat-$VERSION.dmg" --dir build/archives
+          DMG="build/archives/Tugboat-$VERSION.dmg"
+          hdiutil verify "$DMG"
+          codesign --verify --verbose=2 "$DMG"
+          xcrun stapler validate "$DMG"
+          spctl --assess --type open --context context:primary-signature --verbose=4 "$DMG"
+
+      - name: Resolve Sparkle tools
+        run: |
+          xcodebuild -resolvePackageDependencies -project Tugboat.xcodeproj -scheme Tugboat \
+            -derivedDataPath "$DERIVED_DATA"
+
+      - name: Sign update and regenerate appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          umask 077
+          TOOL="$DERIVED_DATA/SourcePackages/artifacts/sparkle/Sparkle/bin/generate_appcast"
+          test -x "$TOOL"
+          test -n "$SPARKLE_PRIVATE_KEY"
+          KEYFILE="$RUNNER_TEMP/tugboat-sparkle-key"
+          trap 'rm -f "$KEYFILE"' EXIT
+          printf '%s' "$SPARKLE_PRIVATE_KEY" > "$KEYFILE"
+          cp appcast.xml build/archives/appcast.xml
+          "$TOOL" build/archives \
+            --ed-key-file "$KEYFILE" \
+            --download-url-prefix "https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/" \
+            --link "https://github.com/$GITHUB_REPOSITORY" \
+            --full-release-notes-url "https://github.com/$GITHUB_REPOSITORY/releases" \
+            -o appcast.xml
+
+      - name: Publish appcast
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add appcast.xml
+          if git diff --cached --quiet; then
+            echo "The update feed is already current."
+          else
+            git commit -m "Publish appcast for $TAG"
+            git push origin HEAD:main
+          fi

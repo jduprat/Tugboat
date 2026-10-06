@@ -40,6 +40,7 @@ tree_state=clean
 if [[ -n $working_tree_status ]]; then
     tree_state=dirty
 fi
+source_matches_commit=$(/usr/bin/python3 "$repository_root/scripts/build-source-state.py" "$repository_root" "$commit_id")
 
 output_directory=$(/usr/bin/dirname "$output_plist")
 /bin/mkdir -p "$output_directory"
@@ -51,6 +52,7 @@ trap '/bin/rm -f "$temporary_plist"' EXIT
 /usr/bin/plutil -insert TugboatGitCommit -string "$commit_id" -s "$temporary_plist"
 /usr/bin/plutil -insert TugboatGitBranch -string "$branch_name" -s "$temporary_plist"
 /usr/bin/plutil -insert TugboatGitTreeState -string "$tree_state" -s "$temporary_plist"
+/usr/bin/plutil -insert TugboatGitSourceMatchesCommit -bool "$source_matches_commit" -s "$temporary_plist"
 
 # Preserve the output timestamp when metadata is unchanged, so an incremental
 # build does not reprocess and re-sign the bundle just because Git was checked.
