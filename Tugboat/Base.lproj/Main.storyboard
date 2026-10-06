@@ -333,9 +333,9 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="5pc-CV-2b9" sceneMemberID="viewController">
                     <tabViewItems>
+                        <tabViewItem label="General" image="toolbarSettingsTemplate" id="gtf-PD-IHm"/>
                         <tabViewItem label="Shortcuts" image="keyboardToolbarTemplate" id="uw2-9W-2jq"/>
                         <tabViewItem label="Snap Areas" image="snapAreaTemplate" id="Fap-R2-Aj6"/>
-                        <tabViewItem label="General" image="toolbarSettingsTemplate" id="gtf-PD-IHm"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="Tya-24-HNL">
@@ -348,9 +348,9 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="Tya-24-HNL" id="TDu-Z5-7uP"/>
+                        <segue destination="yhc-gS-h02" kind="relationship" relationship="tabItems" id="LMQ-qb-ja6"/>
                         <segue destination="zlF-FD-XEr" kind="relationship" relationship="tabItems" id="Q5z-Um-3xn"/>
                         <segue destination="t2d-Q7-RLy" kind="relationship" relationship="tabItems" id="Tnv-BY-sch"/>
-                        <segue destination="yhc-gS-h02" kind="relationship" relationship="tabItems" id="LMQ-qb-ja6"/>
                     </connections>
                 </tabViewController>
                 <customObject id="CxR-5G-Y25" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
