@@ -1,9 +1,9 @@
 name: Release
 
-# Cut a release by pushing a tag such as v0.2.0. The job builds an ad-hoc signed
-# Release archive, wraps it in a DMG, publishes it as a GitHub Release, signs it
-# with the Sparkle EdDSA key, regenerates appcast.xml and commits the appcast to
-# main. Running apps then pick the update up from
+# Explicitly request a release by pushing a tag such as v0.2.0. The job runs
+# tests before building an ad-hoc signed Release archive, wrapping it in a DMG,
+# publishing it as a GitHub Release, signing the update with the Sparkle EdDSA
+# key, and committing the regenerated appcast.xml to main. Running apps use
 # https://raw.githubusercontent.com/jduprat/Tugboat/main/appcast.xml
 
 on:
@@ -14,6 +14,7 @@ permissions:
   contents: write
 
 env:
+  DEVELOPER_DIR: /Applications/Xcode_27.0.app/Contents/Developer
   XCODE_PROJECT: Tugboat.xcodeproj
   XCODE_SCHEME: Tugboat
   DERIVED_DATA: build/DerivedData
@@ -21,7 +22,8 @@ env:
 
 jobs:
   release:
-    runs-on: macos-26
+    # The macOS 27 menu-image API requires the Xcode 27 SDK.
+    runs-on: xcode-27
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +37,13 @@ jobs:
           echo "TAG=$TAG" >> "$GITHUB_ENV"
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           echo "Building Tugboat $VERSION"
+
+      - name: Test
+        run: |
+          xcodebuild -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" \
+            -configuration Debug -destination 'platform=macOS' \
+            -derivedDataPath "$DERIVED_DATA" -parallel-testing-enabled NO \
+            test CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM=""
 
       - name: Archive
         run: |

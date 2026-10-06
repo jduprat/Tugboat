@@ -89,7 +89,7 @@ Hidden settings are changed from the terminal with `defaults write io.github.jdu
 
 ## Releasing
 
-Push a tag such as `v0.2.0`. The release workflow builds the app, publishes the DMG as a GitHub Release, signs it with the Sparkle key held in the `SPARKLE_PRIVATE_KEY` repository secret, and commits the regenerated `appcast.xml` to main, which is the feed running copies check.
+Testing is normally done locally; ordinary pushes and pull requests do not run GitHub workflows. When a release is explicitly requested, push a tag such as `v0.2.0`. The release workflow runs tests first and continues only if they pass. It then builds the app, publishes the DMG as a GitHub Release, signs it with the Sparkle key held in the `SPARKLE_PRIVATE_KEY` repository secret, and commits the regenerated `appcast.xml` to main, which is the feed running copies check.
 
 ## Roadmap
 
