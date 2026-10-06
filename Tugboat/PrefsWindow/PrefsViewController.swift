@@ -17,6 +17,7 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     private let categoryPicker = NSPopUpButton()
     private let actionPicker = NSPopUpButton()
     private let presetPicker = NSPopUpButton()
+    private let additionalMenuSizes = NSButton(checkboxWithTitle: NSLocalizedString("Show additional sizes in menu", tableName: "Main", value: "", comment: ""), target: nil, action: nil)
     private let heading = NSTextField(labelWithString: "Shortcut")
     private let summary = NSTextField(wrappingLabelWithString: "")
     private let conflictLabel = NSTextField(wrappingLabelWithString: "")
@@ -58,8 +59,8 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
             self.refreshConflicts()
             self.table.reloadData()
         }
-        for name in [UserDefaults.didChangeNotification, .configImported, .changeDefaults, .allowAnyShortcut] {
-            observers.append(NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in
+        for name in [UserDefaults.didChangeNotification, .configImported, .changeDefaults, .allowAnyShortcut, .stackBadgeChanged] {
+            observers.append(NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { [weak self] notification in
                 guard let self, self.isViewLoaded else { return }
                 if let id = self.selectedID, !self.dirtyDrafts.contains(id),
                    let command = self.originalCommand, let draft = self.drafts[id],
@@ -68,6 +69,11 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
                     if !self.recorder.isRecording { self.renderEditor() }
                 }
                 self.reloadList()
+                self.additionalMenuSizes.state = Defaults.showAdditionalSizesInMenu.userEnabled ? .on : .off
+                if notification.name == .stackBadgeChanged || notification.name == .configImported,
+                   let draft = self.currentDraft, draft.command.defaultsKey == StackBadgeManager.toggleDefaultsKey {
+                    self.options.configure(action: draft.command.windowAction, defaultsKey: draft.command.defaultsKey)
+                }
                 self.recorder.shortcutValidator = Defaults.allowAnyShortcut.enabled ? PassthroughShortcutValidator() : EditorShortcutValidator()
                 self.refreshConflicts()
             })
@@ -76,7 +82,14 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         if let first = rows.first { select(first.id) } else { addShortcut(nil) }
     }
 
-    override func viewWillAppear() { super.viewWillAppear(); reloadList() }
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        reloadList()
+        additionalMenuSizes.state = Defaults.showAdditionalSizesInMenu.userEnabled ? .on : .off
+        if let draft = currentDraft {
+            options.configure(action: draft.command.windowAction, defaultsKey: draft.command.defaultsKey)
+        }
+    }
     override func viewWillDisappear() { recorder.isRecording = false; super.viewWillDisappear() }
     deinit {
         recorder.isRecording = false
@@ -139,7 +152,13 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         countLabel.font = .systemFont(ofSize: 11)
         countLabel.textColor = .secondaryLabelColor
         let footer = horizontal([countLabel, NSView(), presetPicker])
-        for child in [header, search, listScroll, footer] {
+        additionalMenuSizes.controlSize = .small
+        additionalMenuSizes.font = .systemFont(ofSize: 11)
+        additionalMenuSizes.state = Defaults.showAdditionalSizesInMenu.userEnabled ? .on : .off
+        additionalMenuSizes.target = self
+        additionalMenuSizes.action = #selector(toggleAdditionalMenuSizes(_:))
+        additionalMenuSizes.toolTip = "Show more sizes and tiling commands inside the Window Actions submenu. All actions are always available here."
+        for child in [header, search, listScroll, footer, additionalMenuSizes] {
             child.translatesAutoresizingMaskIntoConstraints = false
             left.addSubview(child)
         }
@@ -154,7 +173,10 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
             listScroll.topAnchor.constraint(equalTo: search.bottomAnchor, constant: 7),
             listScroll.bottomAnchor.constraint(equalTo: footer.topAnchor, constant: -6),
             footer.leadingAnchor.constraint(equalTo: header.leadingAnchor), footer.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-            footer.bottomAnchor.constraint(equalTo: left.bottomAnchor, constant: -10)
+            footer.bottomAnchor.constraint(equalTo: additionalMenuSizes.topAnchor, constant: -8),
+            additionalMenuSizes.leadingAnchor.constraint(equalTo: header.leadingAnchor),
+            additionalMenuSizes.trailingAnchor.constraint(lessThanOrEqualTo: header.trailingAnchor),
+            additionalMenuSizes.bottomAnchor.constraint(equalTo: left.bottomAnchor, constant: -10)
         ])
 
         heading.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -251,6 +273,11 @@ class PrefsViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         return horizontal([label, control])
     }
     private var originalCommand: Command? { ShortcutEditorModel.catalog.first { $0.id == selectedID } }
+    @objc private func toggleAdditionalMenuSizes(_ sender: NSButton) {
+        Defaults.showAdditionalSizesInMenu.enabled = sender.state == .on
+        Notification.Name.showAdditionalSizesInMenuChanged.post()
+    }
+
     private var currentDraft: Draft? { selectedID.flatMap { drafts[$0] } }
 
     private func reloadList() {

@@ -8455,9 +8455,6 @@
         }
       }
     },
-    "After Tugboat maximizes or almost maximizes a window, executing the same action again moves the window back to its previous size and position." : {
-
-    },
     "agt-UL-0e3.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Use Default\"; ObjectID = \"agt-UL-0e3\";",
       "extractionState" : "manual",
@@ -10289,6 +10286,7 @@
       }
     },
     "Bottom Center Left Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -10305,6 +10303,7 @@
       }
     },
     "Bottom Center Right Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -10337,6 +10336,7 @@
       }
     },
     "Bottom Left Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -10353,6 +10353,7 @@
       }
     },
     "Bottom Right Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -10547,6 +10548,7 @@
       }
     },
     "Bottom Third" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -10563,6 +10565,7 @@
       }
     },
     "Bottom Two Thirds" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -16274,7 +16277,7 @@
     },
     "Ext-Set-Cel.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Extras\"; ObjectID = \"Ext-Set-Cel\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19907,6 +19910,7 @@
 
     },
     "Grid Positions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -20954,9 +20958,6 @@
         }
       }
     },
-    "Half actions preserve the window's size on the other axis" : {
-
-    },
     "heT-W6-Fyf.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Double-click window title bar to maximize/restore\"; ObjectID = \"heT-W6-Fyf\";",
       "extractionState" : "extracted_with_value",
@@ -21987,6 +21988,7 @@
       }
     },
     "Horizontal (L/R, %)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -27512,9 +27514,6 @@
         }
       }
     },
-    "Left Half then Top Half moves the window to the top left quarter; the action for the opposite edge expands it back." : {
-
-    },
     "Left or right side" : {
       "localizations" : {
         "ar" : {
@@ -29482,6 +29481,7 @@
       }
     },
     "Middle Third" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -30892,6 +30892,7 @@
       }
     },
     "Ninths (3×3)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -32580,9 +32581,6 @@
           }
         }
       }
-    },
-    "Offset window position on overlap" : {
-
     },
     "ogc-rX-tC1.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Loosen\"; ObjectID = \"ogc-rX-tC1\";",
@@ -34318,6 +34316,7 @@
 
     },
     "Press the shortcut repeatedly to cycle through all positions in the grid." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -37247,9 +37246,6 @@
         }
       }
     },
-    "Repeated Maximize restores the previous size and position" : {
-
-    },
     "Resize adjacent windows when cycling side or corner shortcuts" : {
 
     },
@@ -38677,10 +38673,8 @@
         }
       }
     },
-    "Show stacked window list on hover" : {
-
-    },
     "Side Split Ratio" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -38885,6 +38879,7 @@
       }
     },
     "Sixteenths (4×4)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -40832,7 +40827,7 @@
       }
     },
     "tileActiveApp.title" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -41407,10 +41402,8 @@
     "Toggle Todo" : {
 
     },
-    "Toggle window list" : {
-
-    },
     "Top Center Left Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -41427,6 +41420,7 @@
       }
     },
     "Top Center Right Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -41459,6 +41453,7 @@
       }
     },
     "Top Left Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -41475,6 +41470,7 @@
       }
     },
     "Top Right Eighth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -41686,6 +41682,7 @@
       }
     },
     "Top Third" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -41702,6 +41699,7 @@
       }
     },
     "Top Two Thirds" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -42290,6 +42288,7 @@
       }
     },
     "Twelfths (4×3)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -44239,6 +44238,7 @@
       }
     },
     "Vertical (T/B, %)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {

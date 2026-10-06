@@ -41,6 +41,14 @@ final class ShortcutOptionsView: NSView {
             sidebarOptions()
             return
         }
+        if defaultsKey == StackBadgeManager.toggleDefaultsKey {
+            heading("Shared window list settings")
+            check("Show stacked window list on hover", preference: Defaults.stackBadge) {
+                Notification.Name.stackBadgeChanged.post()
+            }
+            note("The shortcut toggles this setting. Hover over overlapping windows to choose one from the list.")
+            return
+        }
         guard let action = action else {
             note("This command has no additional behavior settings.")
             return

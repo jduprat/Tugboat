@@ -1004,27 +1004,6 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bdJ-In-eB6">
-                                                <rect key="frame" x="0.0" y="0.0" width="500" height="24"/>
-                                                <subviews>
-                                                    <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ext-Set-Btn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="24"/>
-                                                        <buttonCell key="cell" type="push" title="Extras" bezelStyle="rounded" image="ellipsis.viewfinder" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ext-Set-Cel">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="showExtraSettings:" target="yhc-gS-h02" id="Ext-Set-Act"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="999" constant="500" id="Db3-zB-dtQ"/>
@@ -1054,10 +1033,8 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -1109,7 +1086,6 @@
                         <outlet property="cycleSizesView" destination="er1-EQ-YIF" id="yHn-9t-gqI"/>
                         <outlet property="cycleSizesViewHeightConstraint" destination="IXv-8o-a6i" id="zjD-0U-P8y"/>
                         <outlet property="doubleClickTitleBarCheckbox" destination="hB7-uu-XeP" id="eNC-NI-Wmg"/>
-                        <outlet property="extraSettingsButton" destination="Ext-Set-Btn" id="JSL-Xe-nhx"/>
                         <outlet property="gapLabel" destination="jd8-SJ-lza" id="pqG-fr-nwW"/>
                         <outlet property="gapSlider" destination="O9H-ZD-bqL" id="H7T-4Y-g8e"/>
                         <outlet property="hideMenuBarIconCheckbox" destination="wBT-R4-q9s" id="bkO-zn-yAZ"/>

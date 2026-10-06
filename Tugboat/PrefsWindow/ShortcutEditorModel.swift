@@ -284,6 +284,9 @@ final class ShortcutEditorModel {
         case .tileColumns: return "Arrange visible windows in columns on this display."
         case .restore: return "Return the focused window to its previous position."
         case .specified: return "Resize the focused window using the configured dimensions."
+        case .topLeftNinth: return "Place the window in a ninth of the display. Repeat this shortcut to cycle through the 3 × 3 grid."
+        case .topLeftTwelfth: return "Place the window in a twelfth of the display. Repeat this shortcut to cycle through the 4 × 3 grid."
+        case .topLeftSixteenth: return "Place the window in a sixteenth of the display. Repeat this shortcut to cycle through the 4 × 4 grid."
         default:
             switch family(for: action) {
             case .place: return "Place the focused window in the selected screen region."
