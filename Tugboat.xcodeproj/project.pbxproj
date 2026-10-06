@@ -213,6 +213,8 @@
 		2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */; };
 		081369B2B1B84110ACF7A38B /* ShortcutOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */; };
 		B04000000000000000000002 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04000000000000000000001 /* SettingsWindow.swift */; };
+		B05000000000000000000002 /* WindowActivationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05000000000000000000001 /* WindowActivationCoordinator.swift */; };
+		B05000000000000000000004 /* WindowActivationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05000000000000000000003 /* WindowActivationCoordinatorTests.swift */; };
 		4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */; };
 
 		AD1200000000000000000002 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000001; };
@@ -444,6 +446,8 @@
 		F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutBehaviorSettingsTests.swift; sourceTree = "<group>"; };
 		2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutOptionsView.swift; sourceTree = "<group>"; };
 		B04000000000000000000001 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		B05000000000000000000001 /* WindowActivationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowActivationCoordinator.swift; sourceTree = "<group>"; };
+		B05000000000000000000003 /* WindowActivationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowActivationCoordinatorTests.swift; sourceTree = "<group>"; };
 		501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorViewTests.swift; sourceTree = "<group>"; };
 
 		AD1200000000000000000001 /* DynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
@@ -690,6 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				9824700C22AF9B7D0037B409 /* AppDelegate.swift */,
+				B05000000000000000000001 /* WindowActivationCoordinator.swift */,
 				9824701022AF9B7E0037B409 /* Assets.xcassets */,
 				482E9E412EB1528D00D7928A /* AppIcon.icon */,
 				9824701222AF9B7E0037B409 /* Main.storyboard */,
@@ -741,6 +746,7 @@
 			isa = PBXGroup;
 			children = (
 				9824701F22AF9B7E0037B409 /* RectangleTests.swift */,
+				B05000000000000000000003 /* WindowActivationCoordinatorTests.swift */,
 				944F25D02CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift */,
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
 				A7A0DE000000000000000B09 /* ArrangementTests.swift */,
@@ -1034,6 +1040,7 @@
 				9821403522B38A2B00ABFB3F /* UpperRightCalculation.swift in Sources */,
 				984EDB0F29A42ED200D119D2 /* LaunchOnLogin.swift in Sources */,
 				9824702F22AFA2E50037B409 /* AccessibilityAuthorization.swift in Sources */,
+				B05000000000000000000002 /* WindowActivationCoordinator.swift in Sources */,
 				988D066322EB4CA5004EABD7 /* FirstTwoThirdsCalculation.swift in Sources */,
 				D04CE30A27817A9F00BD47B3 /* MiddleRightNinthCalculation.swift in Sources */,
 				98BEFA482620DEDD00D9D54F /* NSImageExtension.swift in Sources */,
@@ -1222,6 +1229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9824702022AF9B7E0037B409 /* RectangleTests.swift in Sources */,
+				B05000000000000000000004 /* WindowActivationCoordinatorTests.swift in Sources */,
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,
 				A7A0DE000000000000000B0A /* ArrangementTests.swift in Sources */,

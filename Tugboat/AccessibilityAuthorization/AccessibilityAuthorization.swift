@@ -6,14 +6,13 @@ import Cocoa
 class AccessibilityAuthorization {
     
     private var accessibilityWindowController: NSWindowController?
+    weak var windowActivationCoordinator: WindowActivationCoordinator?
     
     public func checkAccessibility(completion: @escaping () -> Void) -> Bool {
         if !AXIsProcessTrusted() {
             
             accessibilityWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "AccessibilityWindowController") as? NSWindowController
-            
-            NSApp.activate(ignoringOtherApps: true)
-            accessibilityWindowController?.showWindow(self)
+            showAuthorizationWindow()
             pollAccessibility(completion: completion)
             return false
         } else {
@@ -34,10 +33,14 @@ class AccessibilityAuthorization {
     }
     
     func showAuthorizationWindow() {
-        if accessibilityWindowController?.window?.isMiniaturized == true {
-            accessibilityWindowController?.window?.deminiaturize(self)
+        if let window = accessibilityWindowController?.window {
+            windowActivationCoordinator?.register(window)
+            if window.isMiniaturized {
+                window.deminiaturize(self)
+            }
         }
         NSApp.activate(ignoringOtherApps: true)
+        accessibilityWindowController?.showWindow(self)
     }
     
 }

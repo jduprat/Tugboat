@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var stackBadgeManager: StackBadgeManager!
     private var titleBarManager: TitleBarManager!
     private var greenButtonManager: GreenButtonManager!
+    private var windowActivationCoordinator: WindowActivationCoordinator?
     
     private var prefsWindowController: NSWindowController?
     
@@ -48,6 +49,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Hosted unit tests must not register live shortcuts or change the user's settings.
         if NSClassFromString("XCTestCase") != nil { return }
+        windowActivationCoordinator = WindowActivationCoordinator()
+        accessibilityAuthorization.windowActivationCoordinator = windowActivationCoordinator
         // Check for updates automatically unless the user turns it off, and start with the recommended
         // shortcuts and repeat behavior instead of asking on first launch. Registered before any Default
         // is read; the keys are literals because touching Defaults here would cache the unregistered values.
@@ -265,6 +268,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             prefsWindowController?.window?.styleMask.insert(.resizable)
             prefsWindowController?.window?.minSize = NSSize(width: 800, height: 580)
             prefsWindowController?.window?.setFrameAutosaveName("TugboatPreferences")
+        }
+        if let window = prefsWindowController?.window {
+            windowActivationCoordinator?.register(window)
         }
         NSApp.activate(ignoringOtherApps: true)
         prefsWindowController?.showWindow(self)
