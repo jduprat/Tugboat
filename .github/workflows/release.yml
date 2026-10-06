@@ -1,9 +1,9 @@
 name: Release
 
 # Explicitly request a release by pushing a tag such as v0.2.0. The job runs
-# tests before building an ad-hoc signed Release archive, wrapping it in a DMG,
-# publishing it as a GitHub Release, signing the update with the Sparkle EdDSA
-# key, and committing the regenerated appcast.xml to main. Running apps use
+# tests before building a Developer ID signed Release archive, notarizing the
+# DMG, signing the update with the Sparkle EdDSA key, publishing it as a GitHub
+# Release, and committing the regenerated appcast.xml to main. Running apps use
 # https://raw.githubusercontent.com/jduprat/Tugboat/main/appcast.xml
 
 on:
@@ -45,43 +45,155 @@ jobs:
             -derivedDataPath "$DERIVED_DATA" -parallel-testing-enabled NO \
             test CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM=""
 
+      - name: Load release signing identity
+        env:
+          DEVELOPER_ID_P12_BASE64: ${{ secrets.DEVELOPER_ID_P12_BASE64 }}
+          DEVELOPER_ID_P12_PASSWORD: ${{ secrets.DEVELOPER_ID_P12_PASSWORD }}
+        run: |
+          umask 077
+          test -n "$DEVELOPER_ID_P12_BASE64"
+          test -n "$DEVELOPER_ID_P12_PASSWORD"
+          export SIGNING_KEYCHAIN="$RUNNER_TEMP/tugboat-signing.keychain-db"
+          CERTIFICATE_PATH="$RUNNER_TEMP/tugboat-signing.p12"
+          KEYCHAIN_PASSWORD="$(openssl rand -base64 32)"
+          echo "::add-mask::$KEYCHAIN_PASSWORD"
+          printf '%s' "$DEVELOPER_ID_P12_BASE64" | /usr/bin/base64 -D > "$CERTIFICATE_PATH"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$SIGNING_KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$SIGNING_KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$SIGNING_KEYCHAIN"
+          security import "$CERTIFICATE_PATH" -f pkcs12 -k "$SIGNING_KEYCHAIN" -P "$DEVELOPER_ID_P12_PASSWORD" \
+            -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" "$SIGNING_KEYCHAIN" > /dev/null
+          security list-keychains -d user -s "$SIGNING_KEYCHAIN"
+          rm -f "$CERTIFICATE_PATH"
+          python3 - <<'PY'
+          import os
+          import re
+          import subprocess
+
+          result = subprocess.run(
+              ["security", "find-identity", "-v", "-p", "codesigning", os.environ["SIGNING_KEYCHAIN"]],
+              check=True, capture_output=True, text=True,
+          )
+          identities = re.findall(
+              r'\b([0-9A-F]{40}) "Developer ID Application:.*\(([A-Z0-9]{10})\)"',
+              result.stdout,
+          )
+          if len(identities) != 1:
+              raise SystemExit("Expected exactly one valid Developer ID Application identity")
+          fingerprint, team_id = identities[0]
+          print(f"::add-mask::{fingerprint}")
+          print(f"::add-mask::{team_id}")
+          with open(os.environ["GITHUB_ENV"], "a") as output:
+              output.write(f"SIGNING_KEYCHAIN={os.environ['SIGNING_KEYCHAIN']}\n")
+              output.write(f"SIGNING_IDENTITY={fingerprint}\n")
+              output.write(f"SIGNING_TEAM_ID={team_id}\n")
+          print("Loaded one Developer ID Application signing identity.")
+          PY
+
       - name: Archive
         run: |
           xcodebuild -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" -configuration Release \
             -derivedDataPath "$DERIVED_DATA" -archivePath build/Tugboat.xcarchive archive \
-            CODE_SIGN_IDENTITY="-" MARKETING_VERSION="$VERSION"
+            CODE_SIGN_IDENTITY="$SIGNING_IDENTITY" CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM="$SIGNING_TEAM_ID" \
+            OTHER_CODE_SIGN_FLAGS="--timestamp --keychain $SIGNING_KEYCHAIN" MARKETING_VERSION="$VERSION"
 
       - name: Export
         run: |
-          plutil -convert xml1 - -o build/exportOptions.plist << PLIST
-            { "destination": "export", "method": "mac-application" }
-          PLIST
+          python3 - <<'PY'
+          import os
+          import plistlib
+
+          with open("build/exportOptions.plist", "wb") as output:
+              plistlib.dump({
+                  "destination": "export",
+                  "method": "developer-id",
+                  "signingStyle": "manual",
+                  "signingCertificate": os.environ["SIGNING_IDENTITY"],
+                  "teamID": os.environ["SIGNING_TEAM_ID"],
+              }, output)
+          PY
           xcodebuild -exportArchive -archivePath build/Tugboat.xcarchive -exportPath build/export \
             -exportOptionsPlist build/exportOptions.plist
-          codesign --force --deep -s - build/export/Tugboat.app
+          codesign --verify --deep --strict --verbose=2 build/export/Tugboat.app
 
       - name: Make DMG
         run: |
           mkdir -p build/dmg-root build/archives
-          cp -R build/export/Tugboat.app build/dmg-root/
+          ditto build/export/Tugboat.app build/dmg-root/Tugboat.app
+          codesign --verify --deep --strict --verbose=2 build/dmg-root/Tugboat.app
           ln -s /Applications build/dmg-root/Applications
           hdiutil create -srcfolder build/dmg-root -volname "Tugboat $VERSION" -fs HFS+ -format UDZO \
             "build/archives/Tugboat-$VERSION.dmg"
+          codesign --force --timestamp --sign "$SIGNING_IDENTITY" --keychain "$SIGNING_KEYCHAIN" \
+            "build/archives/Tugboat-$VERSION.dmg"
 
-      - name: Publish GitHub Release
+      - name: Notarize DMG
         env:
-          GH_TOKEN: ${{ github.token }}
+          NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
+          NOTARY_API_KEY_ID: ${{ secrets.NOTARY_API_KEY_ID }}
+          NOTARY_API_ISSUER_ID: ${{ secrets.NOTARY_API_ISSUER_ID }}
         run: |
-          gh release create "$TAG" "build/archives/Tugboat-$VERSION.dmg" \
-            --title "Tugboat $VERSION" --generate-notes
+          umask 077
+          test -n "$NOTARY_API_KEY_BASE64"
+          test -n "$NOTARY_API_KEY_ID"
+          test -n "$NOTARY_API_ISSUER_ID"
+          DMG="build/archives/Tugboat-$VERSION.dmg"
+          NOTARY_KEY="$RUNNER_TEMP/tugboat-notary-key.p8"
+          SUBMISSION_JSON="$RUNNER_TEMP/tugboat-notary-submission.json"
+          NOTARY_RESULT="$RUNNER_TEMP/tugboat-notary-result"
+          NOTARY_LOG="$RUNNER_TEMP/tugboat-notary-log.json"
+          printf '%s' "$NOTARY_API_KEY_BASE64" | /usr/bin/base64 -D > "$NOTARY_KEY"
+          NOTARY_AUTH=(--key "$NOTARY_KEY" --key-id "$NOTARY_API_KEY_ID" --issuer "$NOTARY_API_ISSUER_ID")
+          hdiutil verify "$DMG"
+          set +e
+          xcrun notarytool submit "$DMG" "${NOTARY_AUTH[@]}" --wait --output-format json > "$SUBMISSION_JSON"
+          SUBMIT_EXIT_CODE=$?
+          set -e
+          python3 - "$SUBMISSION_JSON" "$NOTARY_RESULT" <<'PY'
+          import json
+          import sys
+
+          try:
+              with open(sys.argv[1]) as source:
+                  result = json.load(source)
+          except (OSError, json.JSONDecodeError):
+              result = {}
+          with open(sys.argv[2], "w") as output:
+              output.write(str(result.get("id", "")) + "\n")
+              output.write(str(result.get("status", "")) + "\n")
+          PY
+          SUBMISSION_ID="$(sed -n '1p' "$NOTARY_RESULT")"
+          NOTARY_STATUS="$(sed -n '2p' "$NOTARY_RESULT")"
+          NOTARY_LOG_AVAILABLE=0
+          if [[ -n "$SUBMISSION_ID" ]] && xcrun notarytool log "$SUBMISSION_ID" "${NOTARY_AUTH[@]}" "$NOTARY_LOG"; then
+            cat "$NOTARY_LOG"
+            NOTARY_LOG_AVAILABLE=1
+          else
+            cat "$SUBMISSION_JSON"
+          fi
+          if [[ "$SUBMIT_EXIT_CODE" -ne 0 || "$NOTARY_STATUS" != "Accepted" || -z "$SUBMISSION_ID" ]]; then
+            echo "Notarization did not succeed (status: ${NOTARY_STATUS:-unavailable})." >&2
+            exit 1
+          fi
+          if [[ "$NOTARY_LOG_AVAILABLE" -ne 1 ]]; then
+            echo "Notarization was accepted, but its log could not be retrieved." >&2
+            exit 1
+          fi
+          xcrun stapler staple "$DMG"
+          xcrun stapler validate "$DMG"
+          codesign --verify --verbose=2 "$DMG"
+          spctl --assess --type open --context context:primary-signature --verbose=4 "$DMG"
 
       - name: Sign update and regenerate appcast
         env:
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
+          umask 077
           BIN="$(find "$DERIVED_DATA/SourcePackages/artifacts" -type d -path '*sparkle/Sparkle/bin' | head -1)"
           test -x "$BIN/generate_appcast"
-          KEYFILE="$(mktemp)"
+          KEYFILE="$RUNNER_TEMP/tugboat-sparkle-key"
+          trap 'rm -f "$KEYFILE"' EXIT
           printf '%s' "$SPARKLE_PRIVATE_KEY" > "$KEYFILE"
           # Keep earlier items: generate_appcast merges into an existing appcast in the archives folder.
           cp appcast.xml build/archives/appcast.xml 2>/dev/null || true
@@ -91,8 +203,14 @@ jobs:
             --link "$REPO_URL" \
             --full-release-notes-url "$REPO_URL/releases" \
             -o appcast.xml
-          rm -f "$KEYFILE"
           cat appcast.xml
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" "build/archives/Tugboat-$VERSION.dmg" \
+            --title "Tugboat $VERSION" --generate-notes
 
       - name: Commit appcast to main
         run: |
@@ -103,3 +221,14 @@ jobs:
           git add appcast.xml
           git commit -m "Publish appcast for $TAG" || echo "appcast unchanged"
           git push origin main
+
+      - name: Remove temporary signing material
+        if: ${{ always() }}
+        run: |
+          CLEANUP_EXIT_CODE=0
+          rm -f "$RUNNER_TEMP/tugboat-signing.p12" "$RUNNER_TEMP/tugboat-notary-key.p8" \
+            "$RUNNER_TEMP/tugboat-sparkle-key" || CLEANUP_EXIT_CODE=$?
+          if [[ -f "$RUNNER_TEMP/tugboat-signing.keychain-db" ]]; then
+            security delete-keychain "$RUNNER_TEMP/tugboat-signing.keychain-db" || CLEANUP_EXIT_CODE=$?
+          fi
+          exit "$CLEANUP_EXIT_CODE"
