@@ -1422,7 +1422,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;
@@ -1456,7 +1456,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.jduprat.Tugboat;
 				PRODUCT_MODULE_NAME = Tugboat;
 				PRODUCT_NAME = Tugboat;
