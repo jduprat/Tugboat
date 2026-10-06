@@ -299,7 +299,7 @@
         <scene sceneID="9jZ-4I-Wps">
             <objects>
                 <windowController storyboardIdentifier="PrefsWindowController" showSeguePresentationStyle="single" id="fmq-Go-Xew" sceneMemberID="viewController">
-                    <window key="window" title="Tugboat Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="STb-JK-oB1">
+                    <window key="window" title="Tugboat Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="STb-JK-oB1" customClass="SettingsWindow" customModule="Tugboat" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="245" y="301" width="433" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -331,7 +331,7 @@
         <!--Tab View Controller-->
         <scene sceneID="b39-fJ-MZO">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="5pc-CV-2b9" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="5pc-CV-2b9" customClass="SettingsTabViewController" customModule="Tugboat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="General" image="toolbarSettingsTemplate" id="gtf-PD-IHm"/>
                         <tabViewItem label="Shortcuts" image="keyboardToolbarTemplate" id="uw2-9W-2jq"/>

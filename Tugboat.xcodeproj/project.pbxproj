@@ -212,6 +212,7 @@
 		DB8F1A2CC69E4CA28F9EBAAB /* ShortcutEditorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */; };
 		2DB2154B20FA4BCEA70A9A45 /* ShortcutBehaviorSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */; };
 		081369B2B1B84110ACF7A38B /* ShortcutOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */; };
+		B04000000000000000000002 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04000000000000000000001 /* SettingsWindow.swift */; };
 		4983ACCC8EC4495DAD79E485 /* ShortcutEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */; };
 
 		AD1200000000000000000002 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000001; };
@@ -442,6 +443,7 @@
 		3A6D68475AFB48D08713FD98 /* ShortcutEditorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorModelTests.swift; sourceTree = "<group>"; };
 		F070C1FFB78C411A9FCCC5DC /* ShortcutBehaviorSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutBehaviorSettingsTests.swift; sourceTree = "<group>"; };
 		2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutOptionsView.swift; sourceTree = "<group>"; };
+		B04000000000000000000001 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		501B39DA405B47E98B995E02 /* ShortcutEditorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditorViewTests.swift; sourceTree = "<group>"; };
 
 		AD1200000000000000000001 /* DynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				737727895B4C48E1935FDBEC /* ShortcutEditorModel.swift */,
 				2D0CA4A932054A179FB3468E /* ShortcutOptionsView.swift */,
 				98910B3D231130AF0066EC23 /* SettingsViewController.swift */,
+				B04000000000000000000001 /* SettingsWindow.swift */,
 				983DD03F28A844BE00BF1EEE /* SnapAreaViewController.swift */,
 				98C97FFC25893B040061F01F /* Config.swift */,
 			);
@@ -1136,6 +1139,7 @@
 				A7A0DE000000000000000C02 /* NSMenuItemExtension.swift in Sources */,
 				98C6DEF023CE191700CC0C1E /* GapCalculation.swift in Sources */,
 				98910B3E231130AF0066EC23 /* SettingsViewController.swift in Sources */,
+				B04000000000000000000002 /* SettingsWindow.swift in Sources */,
 				98A009AD2512498000CFBF0C /* FirstFourthCalculation.swift in Sources */,
 				AA4DA2FB28FDC94A00355CEB /* DispatchTimeExtension.swift in Sources */,
 				98D4B6C525B6256C009C7BF6 /* TodoManager.swift in Sources */,
