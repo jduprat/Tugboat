@@ -46497,6 +46497,9 @@
         }
       }
     },
+    "Window Actions" : {
+      "comment" : "Status menu submenu containing window placement commands"
+    },
     "windowSizeWarningMessage" : {
       "comment" : "Explains that an app can prevent a window from shrinking to the requested layout",
       "extractionState" : "manual",

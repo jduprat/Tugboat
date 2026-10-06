@@ -35,7 +35,7 @@ Tugboat uses its own bundle identifier (`io.github.jduprat.Tugboat`), so it can 
 
 ## How to use it
 
-Tugboat starts with all 22 of Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arrow or a letter, along with Tugboat's tiling and saved-position shortcuts. Existing customized bindings are preserved. The shortcuts are listed in the menu bar menu and in Settings. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
+Tugboat starts with all 22 of Rectangle's recommended shortcuts, mostly ⌃⌥ plus an arrow or a letter, along with Tugboat's tiling and saved-position shortcuts. Existing customized bindings are preserved. Learn and configure shortcuts in **Settings → Shortcuts**. Window commands are also available inside the menu bar's **Window Actions** submenu, keeping the main menu compact. Snap areas work by dragging a window to a screen edge; when the cursor reaches the edge you see a footprint of where the window will land when you release it.
 
 ### Set up shortcuts
 
@@ -64,7 +64,7 @@ Contextual **Shared settings** control the existing window behavior and save imm
 | ⌃⌥⇧V | Tile the focused app's windows in columns |
 | ⌃⌥⇧G | Tile the focused app's windows in a grid |
 
-Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in the Tiling submenu once **Show additional sizes in menu** is on, and their shortcuts can be changed under **Settings → Shortcuts → Arrange**.
+Rows and Columns come from Rectangle, which has no default keys for them. The app-only actions work on the windows of whichever app has focus: seven Terminal windows and one press of ⌃⌥⇧V become seven tall strips across the display, or with ⌃⌥⇧G a 3 by 3 grid. All five are in **Window Actions → Tiling** once **Show additional sizes in menu** is on, and their shortcuts can be changed under **Settings → Shortcuts → Arrange**.
 
 ### Save and restore window positions
 

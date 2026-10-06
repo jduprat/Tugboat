@@ -116,7 +116,7 @@ class WindowActionMenuTests: XCTestCase {
 
     func testRowsAndColumnsShareOptionalSubmenu() throws {
         for showAdditional in [false, true] {
-            let menu = makeMenu(showAdditional: showAdditional, showAllActions: false)
+            let menu = try windowActionsMenu(in: makeMenu(showAdditional: showAdditional, showAllActions: false))
             let tilingItems = menu.items.filter { item in
                 item.submenu?.items.contains { $0.representedObject as? WindowAction == .tileRows } == true
             }
@@ -172,12 +172,98 @@ class WindowActionMenuTests: XCTestCase {
         }
     }
 
-    func testShowAllActionsKeepsRowsAndColumnsFlat() {
-        let menu = makeMenu(showAdditional: false, showAllActions: true)
+    func testShowAllActionsKeepsRowsAndColumnsFlatInsideWindowActions() throws {
+        let menu = try windowActionsMenu(in: makeMenu(showAdditional: false, showAllActions: true))
         let visibleActions = menu.items.filter { !$0.isHidden }.compactMap { $0.representedObject as? WindowAction }
         XCTAssertTrue(visibleActions.contains(.tileRows))
         XCTAssertTrue(visibleActions.contains(.tileColumns))
         XCTAssertFalse(menu.items.contains { $0.submenu != nil })
+    }
+
+    func testWindowActionCatalogLeavesMainMenuCompactForEveryDisplayPreference() throws {
+        for showAdditional in [false, true] {
+            for showAllActions in [false, true] {
+                let menu = makeMenu(showAdditional: showAdditional, showAllActions: showAllActions)
+                XCTAssertTrue(menu.items.allSatisfy { !($0.representedObject is WindowAction) })
+                XCTAssertEqual(menu.items.filter { $0.submenu != nil }.count, 1)
+                XCTAssertNotNil(menu.item(withTag: AppDelegate.ArrangementItem.storeTag))
+                XCTAssertNotNil(menu.item(withTag: AppDelegate.ArrangementItem.restoreTag))
+
+                let actions = actionItems(in: try windowActionsMenu(in: menu)).compactMap { $0.representedObject as? WindowAction }
+                let expectedActions = WindowAction.active.filter { $0.displayName != nil }
+                XCTAssertEqual(Set(actions), Set(expectedActions))
+                XCTAssertEqual(actions.count, expectedActions.count, "Every action must appear exactly once")
+            }
+        }
+    }
+
+    func testRebuildingNestedActionsPreservesStaticControlsAndDoesNotDuplicateSections() throws {
+        let preferences = [Defaults.showAdditionalSizesInMenu, Defaults.showAllActionsInMenu]
+        let originalValues = preferences.map { ($0, $0.enabled, UserDefaults.standard.object(forKey: $0.key)) }
+        defer {
+            for (preference, enabled, stored) in originalValues {
+                preference.enabled = enabled
+                if let stored {
+                    UserDefaults.standard.set(stored, forKey: preference.key)
+                } else {
+                    UserDefaults.standard.removeObject(forKey: preference.key)
+                }
+            }
+        }
+
+        let menu = NSMenu()
+        let settings = NSMenuItem(title: "Settings…", action: nil, keyEquivalent: "")
+        let quit = NSMenuItem(title: "Quit", action: nil, keyEquivalent: "")
+        menu.addItem(settings)
+        menu.addItem(quit)
+        let delegate = AppDelegate()
+        delegate.mainStatusMenu = menu
+        delegate.addWindowActionMenuItems(showAdditional: false, showAllActions: false)
+        let expectedItemCount = menu.numberOfItems
+
+        for (showAdditional, showAllActions) in [(true, false), (false, true), (false, false)] {
+            Defaults.showAdditionalSizesInMenu.enabled = showAdditional
+            Defaults.showAllActionsInMenu.enabled = showAllActions
+            delegate.rebuildMenu()
+
+            XCTAssertEqual(menu.numberOfItems, expectedItemCount)
+            XCTAssertEqual(menu.items.filter { $0.submenu != nil }.count, 1)
+            XCTAssertTrue(menu.items[menu.numberOfItems - 2] === settings)
+            XCTAssertTrue(menu.items.last === quit)
+            let actions = actionItems(in: try windowActionsMenu(in: menu))
+            XCTAssertTrue(actions.allSatisfy { $0.target === delegate })
+            XCTAssertEqual(actions.count, WindowAction.active.filter { $0.displayName != nil }.count)
+        }
+    }
+
+    func testClosingMainMenuClearsKeyEquivalentsFromNestedActions() throws {
+        let menu = NSMenu()
+        let delegate = AppDelegate()
+        delegate.mainStatusMenu = menu
+        delegate.addWindowActionMenuItems(showAdditional: true, showAllActions: false)
+        let actions = actionItems(in: try windowActionsMenu(in: menu))
+        for item in actions {
+            item.keyEquivalent = "x"
+            item.keyEquivalentModifierMask = [.control, .option]
+            item.isEnabled = false
+        }
+
+        delegate.menuDidClose(menu)
+
+        XCTAssertTrue(actions.allSatisfy { $0.keyEquivalent.isEmpty && $0.keyEquivalentModifierMask.isEmpty })
+        XCTAssertTrue(actions.allSatisfy(\.isEnabled))
+    }
+
+    private func windowActionsMenu(in menu: NSMenu) throws -> NSMenu {
+        let item = try XCTUnwrap(menu.items.first { $0.identifier?.rawValue == "windowActions" })
+        return try XCTUnwrap(item.submenu)
+    }
+
+    private func actionItems(in menu: NSMenu) -> [NSMenuItem] {
+        menu.items.flatMap { item in
+            if let submenu = item.submenu { return actionItems(in: submenu) }
+            return item.representedObject is WindowAction ? [item] : []
+        }
     }
 
     private func makeMenu(showAdditional: Bool, showAllActions: Bool) -> NSMenu {

@@ -336,7 +336,7 @@ extension AppDelegate: NSMenuDelegate {
         let screenCount = NSScreen.screens.count
         let isPortrait = NSScreen.main?.frame.isLandscape == false
 
-        for menuItem in menu.items {
+        for menuItem in allMenuItems(in: menu) {
             guard let windowAction = menuItem.representedObject as? WindowAction else { continue }
 
             menuItem.image = windowAction.image.copy() as? NSImage
@@ -348,16 +348,16 @@ extension AppDelegate: NSMenuDelegate {
                 menuItem.image?.isTemplate = true
             }
 
+            menuItem.keyEquivalent = ""
+            menuItem.keyEquivalentModifierMask = []
             if !ApplicationToggle.shortcutsDisabled {
-                if let fullKeyEquivalent = shortcutManager.getKeyEquivalent(action: windowAction),
+                if let fullKeyEquivalent = shortcutManager?.getKeyEquivalent(action: windowAction),
                     let keyEquivalent = fullKeyEquivalent.0?.lowercased() {
                     menuItem.keyEquivalent = keyEquivalent
                     menuItem.keyEquivalentModifierMask = fullKeyEquivalent.1
                 }
             }
-            if frontmostWindow == nil {
-                menuItem.isEnabled = false
-            }
+            menuItem.isEnabled = frontmostWindow != nil
             if windowAction == .nextDisplay || windowAction == .previousDisplay {
                 menuItem.isHidden = screenCount == 1 || Defaults.combinedDisplayMode.userEnabled
             }
@@ -365,12 +365,20 @@ extension AppDelegate: NSMenuDelegate {
     }
     
     func menuDidClose(_ menu: NSMenu) {
-        for menuItem in menu.items {
+        for menuItem in allMenuItems(in: menu) {
             
             menuItem.keyEquivalent = ""
             menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags()
             
             menuItem.isEnabled = true
+        }
+    }
+
+    /// Refresh and clear shortcuts throughout the hierarchy even when a user
+    /// opens or closes the status menu without visiting each action submenu.
+    private func allMenuItems(in menu: NSMenu) -> [NSMenuItem] {
+        menu.items.flatMap { item in
+            [item] + (item.submenu.map { allMenuItems(in: $0) } ?? [])
         }
     }
     
@@ -381,6 +389,11 @@ extension AppDelegate: NSMenuDelegate {
     
     func addWindowActionMenuItems(showAdditional: Bool = Defaults.showAdditionalSizesInMenu.userEnabled,
                                   showAllActions: Bool = Defaults.showAllActionsInMenu.userEnabled) {
+        let existingItemCount = mainStatusMenu.numberOfItems
+        let title = NSLocalizedString("Window Actions", tableName: "Main", value: "Window Actions", comment: "Status menu submenu containing window placement commands")
+        let windowActionsMenu = NSMenu(title: title)
+        windowActionsMenu.autoenablesItems = false
+        windowActionsMenu.delegate = self
         let additionalSizeCategories: Set<WindowActionCategory> = [.eighths, .ninths, .twelfths, .sixteenths, .tiling]
         let submenuOnlyWhenAdditional: Set<WindowActionCategory> = [.thirds, .size]
         var menuIndex = 0
@@ -389,6 +402,7 @@ extension AppDelegate: NSMenuDelegate {
             guard let displayName = action.displayName else { continue }
             let newMenuItem = NSMenuItem(title: displayName, action: #selector(executeMenuWindowAction), keyEquivalent: "")
             newMenuItem.representedObject = action
+            newMenuItem.target = self
 
             if !showAllActions, let category = action.category {
                 // When additional sizes are off, keep Thirds and Size as flat items
@@ -408,15 +422,15 @@ extension AppDelegate: NSMenuDelegate {
             // Flat item - suppress extra separator for almostMaximize when Size is not a submenu
             let showSeparator = action.firstInGroup && !(action == .almostMaximize && !showAdditional)
             if menuIndex != 0 && showSeparator {
-                mainStatusMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
+                windowActionsMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
                 menuIndex += 1
             }
-            mainStatusMenu.insertItem(newMenuItem, at: menuIndex)
+            windowActionsMenu.insertItem(newMenuItem, at: menuIndex)
             menuIndex += 1
         }
 
         if !categoryMenus.isEmpty {
-            mainStatusMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
+            windowActionsMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
             menuIndex += 1
 
             let sortedCategoryMenus = categoryMenus.sorted { $0.category.menuOrder < $1.category.menuOrder }
@@ -427,19 +441,22 @@ extension AppDelegate: NSMenuDelegate {
                     menuMenuItem.isHidden = !showAdditional
                     additionalSizeMenuItems.append(menuMenuItem)
                 }
-                mainStatusMenu.insertItem(menuMenuItem, at: menuIndex)
-                mainStatusMenu.setSubmenu(categoryMenu.menu, for: menuMenuItem)
+                windowActionsMenu.insertItem(menuMenuItem, at: menuIndex)
+                windowActionsMenu.setSubmenu(categoryMenu.menu, for: menuMenuItem)
                 menuIndex += 1
             }
         }
 
-        mainStatusMenu.insertItem(NSMenuItem.separator(), at: menuIndex)
+        let windowActionsItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+        windowActionsItem.identifier = NSUserInterfaceItemIdentifier("windowActions")
+        mainStatusMenu.insertItem(windowActionsItem, at: 0)
+        mainStatusMenu.setSubmenu(windowActionsMenu, for: windowActionsItem)
+        mainStatusMenu.insertItem(NSMenuItem.separator(), at: 1)
 
-        menuIndex += 1
+        menuIndex = 2
         menuIndex = addArrangementMenuItems(startingIndex: menuIndex)
         addTodoModeMenuItems(startingIndex: menuIndex)
-        // Track total dynamic items: window actions + separators + arrangement items + todo items (4 items + 1 separator)
-        dynamicMenuItemCount = menuIndex + 5
+        dynamicMenuItemCount = mainStatusMenu.numberOfItems - existingItemCount
     }
 
     @objc func rebuildMenu() {
