@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var stackBadgeManager: StackBadgeManager!
     private var titleBarManager: TitleBarManager!
     private var greenButtonManager: GreenButtonManager!
+    private var singleInstanceLock: SingleInstanceLock?
     private var windowActivationCoordinator: WindowActivationCoordinator?
     
     private var prefsWindowController: NSWindowController?
@@ -49,6 +50,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Hosted unit tests must not register live shortcuts or change the user's settings.
         if NSClassFromString("XCTestCase") != nil { return }
+        guard acquireSingleInstanceLock() else {
+            NSApp.terminate(nil)
+            return
+        }
         windowActivationCoordinator = WindowActivationCoordinator()
         accessibilityAuthorization.windowActivationCoordinator = windowActivationCoordinator
         // Check for updates automatically unless the user turns it off, and start with the recommended
@@ -108,6 +113,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         prevActiveAppObservation = NSWorkspace.shared.observe(\.frontmostApplication, options: .old) { workspace, change in
             self.prevActiveApp = change.oldValue ?? nil
+        }
+    }
+
+    private func acquireSingleInstanceLock() -> Bool {
+        do {
+            let lock = try SingleInstanceLock()
+            guard try lock.tryAcquire() else {
+                let currentPID = ProcessInfo.processInfo.processIdentifier
+                let identifier = "io.github.jduprat.Tugboat"
+                let existingApplication = NSWorkspace.shared.runningApplications
+                    .filter { application in
+                        guard application.processIdentifier != currentPID,
+                              let bundleIdentifier = application.bundleIdentifier else { return false }
+                        return bundleIdentifier == identifier || bundleIdentifier.hasPrefix(identifier + ".")
+                    }
+                    .min { ($0.launchDate ?? .distantFuture) < ($1.launchDate ?? .distantFuture) }
+                existingApplication?.activate()
+                return false
+            }
+            singleInstanceLock = lock
+            return true
+        } catch {
+            NSLog("Tugboat could not establish single-instance ownership: \(error)")
+            return false
         }
     }
     
