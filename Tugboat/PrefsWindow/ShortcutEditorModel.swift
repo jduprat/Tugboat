@@ -162,7 +162,7 @@ final class ShortcutEditorModel {
     }
 
     /// Complete Tugboat defaults: the standard Rectangle set, Tugboat's tiling commands,
-    /// and the existing sidebar and saved-position defaults. General and snap settings
+    /// and the sidebar reflow and saved-position defaults. General and snap settings
     /// are untouched, including the legacy alternateDefaultShortcuts preference.
     static var defaultShortcuts: [String: MASShortcut] {
         var defaults = WindowAction.active.reduce(into: [String: MASShortcut]()) { result, action in
@@ -170,7 +170,6 @@ final class ShortcutEditorModel {
                 result[action.name] = shortcut.toMASSHortcut()
             }
         }
-        defaults[TodoManager.toggleDefaultsKey] = MASShortcut(keyCode: kVK_ANSI_B, modifierFlags: [.control, .option])
         defaults[TodoManager.reflowDefaultsKey] = MASShortcut(keyCode: kVK_ANSI_N, modifierFlags: [.control, .option])
         defaults.merge(ArrangementManager.defaultShortcuts) { _, arrangement in arrangement }
         return defaults

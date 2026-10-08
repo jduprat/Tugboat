@@ -690,6 +690,9 @@ extension AppDelegate {
             let keyEquivalent = fullKeyEquivalent.0?.lowercased() {
             todoModeMenuItem.keyEquivalent = keyEquivalent
             todoModeMenuItem.keyEquivalentModifierMask = fullKeyEquivalent.1
+        } else {
+            todoModeMenuItem.keyEquivalent = ""
+            todoModeMenuItem.keyEquivalentModifierMask = []
         }
 
         if let fullKeyEquivalent = TodoManager.getReflowKeyDisplay(),

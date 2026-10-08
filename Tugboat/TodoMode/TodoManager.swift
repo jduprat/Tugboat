@@ -19,17 +19,6 @@ class TodoManager {
         moveAllIfNeeded(bringToFront)
     }
 
-    static func initToggleShortcut() {
-        if UserDefaults.standard.dictionary(forKey: toggleDefaultsKey) == nil {
-            guard let dictTransformer = ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)) else { return }
-            
-            let toggleShortcut = MASShortcut(keyCode: kVK_ANSI_B,
-                                             modifierFlags: [NSEvent.ModifierFlags.control, NSEvent.ModifierFlags.option])
-            let toggleShortcutDict = dictTransformer.reverseTransformedValue(toggleShortcut)
-            UserDefaults.standard.set(toggleShortcutDict, forKey: toggleDefaultsKey)
-        }
-    }
-    
     static func initReflowShortcut() {
         if UserDefaults.standard.dictionary(forKey: reflowDefaultsKey) == nil {
             guard let dictTransformer = ValueTransformer(forName: NSValueTransformerName(rawValue: MASDictionaryTransformerName)) else { return }

@@ -171,16 +171,19 @@ final class ShortcutEditorModelTests: XCTestCase {
         for (key, value) in unrelatedValues { defaults.set(value, forKey: key) }
         let custom = MASShortcut(keyCode: kVK_ANSI_P, modifierFlags: [.command, .control])
         try store(custom, key: WindowAction.topLeftSixteenth.name)
+        try store(custom, key: TodoManager.toggleDefaultsKey)
         try store(custom, key: StackBadgeManager.toggleDefaultsKey)
 
         try model.restoreDefaultPreset()
 
-        XCTAssertEqual(model.assignedBindings.count, 31)
+        XCTAssertEqual(model.assignedBindings.count, 30)
         XCTAssertEqual(model.shortcut(for: command(.leftHalf))?.keyCode, kVK_LeftArrow)
         XCTAssertEqual(model.shortcut(for: command(.leftHalf))?.modifierFlags, [.control, .option])
         XCTAssertNotNil(model.shortcut(for: command(.centerTwoThirds)))
         XCTAssertNotNil(model.shortcut(for: command(.tileActiveAppColumns)))
         XCTAssertNil(model.shortcut(for: command(.topLeftSixteenth)))
+        XCTAssertEqual(defaults.dictionary(forKey: TodoManager.toggleDefaultsKey)?.count, 0)
+        XCTAssertNotNil(ShortcutCycle.shortcut(forDefaultsKey: TodoManager.reflowDefaultsKey, userDefaults: defaults))
         XCTAssertEqual(defaults.dictionary(forKey: StackBadgeManager.toggleDefaultsKey)?.count, 0)
         for (key, value) in unrelatedValues {
             XCTAssertEqual(defaults.object(forKey: key) as? NSObject, value as? NSObject)
