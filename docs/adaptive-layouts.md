@@ -27,6 +27,12 @@ upstream `origin/main` still points to `b1921c3`. Changes remain uncommitted.
   windows where needed. App minimum-size clamps are observed, and recovery retries
   translation after a clamp. Infeasible tiled constraints retain topology and may
   require overlap; stored intent remains unchanged.
+- Newly created eligible windows are placed within a display's visible area during
+  a brief settling period, including initial windows of newly launched apps.
+  Oversized dimensions are reduced to 90% of the available dimension, subject to
+  app minimums. Small in-bounds offsets separate matching origins when space permits.
+  This relies on macOS Accessibility window-creation notifications and stops checking
+  after the initial size settles. A manual drag cancels the remaining checks.
 - macOS 14 deployment target and SMAppService for launch at login. Legacy icon
   fallback generation is enabled. Default project signing is ad hoc with no
   development team, so local Xcode builds need no account.
@@ -44,7 +50,7 @@ After an app or Tugboat relaunch, a unique app/title/subrole combination can be
 matched again. Repeated or absent ambiguous titles remain dormant. This avoids
 claiming to preserve an identity that macOS no longer exposes. Reapply the tiling
 shortcut to establish a fresh group. Window creation does not automatically join
-new members.
+new members or restore saved positions; it only fits the new window on screen.
 
 A placement/resize/restore shortcut releases its window from the dynamic group.
 Grid, cascade, reverse and manual arrangement restore release their affected

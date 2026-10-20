@@ -117,6 +117,8 @@ Saved groups survive app and Tugboat restarts and are considered during the next
 
 After display changes, Tugboat also tries to bring inaccessible title bars of current-Space windows back within reach, respecting the same exclusions and app size constraints. If a group cannot fit within the apps' minimum window sizes, windows may overlap. Detailed behavior and remaining work are in [docs/adaptive-layouts.md](docs/adaptive-layouts.md).
 
+Tugboat also fits newly opened windows within the visible display area, including windows created as an app launches. Oversized new windows are reduced to leave a small margin, and windows that would open at the same position receive a modest offset when space permits. Tugboat briefly rechecks the initial size to accommodate apps that finish sizing a window after opening it. A manual drag cancels the remaining checks for that window, so you can place it partly off-screen. This applies to managed windows from apps that report window creation through macOS Accessibility.
+
 ### Import, export, and advanced settings
 
 Settings can be exported to and imported from JSON in **Settings**. Tugboat also offers to import `~/Library/Application Support/Tugboat/TugboatConfig.json` at launch when that file exists. Removed shortcuts stay removed through export and import. Saved window positions and adaptive row and column groups are stored separately and are not included in the settings export.

@@ -222,6 +222,8 @@
 		AD1200000000000000000002 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000001; };
 		AD1200000000000000000004 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000003; };
 		AD1200000000000000000006 /* DynamicLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1200000000000000000005; };
+		C10000000000000000000002 /* WindowCreationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000001 /* WindowCreationManager.swift */; };
+		C10000000000000000000004 /* WindowCreationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000003 /* WindowCreationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,6 +459,8 @@
 		AD1200000000000000000001 /* DynamicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
 		AD1200000000000000000003 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
 		AD1200000000000000000005 /* DynamicLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutTests.swift; sourceTree = "<group>"; };
+		C10000000000000000000001 /* WindowCreationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowCreationManager.swift; sourceTree = "<group>"; };
+		C10000000000000000000003 /* WindowCreationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowCreationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -699,6 +703,7 @@
 			children = (
 				9824700C22AF9B7D0037B409 /* AppDelegate.swift */,
 				B05000000000000000000001 /* WindowActivationCoordinator.swift */,
+				C10000000000000000000001 /* WindowCreationManager.swift */,
 				B06000000000000000000001 /* SingleInstanceLock.swift */,
 				9824701022AF9B7E0037B409 /* Assets.xcassets */,
 				482E9E412EB1528D00D7928A /* AppIcon.icon */,
@@ -752,6 +757,7 @@
 			children = (
 				9824701F22AF9B7E0037B409 /* RectangleTests.swift */,
 				B05000000000000000000003 /* WindowActivationCoordinatorTests.swift */,
+				C10000000000000000000003 /* WindowCreationManagerTests.swift */,
 				B06000000000000000000003 /* SingleInstanceLockTests.swift */,
 				944F25D02CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift */,
 				de0950b8b00f40308934a523 /* JSONDefaultTests.swift */,
@@ -1047,6 +1053,7 @@
 				984EDB0F29A42ED200D119D2 /* LaunchOnLogin.swift in Sources */,
 				9824702F22AFA2E50037B409 /* AccessibilityAuthorization.swift in Sources */,
 				B05000000000000000000002 /* WindowActivationCoordinator.swift in Sources */,
+				C10000000000000000000002 /* WindowCreationManager.swift in Sources */,
 				B06000000000000000000002 /* SingleInstanceLock.swift in Sources */,
 				988D066322EB4CA5004EABD7 /* FirstTwoThirdsCalculation.swift in Sources */,
 				D04CE30A27817A9F00BD47B3 /* MiddleRightNinthCalculation.swift in Sources */,
@@ -1237,6 +1244,7 @@
 			files = (
 				9824702022AF9B7E0037B409 /* RectangleTests.swift in Sources */,
 				B05000000000000000000004 /* WindowActivationCoordinatorTests.swift in Sources */,
+				C10000000000000000000004 /* WindowCreationManagerTests.swift in Sources */,
 				B06000000000000000000004 /* SingleInstanceLockTests.swift in Sources */,
 				944F25D12CE5A144004B2FD2 /* ShortcutRecordingObserverTests.swift in Sources */,
 				01f52cab9bce43359775bdd7 /* JSONDefaultTests.swift in Sources */,

@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var stackBadgeManager: StackBadgeManager!
     private var titleBarManager: TitleBarManager!
     private var greenButtonManager: GreenButtonManager!
+    private var windowCreationManager: WindowCreationManager!
     private var singleInstanceLock: SingleInstanceLock?
     private var windowActivationCoordinator: WindowActivationCoordinator?
     
@@ -199,6 +200,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.initializeTodo()
         ArrangementManager.start()
         DynamicLayoutManager.shared.start()
+        self.windowCreationManager = WindowCreationManager()
+        self.windowCreationManager.start()
         checkForProblematicApps()
         MacTilingDefaults.checkForBuiltInTiling(skipIfAlreadyNotified: true)
     }
